@@ -1,23 +1,32 @@
 import React from "react";
 import axios from "axios"
+import Slider from "../Slider/slider"
 import { useEffect, useState } from "react";
-
+import imagenSlader from "./helper/imagenSlader";
 
 const Home = () =>{
     const [allVideogames, setAllVideogames] = useState([])
-
+    const [arrSlader, setArrSlader] = useState([])
 
     useEffect(()=>{    
         const videogames = async () => {
-            const {data} = await get.axios("http://localhost:3001/videogames")
-            console.log(data)
+            const response = await axios.get("http://localhost:3001/videogames")
+            setAllVideogames(response.data) 
+            return response.data
         }
+        videogames().then((response)=>{
+            const sliderImage= imagenSlader(response)
+            setArrSlader(sliderImage)
+        })
+       
+         
 
     },[])
-
     return(
         <div>
-
+            <Slider image={arrSlader}/>
         </div>
         )
 }
+
+export default Home
