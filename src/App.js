@@ -12,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/videogames" element={<Videogames />} />
+          {/* <Route path="/videogames/:id" element={Card}/> */}
         </Routes>
       </div>
   );

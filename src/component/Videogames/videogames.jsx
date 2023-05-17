@@ -1,13 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import fetchData from "../Home/helper/fetchData";
-import { Button } from "bootstrap";
-
+import  Card  from "../card/card";
 
 function Videogames (){
     const [allVideogames, setAllVideogames]= useState([])
     const [pages, setPages] = useState(0)
     const [filter, setFilter] = useState({})
+    
 
     useEffect(() => {
         const data = async () => {
@@ -35,14 +35,18 @@ function Videogames (){
       const handlerFilter=(event)=>{
         setFilter({...filter, [event.target.name]:event.target.value})
       }
-    console.log(filter)
+    console.log(allVideogames)
     return(
         <div>
+            <div className="container">
+
+           
             {allVideogames?(allVideogames.map((game)=>{
                 return(
-                    <h1>{game.name}</h1>
+                    <Card game={game}/>
             )
             })):'Loading'}
+        </div>
             {pages?(renderButtons().map((page)=>{
                 return(<button onClick={handlerFilter} name="page" value={page}>{page}</button>)
             })):null}
