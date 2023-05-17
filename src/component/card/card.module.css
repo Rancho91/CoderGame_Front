@@ -4,3 +4,13 @@
 .title{
     font-size: 2rem;
 }
+
+.description{
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    max-height: 100%; 
+    text-overflow: ellipsis;
+}

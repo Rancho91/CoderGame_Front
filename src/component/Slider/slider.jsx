@@ -25,14 +25,6 @@ const Slider = ({image}) =>{
                 )
                 })}
             </section>
-
-        //   <div
-        //     style={{ backgroundImage: `url(${image[number]?.image})` }}
-        //     className={`${styles.sliderImage}`}
-        //   >
-        //     <button name='last' onClick={handlerButtons}> {'<'} </button>
-        //     <button name='next' onClick={handlerButtons}> {'>'} </button>
-        //   </div>
       );
     };
 
