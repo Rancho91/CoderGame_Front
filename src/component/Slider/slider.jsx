@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import styles from './slider.module.css'
 
 const Slider = ({image}) =>{
     const [number, setNumber] = useState(1)
@@ -16,20 +16,25 @@ const Slider = ({image}) =>{
             }else setNumber(number-1)
         }
     }
-    return(
-        <div style={{
-            backgroundImage: `url(${image[number]?.image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            width: '400px',
-            height: '300px',
-          }}>
-            lala
-            <button name='last' onClick={handlerButtons}> {'<'} </button>
-           <button name='next' onClick={handlerButtons}> {'>'} </button> 
-        </div>
-    )
-}
+ 
+    return (
+            <section className={styles.sliderImage} >
+                {image?.map((i)=>{
+                    return(
+                        <img src={i.image} alt="" />
+                )
+                })}
+            </section>
+
+        //   <div
+        //     style={{ backgroundImage: `url(${image[number]?.image})` }}
+        //     className={`${styles.sliderImage}`}
+        //   >
+        //     <button name='last' onClick={handlerButtons}> {'<'} </button>
+        //     <button name='next' onClick={handlerButtons}> {'>'} </button>
+        //   </div>
+      );
+    };
+
 
 export default Slider
