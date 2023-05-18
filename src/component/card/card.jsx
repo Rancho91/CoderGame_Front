@@ -30,8 +30,8 @@ function Card ({game}){
         <div className={`col-6 ${styles.price}`}>
           <p>{price}</p>
         </div>
-        <div className="col-6">
-          <button>Buy</button>
+        <div className={`col-6 ${styles.price}`}>
+          <p>Buy</p>
         </div>
       </div>
     </div>
