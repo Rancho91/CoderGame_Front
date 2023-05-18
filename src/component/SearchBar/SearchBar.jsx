@@ -4,7 +4,7 @@ const { useState } = require("react");
 const { useDispatch } = require("react-redux");
 
 
-const SearchBar = () => {
+const SearchBar = ({handlerFilter}) => {
     const dispatch  = useDispatch();
     const [name, setName] = useState('');
 
@@ -15,13 +15,13 @@ const SearchBar = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(getGameByName(name)); 
+        handlerFilter(e)
     }
     
     return(
         <div>
             <input type="text" className="btn btn-dark" placeholder="Search" onChange={handleInput} />
-            <button type="submit" className="btn btn-secondary" onClick={handleSubmit} >Search</button>
+            <button type="submit" name="name" value={name} className="btn btn-secondary" onClick={handleSubmit} >Search</button>
         </div>
     )
 
