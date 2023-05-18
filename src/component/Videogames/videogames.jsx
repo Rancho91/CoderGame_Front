@@ -31,26 +31,43 @@ function Videogames (){
         }
         return paginas
       }
-      
+
       const handlerFilter=(event)=>{
+
         setFilter({...filter, [event.target.name]:event.target.value})
       }
-    console.log(allVideogames)
-    return(
-        <div>
-            <div className="container">
+    console.log(filter)
 
-           
-            {allVideogames?(allVideogames.map((game)=>{
-                return(
-                    <Card game={game}/>
-            )
-            })):'Loading'}
-        </div>
-            {pages?(renderButtons().map((page)=>{
-                return(<button onClick={handlerFilter} name="page" value={page}>{page}</button>)
-            })):null}
-        </div>
+
+
+    return(
+      
+      <div className="container justify-content-center">
+        <div className="container d-flex justify-content-start">
+          <div className="row justify-content-center">
+      {allVideogames ? (
+        allVideogames.map((game) => {
+          return <Card game={game} />;
+        })
+      ) : (
+        'Loading'
+      )}
+    </div>
+  </div>
+  <div className="row justify-content-center">
+  <div className="col-md-12 d-flex justify-content-center">
+      {pages ? (
+        renderButtons().map((page) => {
+          return (
+            <button onClick={handlerFilter} name="page" value={page}>
+              {page}
+            </button>
+          );
+        })
+      ) : null}
+    </div>
+  </div>
+</div>
     )
 }
 

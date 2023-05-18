@@ -4,24 +4,38 @@ function Card ({game}){
  const {name, image, description, price, released} = game
 
     return(
-        <div className="row">
-        <div className="col-md-4 d-flex align-items-center flex-column">
-            <h1 className={styles.title}>{name}</h1>
-            <img
-            className=" img-fluid rounded"
-            src={image}
-            alt={name}
-          />
-          <p>{released}</p>
+      <div className={`col-md-3 text-center ${styles.container}`}>
+      <div className={`row ${styles.title}`}>
+        <div className="col-12">
+          <h1>{name}</h1>
         </div>
-           
-          <div className="col-md-8 d-flex align-items-center">
-            <p className={styles.description}>{description}</p>
-            {/* {description.length > 100
-            ? description.slice(0, 100) + " ...For more press!"
-            : description} */}
-            </div>
+      </div>
+    
+      <div  className={`row ${styles.image}`} style={{ backgroundImage: `url(${image})` }} >
+      </div>
+    
+      <div className="row">
+        <div className="col-12 d-flex align-items-center flex-column">
+          <p className={styles.description}>{released}</p>
         </div>
+      </div>
+    
+      <div className="row">
+        <div className="col-12 d-flex align-items-center">
+          <p className={styles.description}>{description}</p>
+        </div>
+      </div>
+    
+      <div className="row">
+        <div className={`col-6 ${styles.price}`}>
+          <p>{price}</p>
+        </div>
+        <div className="col-6">
+          <button>Buy</button>
+        </div>
+      </div>
+    </div>
+    
         )
 }
 

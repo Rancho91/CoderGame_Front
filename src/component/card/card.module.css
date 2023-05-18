@@ -1,16 +1,55 @@
+.container{
+    margin: 2%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
 
-
+}
 
 .title{
-    font-size: 2rem;
+    display: flex;
+    background-color: rgb(82, 13, 13);
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
+
+
+}
+.title h1{
+    font-size: 1.2rem;
+    color: aliceblue;
+}
+
+
+
+.image{
+    height: 200px; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
 }
 
 .description{
     flex-grow: 1;
+    color: aliceblue;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
     max-height: 100%; 
     text-overflow: ellipsis;
+}
+
+.price { 
+    background-color: aliceblue;
+    box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
+    border-radius: 5px;
+    
+}
+.price button {
+    border: none;
+    background-color: rgba(240, 248, 255, 0);
 }
