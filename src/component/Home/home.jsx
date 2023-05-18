@@ -3,6 +3,7 @@ import axios from "axios"
 import Slider from "../Slider/slider"
 import { useEffect, useState } from "react";
 import imagenSlader from "./helper/imagenSlader";
+import SubNavBar from "../SubNavBar/SubNavBar";
 
 
 const Home = () =>{
@@ -21,6 +22,9 @@ const Home = () =>{
 
     return(
         <div>
+            <p />
+            <SubNavBar />
+            <p />
             <Slider image={arrSlader}/>
         </div>
         )

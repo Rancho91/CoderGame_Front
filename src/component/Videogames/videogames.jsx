@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import fetchData from "../Home/helper/fetchData";
 import  Card  from "../card/card";
+import SearchBar from "../SearchBar/SearchBar"
 
 function Videogames (){
     const [allVideogames, setAllVideogames]= useState([])
@@ -41,7 +42,8 @@ function Videogames (){
 
 
     return(
-      
+      <div>
+        <SearchBar handlerFilter={handlerFilter}/>
       <div className="container justify-content-center">
         <div className="container d-flex justify-content-start">
           <div className="row justify-content-center">
@@ -67,6 +69,7 @@ function Videogames (){
       ) : null}
     </div>
   </div>
+</div>
 </div>
     )
 }
