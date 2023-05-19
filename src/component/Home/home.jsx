@@ -21,11 +21,14 @@ const Home = () =>{
     },[])
 
     return(
-        <div>
+        <div className="container">
             <p />
             <SubNavBar />
             <p />
-            <Slider image={arrSlader}/>
+            <div className="col-12 d-flex justify-content-center">
+                <Slider image={arrSlader}/>        
+            </div>
+            
         </div>
         )
 }
