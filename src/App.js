@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from './component/Home/home'
 import NavBar from "./component/NavBar/navBar";
 import Videogames from "./component/Videogames/videogames";
+import CreateGameForm from "./component/CreateGameForm/CreateGameForm";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/creategame" element={<CreateGameForm />} />
           <Route path="/videogames" element={<Videogames />} />
           {/* <Route path="/videogames/:id" element={Card}/> */}
         </Routes>
