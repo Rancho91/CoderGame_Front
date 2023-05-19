@@ -77,14 +77,15 @@ const CreateGameForm = () => {
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur }) => (
+          <div >
           <Form className={style.formulario}>
-            <div>
+            <div class="input-container">
               <label htmlFor="name">Game Name</label>
               <Field type="text" id="name" name="name" placeholder="CS 1.6" />
               <ErrorMessage name="name" component={() => ( <div className="error">{errors.name}</div>)} />
             </div>
-
-            <div>
+            
+            <div className="outer-container">
               <label htmlFor="released">Release date</label>
               <Field type="date" id="released" name="released" placeholder="YYYY-MM-DD" />
               <ErrorMessage name="released" component={() => ( <div className="error">{errors.released}</div> )} />
@@ -92,7 +93,7 @@ const CreateGameForm = () => {
 
             <div>
                 <label htmlFor="platforms">Platforms</label>
-                    <div className={style.platformContainer}>
+                    <div className={style.platformsContainer}>
                         {allPlatforms.map((platform) => (
                 <label key={platform.id} className={style.platformLabel}>
               <Field type="checkbox" name="platforms" value={platform.name} />
@@ -106,7 +107,7 @@ const CreateGameForm = () => {
 
             <div>
                 <label htmlFor="genres">Genres</label>
-                    <div className={style.genres}>
+                    <div className={style.genresContainer}>
                         {allGenres.map((genres) => (
                 <label key={genres.id} className={style.genresLabel}>
               <Field type="checkbox" name="genres" value={genres.name} />
@@ -140,6 +141,7 @@ const CreateGameForm = () => {
         {formularioEnviado && <p className="exito">Formulario enviando con exito!</p>}
 
         </Form>
+        </div>
         )}
 
       </Formik>

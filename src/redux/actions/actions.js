@@ -25,16 +25,3 @@ export const getPlatforms = () => {
   };
 };
 
-export const postGame = (payload, token) => {
-  return async (dispatch) => {
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
-    const info = await axios.post(
-      "http://localhost:3001/videogames",
-      payload,
-      config
-    );
-    return info;
-  };
-};
