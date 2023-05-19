@@ -78,51 +78,74 @@ const CreateGameForm = () => {
       >
         {({ values, errors, touched, handleChange, handleBlur }) => (
           <div >
-          <Form className={style.formulario}>
-            <div class="input-container">
+          <Form className={`container ${style.formulario}`}>
+            <div className="row ">
+            <div class="input-container" className={`col-6`}>
               <label htmlFor="name">Game Name</label>
               <Field type="text" id="name" name="name" placeholder="CS 1.6" />
               <ErrorMessage name="name" component={() => ( <div className="error">{errors.name}</div>)} />
             </div>
             
-            <div className="outer-container">
+            <div className={`col-3 outer-container`}>
               <label htmlFor="released">Release date</label>
               <Field type="date" id="released" name="released" placeholder="YYYY-MM-DD" />
               <ErrorMessage name="released" component={() => ( <div className="error">{errors.released}</div> )} />
             </div>
-
-            <div>
-                <label htmlFor="platforms">Platforms</label>
-                    <div className={style.platformsContainer}>
-                        {allPlatforms.map((platform) => (
-                <label key={platform.id} className={style.platformLabel}>
-              <Field type="checkbox" name="platforms" value={platform.name} />
-                 {platform.name}
-            </label>
-            ))}
+            <div className="col-3"> 
+              <label htmlFor="name">Price</label>
+              <Field type="number" id="price" name="price" placeholder="199" />
+              <ErrorMessage name="price" component={() => ( <div className="error">{errors.price}</div>)} />
             </div>
+            </div>
+            <div>
+
+            </div>              
+            
+            <div className="row">
+                <div className="col-12">
+                    <label htmlFor="platforms">Platforms</label>
+                </div>  
+            </div>
+            <div className={`row justify-content-start align-items-center ${style.platformsContainer}`}>           
+                {allPlatforms.map((platform) => (
+                  <div className={`col-2 `}>
+                    <label key={platform.id} className={`${style.platformLabel}`}>
+                    <div className="d-flex align-items-center justify-content-between">
+                    <p className="col-10">{platform.name} </p>
+                    <Field type="checkbox" name="platforms" value={platform.name} className="md-2" />
+                      </div>
+                      </label> 
+                    </div>))}
                 <ErrorMessage name="platforms" component="div" className={style.error}  />
             </div>
             <hr />
 
             <div>
-                <label htmlFor="genres">Genres</label>
-                    <div className={style.genresContainer}>
-                        {allGenres.map((genres) => (
+            <div className="row">
+              <div className="-12"> <label htmlFor="genres">Genres</label> </div>
+             
+            </div>
+                
+          <div className={` row justify-content-start align-items-center ${style.platformsContainer}`}>
+                        
+            {allGenres.map((genres) => (
+              <div className={`col-2 `}>
                 <label key={genres.id} className={style.genresLabel}>
-              <Field type="checkbox" name="genres" value={genres.name} />
-                 {genres.name}
+                  <div className="d-flex align-items-center justify-content-between">
+                      <p className="col-10">{genres.name} </p>
+                      <Field type="checkbox" name="genres" value={genres.name } className=" md-2" />
+                  </div>
+
+                 
             </label>
+            </div>
             ))}
+
             </div>
                 <ErrorMessage name="genres" component="div" className={style.error}  />
             </div>
 
-            <div>
-              <label htmlFor="name">Price</label>
-              <Field type="number" id="price" name="price" placeholder="199" />
-              <ErrorMessage name="price" component={() => ( <div className="error">{errors.price}</div>)} />
-            </div>
+
 
             <div>
               <label htmlFor="name">Game Link</label>

@@ -95,23 +95,19 @@
 	grid-template-columns: repeat(3, 1fr); /* Divide en tres columnas de igual tamaño */
 	gap: 10px; /* Espacio entre las opciones */
   }
-
-  .genresContainer {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 10px;	
-  }
   
-  .genreLabel {
-	display: block;
-	margin-bottom: 5px;
-	color: #0085FF;
-  }
 
   .platformsContainer {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 10px;		
-  }
 
+  align-items: center;
+  justify-items: center;
   
+  }
+   .platformsContainer label {
+		padding: 5%;
+		margin: 1%;
+  } 
+  .platformsContainer label:hover {
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+  }
