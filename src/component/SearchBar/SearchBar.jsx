@@ -18,11 +18,16 @@ const SearchBar = ({ handlerFilter }) => {
   };
 
   return (
-    <div>
-      <input type="text" className="btn btn-dark" placeholder="What game are you looking for?" onChange={handleInput} />
-      <button type="submit" name="name" value={name} className="btn btn-secondary" onClick={handleSubmit}>
-        <FontAwesomeIcon icon={faSearch} />
-      </button>
+    <div className="row">
+      <div className="col-10">
+        <input type="text" className="btn btn-dark" placeholder="What game are you looking for?" onChange={handleInput} />
+      </div>
+      <div className="col-2">
+          <button type="submit" name="name" value={name} className="btn btn-secondary" onClick={handleSubmit}>
+            <FontAwesomeIcon icon={faSearch} />
+           </button>
+      </div>
+
     </div>
   );
 };
