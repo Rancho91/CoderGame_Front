@@ -1,8 +1,10 @@
-const imagenSlader = (arrVideogames) =>{
-    if(arrVideogames.length>5) arrVideogames = arrVideogames.slice(0,5)
-    
-    const response = arrVideogames.map((game)=>{return{id:game.id, image:game.image, name:game.name, price:game.price}})
+const imagenSlader = (arrVideogames, cant) =>{
+    if (arrVideogames.length > cant) {
+        arrVideogames = arrVideogames.sort(() => Math.random() - 0.5).slice(0, cant);
+      }    
+    const response = arrVideogames.map((game)=>{return{id:game.id, image:game.image, name:game.name, price:game.price, released:game.released, description:game.description}})
     return response
 }
+
 
 export default imagenSlader

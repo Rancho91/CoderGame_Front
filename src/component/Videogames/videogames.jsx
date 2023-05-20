@@ -47,13 +47,17 @@ function Videogames (){
       <div className="container justify-content-center">
         <div className="container d-flex justify-content-start">
           <div className="row justify-content-center">
-      {allVideogames ? (
-        allVideogames.map((game) => {
-          return <Card game={game} />;
-        })
-      ) : (
-        'Loading'
-      )}
+          {allVideogames ? (
+    allVideogames.map((game) => (
+      <div className="col-4">
+        
+          <Card game={game} />
+    
+      </div>
+    ))
+  ) : (
+    <div className="col-12">Loading</div>
+  )}
     </div>
   </div>
   <div className="row justify-content-center">

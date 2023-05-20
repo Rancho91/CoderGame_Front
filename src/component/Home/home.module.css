@@ -1,0 +1,10 @@
+.cardFooter{
+    height: 150px;
+    width: 100%;
+    margin: 0;
+}
+.card{
+    padding: 1%;
+    margin:1%;
+    height: 150px;
+}

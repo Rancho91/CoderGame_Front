@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import style from "./creategameform.module.css";
-import { postGame, getGenres, getPlatforms } from "../../redux/actions/actions";
+import {  getGenres, getPlatforms } from "../../redux/actions/actions";
 
 const CreateGameForm = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);

@@ -5,6 +5,7 @@ import NavBar from "./component/NavBar/navBar";
 import Videogames from "./component/Videogames/videogames";
 import CreateGameForm from "./component/CreateGameForm/CreateGameForm";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Detail from "./component/Home/detail/detaild";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/creategame" element={<CreateGameForm />} />
           <Route path="/videogames" element={<Videogames />} />
-          {/* <Route path="/videogames/:id" element={Card}/> */}
+          <Route path="/videogames/:id" element={<Detail/>}/> 
         </Routes>
       </div>
   );

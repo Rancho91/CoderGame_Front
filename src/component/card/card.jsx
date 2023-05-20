@@ -4,7 +4,7 @@ function Card ({game}){
  const {name, image, description, price, released} = game
 
     return(
-      <div className={`col-md-3 text-center ${styles.container}`}>
+      <div className={`col-md-12 text-center ${styles.container}`}>
       <div className={`row ${styles.title}`}>
         <div className="col-12">
           <h1>{name}</h1>
