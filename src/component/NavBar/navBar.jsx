@@ -4,10 +4,11 @@ import Home from "../Home/home";
 import Login from "./login/login"
 import styles from "./navBar.module.css"
 import SearchBar from "../SearchBar/SearchBar";
+import { useAuth0 } from "@auth0/auth0-react";
+import Logout from "./logaut/logaut"
 
 function NavBar (){
-
-
+    const {isAuthenticated} = useAuth0()
     return (
         <nav>
             <div className="container">
@@ -37,7 +38,7 @@ function NavBar (){
                                 </Link>    
                             </div>
                              <div className="col-4">
-                                <Login/>   
+                                {isAuthenticated?<Logout/>:<Login/> }  
                              </div>
                             </div>
                             

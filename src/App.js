@@ -6,8 +6,20 @@ import Videogames from "./component/Videogames/videogames";
 import CreateGameForm from "./component/CreateGameForm/CreateGameForm";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Detail from "./component/Home/detail/detaild";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {postUser} from "./redux/actions/actions"
 
 function App() {
+  const {isAuthenticated,user}=useAuth0()
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    if(isAuthenticated){
+      const {sub,name,email} = user
+      dispatch(postUser({sub,name,email}))
+    }
+  })
   return (
       <div class="fondo">
         <NavBar />

@@ -1,4 +1,4 @@
-import { GET_PLATFORMS, GET_GENRES } from "../actions/actionsTypes";
+import { GET_PLATFORMS, GET_GENRES, POST_USER, USER_LOGOUT } from "../actions/actionsTypes";
 
 
 
@@ -6,7 +6,7 @@ import { GET_PLATFORMS, GET_GENRES } from "../actions/actionsTypes";
 const initialState = {
   allGenres: [],
   allPlatforms: [],
-
+  userRole:{}
 }
 
 export default function reducer(state = initialState, action) {
@@ -22,6 +22,11 @@ export default function reducer(state = initialState, action) {
               ...state,
               allPlatforms: [...action.payload],
             };
+        case POST_USER:
+          return {...state, userRole:action.payload};
+        case USER_LOGOUT:
+          return {...state, userRole:action.payload}
+        
             
         default:
                 return state;
