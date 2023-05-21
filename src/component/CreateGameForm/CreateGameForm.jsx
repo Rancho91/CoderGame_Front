@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage, } from "formik";
 import style from "./creategameform.module.css";
-import {  getGenres, getPlatforms } from "../../redux/actions/actions";
+import {  getGenres, getPlatforms, postGame } from "../../redux/actions/actions";
 import axios from "axios";
+
+
 
 const CreateGameForm = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
@@ -30,7 +32,7 @@ const CreateGameForm = () => {
           price: "",
           gameLink: "",
           description: "",
-          imageFile:null,
+          imageFile: null,
         }}
         
         validate={(valores) => {
@@ -74,6 +76,7 @@ const CreateGameForm = () => {
 
           return errores;
         }}
+        
         onSubmit={(valores, { resetForm }) => {
           const formData = new FormData();
           formData.append('file', valores.imageFile);
@@ -83,7 +86,25 @@ const CreateGameForm = () => {
           .then(response => {
             const imageUrl = response.data.secure_url;
             console.log('URL de la imagen:', imageUrl);
+
         
+
+            dispatch(
+              postGame({
+                name: valores.name,
+                released: valores.released,
+                platforms: valores.platforms,
+                description: valores.description,
+                genres: valores.genres,
+                image: imageUrl,
+                price: valores.price,
+                gameLink: valores.gameLink,
+                sub: 'auth0%7C64412badb349afebdba606cd'
+                
+              }, )
+            );
+        
+            
             // Mover estos comandos aquí
             resetForm();
             console.log("Valores ingresados", valores);
@@ -121,13 +142,12 @@ const CreateGameForm = () => {
             </div>
             </div>
             <div>
+            </div>    
 
-            </div>              
-            
-            <div className="row">
+              <div className="row">
                 <div className="col-12">
                     <label htmlFor="platforms">Platforms</label>
-                </div>  
+              </div>  
             </div>
             <div className={`row justify-content-start align-items-center ${style.platformsContainer}`}>           
                 {allPlatforms.map((platform) => (
