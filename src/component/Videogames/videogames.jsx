@@ -8,32 +8,34 @@ import { getAllVideogames } from "../../redux/actions/actions";
 
 function Videogames (){
     const dispatch = useDispatch()
-    const [pages, setPages] = useState(0)
-    const {Videogames, page} = useSelector((state)=>state.allVideogames)
+    const {Videogames, pages} = useSelector((state)=>state.allVideogames)
     const [filter, setFilter] = useState({})
+    const [page, setPage] = useState(1)
+  let query = useSelector((state)=>{return {...state.query, page}})
 
+  console.log(query)
 
       const renderButtons = () =>{
         let paginas = []
         for(let i=1; i< pages;i++){
             paginas.push(i)
         }
+        console.log(paginas)
         return paginas
       }
 
       const handlerFilter=(event)=>{
+          setPage(event.target.value)
           
-          setFilter({...filter, [event.target.name]:event.target.value})
         }
 useEffect(()=>{
   const get = ()=>{
-    dispatch(getAllVideogames(filter))
-
+     dispatch(getAllVideogames(query))
   }
   get()
-},[filter])
+},[page])
 
-console.log(filter)
+
     return(
       <div>
         <SubNavBar handlerFilter={handlerFilter}/>
@@ -58,7 +60,7 @@ console.log(filter)
       {pages ? (
         renderButtons().map((page) => {
           return (
-            <button  name="page" key={page} value={page}>
+            <button  name="page" value={page} onClick={handlerFilter}>
               {page}
             </button>
           );
