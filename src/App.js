@@ -9,7 +9,9 @@ import Detail from "./component/Home/detail/detaild";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {postUser} from "./redux/actions/actions"
+import {postUser, getGenresFilter, getPlatformsFilter} from "./redux/actions/actions"
+import Favorites from "./component/Favorites/favorites"
+
 
 function App() {
   const {isAuthenticated,user}=useAuth0()
@@ -19,11 +21,15 @@ function App() {
       const {sub,name,email} = user
       dispatch(postUser({sub,name,email}))
     }
+    dispatch(getGenresFilter())
+    dispatch(getPlatformsFilter())
+
   })
   return (
       <div class="fondo">
         <NavBar />
         <Routes>
+          <Route path="/favorites" element={<Favorites/>}/>
           <Route path="/" element={<Home />} />
           <Route path="/creategame" element={<CreateGameForm />} />
           <Route path="/videogames" element={<Videogames />} />

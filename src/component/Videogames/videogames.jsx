@@ -1,29 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import fetchData from "../Home/helper/fetchData";
 import  Card  from "../card/card";
-import SearchBar from "../SearchBar/SearchBar"
+import { useDispatch, useSelector } from "react-redux";
+import SubNavBar from "../SubNavBar/SubNavBar";
+import { all } from "axios";
+import { getAllVideogames } from "../../redux/actions/actions";
 
 function Videogames (){
-    const [allVideogames, setAllVideogames]= useState([])
+    const dispatch = useDispatch()
     const [pages, setPages] = useState(0)
+    const {Videogames, page} = useSelector((state)=>state.allVideogames)
     const [filter, setFilter] = useState({})
-    
 
-    useEffect(() => {
-        const data = async () => {
-            try {
-                const {Videogames, pages} = await fetchData('http://localhost:3001/videogames', 'get',filter);
-                setAllVideogames(Videogames);
-                setPages(pages)
-
-            } catch (error) {
-                window.alert('not found videogames')
-            }
-        };
-    
-        data();
-      }, [filter, pages]);
 
       const renderButtons = () =>{
         let paginas = []
@@ -34,21 +22,26 @@ function Videogames (){
       }
 
       const handlerFilter=(event)=>{
+          
+          setFilter({...filter, [event.target.name]:event.target.value})
+        }
+useEffect(()=>{
+  const get = ()=>{
+    dispatch(getAllVideogames(filter))
 
-        setFilter({...filter, [event.target.name]:event.target.value})
-      }
-    console.log(filter)
+  }
+  get()
+},[filter])
 
-
-
+console.log(filter)
     return(
       <div>
-        <SearchBar handlerFilter={handlerFilter}/>
+        <SubNavBar handlerFilter={handlerFilter}/>
       <div className="container justify-content-center">
         <div className="container d-flex justify-content-start">
           <div className="row justify-content-center">
-          {allVideogames ? (
-    allVideogames.map((game) => (
+          {Videogames ? (
+    Videogames.map((game) => (
       <div className="col-4">
         
           <Card game={game} />
@@ -65,7 +58,7 @@ function Videogames (){
       {pages ? (
         renderButtons().map((page) => {
           return (
-            <button onClick={handlerFilter} name="page" value={page}>
+            <button  name="page" key={page} value={page}>
               {page}
             </button>
           );

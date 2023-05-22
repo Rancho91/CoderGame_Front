@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./card.module.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart} from "@fortawesome/free-solid-svg-icons";
+
 function Card ({game}){
  const {name, image, description, price, released} = game
 
@@ -28,8 +31,11 @@ function Card ({game}){
     
       <div className="row">
         <div className={`col-6 ${styles.price}`}>
-          <p>{price}</p>
-        </div>
+        <FontAwesomeIcon
+          icon={faHeart}
+          className={styles.heartIcon}
+        />       
+         </div>
         <div className={`col-6 ${styles.price}`}>
           <p>Buy</p>
         </div>

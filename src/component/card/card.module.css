@@ -63,3 +63,13 @@
     color: rgb(63, 169, 63);
     background-color: rgba(240, 248, 255, 0);
 }
+
+.heartIcon {
+    color: #00000071;
+    background-color: transparent;
+  }
+
+.heartIconSelect {
+    color: #fe0404;
+
+}

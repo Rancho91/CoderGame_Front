@@ -28,17 +28,20 @@ function NavBar (){
                         </div>
                         <div className="col-6 d-flex align-items-center justify-content-center">
                             <div className="row d-flex align-items-center justify-content-center">
-                            <div className="col-4">
+                            <div className="col-3">
                                 <Link to={'/'} className="btn btn-outline-danger"> Home</Link>
 
                             </div>
-                            <div className="col-4">
+                            <div className="col-3">
                                 <Link to={"/videogames"} className="btn btn-outline-danger">
                                 🎮 ALL Games
                                 </Link>    
                             </div>
-                             <div className="col-4">
-                                {isAuthenticated?<Logout/>:<Login/> }  
+                             <div className="col-3">
+                                {isAuthenticated?<Logout/>:<Login rute="http://localhost:3000/"/> }  
+                             </div>
+                             <div className="col-3">
+                                <Link to="/favorites"> favorites</Link>
                              </div>
                             </div>
                             
