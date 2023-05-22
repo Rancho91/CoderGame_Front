@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, } from "formik";
 import style from "./creategameform.module.css";
-import {  getGenres, getPlatforms } from "../../redux/actions/actions";
+import {  getGenres, getPlatforms, postGame } from "../../redux/actions/actions";
+import axios from "axios";
+
+
 
 const CreateGameForm = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
@@ -29,6 +32,7 @@ const CreateGameForm = () => {
           price: "",
           gameLink: "",
           description: "",
+          imageFile: null,
         }}
         
         validate={(valores) => {
@@ -47,13 +51,13 @@ const CreateGameForm = () => {
           if (!valores.platforms || valores.platforms.length === 0) {
             errores.platforms = "Por favor seleccione Plataforma/s "}
         
-         if (!valores.genres || valores.genres.length === 0) {
+          if (!valores.genres || valores.genres.length === 0) {
            errores.genres = "Por favor seleccione un Genero"}
         
-         if (!valores.price) {errores.price = 'Por favor ingrese el precio del juego';
-         } else if (valores.price < 1 || valores.price > 1000) {
+          if (!valores.price) {errores.price = 'Por favor ingrese el precio del juego';
+          } else if (valores.price < 1 || valores.price > 1000) {
             errores.price = 'El precio debe estar entre 1 y 1000';
-         }
+          }
 
          if (!valores.gameLink) {
             errores.gameLink = 'El enlace del juego es requerido';
@@ -61,21 +65,62 @@ const CreateGameForm = () => {
             errores.gameLink = 'Por favor ingresa un enlace de juego válido';
           }
           
-          if (!valores.description) {errores.description = "Por favor ingrese la description del juego";
+         if (!valores.description) {errores.description = "Por favor ingrese la description del juego";
           } else if (valores.description.length < 500)
             errores.description = "Tiene que ser mayor a 500 caracteres";
 
+         if (!valores.imageFile) errores.imageFile = "Por favor ingrese una imagen";
+          else if (!/\.(jpg|png)$/i.test(valores.imageFile.name))
+            errores.imageFile = "Formato PNG o JPG."; 
+            
+
           return errores;
         }}
+        
         onSubmit={(valores, { resetForm }) => {
-          resetForm();
-          console.log("Valores ingresados", valores);
-          console.log("Formulario enviado");
-          cambiarFormularioEnviado(true);
-          setTimeout(() => cambiarFormularioEnviado(false), 5000);
+          const formData = new FormData();
+          formData.append('file', valores.imageFile);
+          formData.append('upload_preset', 'oiltgqem');
+          
+          axios.post('https://api.cloudinary.com/v1_1/dnkaxvkr9/image/upload', formData)
+          .then(response => {
+            const imageUrl = response.data.secure_url;
+            console.log('URL de la imagen:', imageUrl);
+
+        
+
+            dispatch(
+              postGame({
+                name: valores.name,
+                released: valores.released,
+                platforms: valores.platforms,
+                description: valores.description,
+                genres: valores.genres,
+                image: imageUrl,
+                price: valores.price,
+                gameLink: valores.gameLink,
+                sub: 'auth0%7C64412badb349afebdba606cd'
+                
+              }, )
+            );
+        
+            
+            // Mover estos comandos aquí
+            resetForm();
+            console.log("Valores ingresados", valores);
+            console.log("Formulario enviado");
+            
+            cambiarFormularioEnviado(true);
+            setTimeout(() => cambiarFormularioEnviado(false), 5000);
+          })
+          .catch(error => {
+            console.error('Hubo un error al cargar la imagen:', error);
+          });
+          
         }}
+        
       >
-        {({ values, errors, touched, handleChange, handleBlur }) => (
+        {({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
           <div >
           <Form className={`container ${style.formulario}`}>
             <div className="row ">
@@ -97,13 +142,12 @@ const CreateGameForm = () => {
             </div>
             </div>
             <div>
+            </div>    
 
-            </div>              
-            
-            <div className="row">
+              <div className="row">
                 <div className="col-12">
                     <label htmlFor="platforms">Platforms</label>
-                </div>  
+              </div>  
             </div>
             <div className={`row justify-content-start align-items-center ${style.platformsContainer}`}>           
                 {allPlatforms.map((platform) => (
@@ -144,14 +188,21 @@ const CreateGameForm = () => {
                 <ErrorMessage name="genres" component="div" className={style.error}  />
             </div>
 
-
-
             <div>
               <label htmlFor="name">Game Link</label>
               <Field type="text" id="gameLink" name="gameLink" placeholder="wwww.linkdescarga.com" />
               <ErrorMessage name="gameLink" component={() => ( <div className="error">{errors.gameLink}</div>)} />
             </div>
-                                   
+
+            <div>
+              <label htmlFor="imageFile">Imagen</label>
+              <input id="imageFile" name="imageFile" type="file" onChange={(event) => {
+                setFieldValue("imageFile", event.currentTarget.files[0]);
+              }} />
+              {errors.imageFile && touched.imageFile && <div className="error">{errors.imageFile}</div>}
+             </div>
+
+
             <div>
             <label htmlFor="description">Description</label>
                 <Field as="textarea" id="description" name="description" placeholder="Enter game description" />
