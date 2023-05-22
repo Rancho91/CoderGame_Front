@@ -29,7 +29,6 @@ const CreateGameForm = () => {
           price: "",
           gameLink: "",
           description: "",
-          
         }}
         
         validate={(valores) => {
