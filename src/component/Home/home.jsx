@@ -23,7 +23,8 @@ const Home = () =>{
             setArrGameFooter(imageFooter)
         })
     },[])
-    console.log(arrGamesFooter)
+
+    
     return(
         <div className="container">
             <p />

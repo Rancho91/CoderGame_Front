@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import {postUser} from "../../../redux/actions/actions"
 
-function Login(){
+function Login({rute}){
     const {loginWithRedirect, user, isAuthenticated}= useAuth0()
     const dispatch = useDispatch()
 
@@ -21,7 +21,9 @@ function Login(){
 
     return(
         <div>
-            <button onClick={()=>loginWithRedirect()}>Login</button>
+            <button onClick={()=>loginWithRedirect({
+                    redirectUri: rute 
+                  })}>Login</button>
         </div>
     )
 }

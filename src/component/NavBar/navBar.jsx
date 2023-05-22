@@ -1,14 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Home from "../Home/home";
-import Login from "./login/login"
 import styles from "./navBar.module.css"
 import SearchBar from "../SearchBar/SearchBar";
 import { useAuth0 } from "@auth0/auth0-react";
-import Logout from "./logaut/logaut"
 
 function NavBar (){
-    const {isAuthenticated} = useAuth0()
     return (
         <nav>
             <div className="container">
@@ -28,17 +25,18 @@ function NavBar (){
                         </div>
                         <div className="col-6 d-flex align-items-center justify-content-center">
                             <div className="row d-flex align-items-center justify-content-center">
-                            <div className="col-4">
+                            <div className="col-3">
                                 <Link to={'/'} className="btn btn-outline-danger"> Home</Link>
 
                             </div>
-                            <div className="col-4">
+                            <div className="col-3">
                                 <Link to={"/videogames"} className="btn btn-outline-danger">
                                 🎮 ALL Games
                                 </Link>    
                             </div>
-                             <div className="col-4">
-                                {isAuthenticated?<Logout/>:<Login/> }  
+
+                             <div className="col-3">
+                                <Link to="/favorites"> favorites</Link>
                              </div>
                             </div>
                             

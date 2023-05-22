@@ -1,54 +1,49 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import fetchData from "../Home/helper/fetchData";
 import  Card  from "../card/card";
-import SearchBar from "../SearchBar/SearchBar"
+import { useDispatch, useSelector } from "react-redux";
+import SubNavBar from "../SubNavBar/SubNavBar";
+import { all } from "axios";
+import { getAllVideogames } from "../../redux/actions/actions";
 
 function Videogames (){
-    const [allVideogames, setAllVideogames]= useState([])
-    const [pages, setPages] = useState(0)
+    const dispatch = useDispatch()
+    const {Videogames, pages} = useSelector((state)=>state.allVideogames)
     const [filter, setFilter] = useState({})
-    
+    const [page, setPage] = useState(1)
+  let query = useSelector((state)=>{return {...state.query, page}})
 
-    useEffect(() => {
-        const data = async () => {
-            try {
-                const {Videogames, pages} = await fetchData('http://localhost:3001/videogames', 'get',filter);
-                setAllVideogames(Videogames);
-                setPages(pages)
-
-            } catch (error) {
-                window.alert('not found videogames')
-            }
-        };
-    
-        data();
-      }, [filter, pages]);
+  console.log(query)
 
       const renderButtons = () =>{
         let paginas = []
         for(let i=1; i< pages;i++){
             paginas.push(i)
         }
+        console.log(paginas)
         return paginas
       }
 
       const handlerFilter=(event)=>{
-
-        setFilter({...filter, [event.target.name]:event.target.value})
-      }
-    console.log(filter)
-
+          setPage(event.target.value)
+          
+        }
+useEffect(()=>{
+  const get = ()=>{
+     dispatch(getAllVideogames(query))
+  }
+  get()
+},[page])
 
 
     return(
       <div>
-        <SearchBar handlerFilter={handlerFilter}/>
+        <SubNavBar handlerFilter={handlerFilter}/>
       <div className="container justify-content-center">
         <div className="container d-flex justify-content-start">
           <div className="row justify-content-center">
-          {allVideogames ? (
-    allVideogames.map((game) => (
+          {Videogames ? (
+    Videogames.map((game) => (
       <div className="col-4">
         
           <Card game={game} />
@@ -65,7 +60,7 @@ function Videogames (){
       {pages ? (
         renderButtons().map((page) => {
           return (
-            <button onClick={handlerFilter} name="page" value={page}>
+            <button  name="page" value={page} onClick={handlerFilter}>
               {page}
             </button>
           );

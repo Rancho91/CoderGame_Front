@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,6 +17,7 @@ const SearchBar = ({ handlerFilter }) => {
     handlerFilter(e); 
   };
 
+
   return (
     <div className="row">
       <div className="col-10">
@@ -27,6 +28,7 @@ const SearchBar = ({ handlerFilter }) => {
             <FontAwesomeIcon icon={faSearch} />
            </button>
       </div>
+
 
     </div>
   );
