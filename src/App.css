@@ -1,5 +1,5 @@
 .fondo {
-  background-image: url(https://res.cloudinary.com/dxatwbzff/image/upload/v1684422908/fondo-gris-liso_53876-108462_zbvebp.avif);
+  background-image: url(https://img.freepik.com/vector-gratis/vector-recursos-diseno-marco-geometrico-gris_53876-165849.jpg?w=740&t=st=1684795577~exp=1684796177~hmac=23ba0a800d9244132cd3ce3a8fe9c1e23cbfad63ef42809b91b9a8352580a2fc);
 
   color: rgb(0, 0, 0);
   width: 100%;
@@ -51,3 +51,4 @@
     transform: rotate(360deg);
   }
 }
+

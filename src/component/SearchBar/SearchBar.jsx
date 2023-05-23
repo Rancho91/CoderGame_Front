@@ -1,35 +1,34 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import styles from "./searchbar.module.css";
 
 const SearchBar = ({ handlerFilter }) => {
-  const dispatch = useDispatch();
   const [name, setName] = useState("");
 
   const handleInput = (e) => {
-    e.preventDefault();
     setName(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handlerFilter(e); 
+    handlerFilter(name);
   };
 
-
   return (
-    <div className="row">
-      <div className="col-10">
-        <input type="text" className="btn btn-dark" placeholder="What game are you looking for?" onChange={handleInput} />
-      </div>
-      <div className="col-2">
-          <button type="submit" name="name" value={name} className="btn btn-secondary" onClick={handleSubmit}>
-            <FontAwesomeIcon icon={faSearch} />
-           </button>
-      </div>
-
-
+    <div className={styles.searchBar}>
+      <form className={styles.searchForm} onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className={styles.searchInput}
+          placeholder="What game are you looking for?"
+          value={name}
+          onChange={handleInput}
+        />
+        <button type="submit" className={styles.searchButton}>
+          <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
+        </button>
+      </form>
     </div>
   );
 };

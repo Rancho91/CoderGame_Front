@@ -1,0 +1,50 @@
+.searchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchForm {
+    position: relative;
+}
+
+.searchInput {
+    padding: 12px 48px 12px 12px;
+    width: 600px;
+    /* Ajusta el ancho deseado */
+    font-size: 25px;
+    /* Ajusta el tamaño de fuente deseado */
+    border: none;
+    border-radius: 20px;
+}
+
+.searchInput::placeholder,
+.searchInput::-webkit-input-placeholder {
+    color: rgb(17, 8, 8);
+    /* Define el color deseado para el mensaje */
+}
+
+.searchInput:focus::placeholder,
+.searchInput:focus::-webkit-input-placeholder {
+    color: #ccc;
+    /* Define el color deseado para el mensaje cuando el campo está enfocado */
+}
+
+.searchButton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 48px;
+    /* Ajusta el ancho del botón */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.searchIcon {
+    font-size: 30px;
+}

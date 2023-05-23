@@ -1,0 +1,30 @@
+.navBar {
+  background-color: black;
+  padding: 10px 0;
+  margin-bottom: 0;
+}
+
+
+.container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.searchBarContainer {
+  margin-left: 50px;
+}
+
+.logoContainer {
+  flex: 0 0 auto;
+}
+
+.logoLink {
+  display: inline-block;
+}
+
+.searchBarContainer {
+  flex: 1 1 auto;
+  margin-left: 20px;
+}
