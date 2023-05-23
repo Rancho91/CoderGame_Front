@@ -6,37 +6,33 @@ import Login from "../NavBar/login/login"
 function Favorites (){
     const [listFavorites, setListFavorites]= useState([])
     const {user, isAuthenticated, loginWithRedirect} = useAuth0()
-    const [login, setLogin] = useState(false)
 
 
     useEffect(()=>{
         const getFavorites = async () =>{
-            if(login){
+            if(isAuthenticated){
                 try {       
-                        const {data} = axios.get(`http://localhost:3001/user/favorites/${user?.sub}`)
-                        setListFavorites(data)
+                        const response = await axios.get(`http://localhost:3001/user/favorites/${user?.sub}`)
+                        setListFavorites(response.data.listFavorites)
                                     }
   
                  catch (error) {
                  window.alert(error.message)   
-        }}else{
-            console.log(login)
-           if(!login){
-                loginWithRedirect();
-                setLogin(true)
-           }
- 
+        }}
         }
-        }
-        // getFavorites()
+         getFavorites()
     },[])
-
+console.log(listFavorites)
     return(
-        <div>
+        <div className="row">
             {listFavorites?.map((game)=>{
+               return( 
+               <div className="col-3">
                 <Card game={game}></Card>
-            })}
-         <div>
+
+               </div>
+            )})}
+         <divad
             {isAuthenticated?null:<Login rute="http://localhost:3000/favorites"/>}
          </div>
         </div>

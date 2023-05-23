@@ -48,7 +48,7 @@ function Card ({game, refreshHandler}){
     
       <div className="row">
         <div className="col-12 d-flex align-items-center">
-          <p className={styles.description}>{description}</p>
+          <p className={styles.description}>{description?description:null}</p>
         </div>
       </div>
     
