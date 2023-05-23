@@ -30,9 +30,9 @@ const SubNavBar = ({ handlerFilter }) => {
       },[filter])
 
     return (
-    <div className={`${styles.subnavbar} ${styles.noMarginBottom}`}>
+    <div className={`row ${styles.subnavbar} ${styles.noMarginBottom}`}>
       <nav className={styles.navbar}>
-        <div className={styles.navbar__item}>
+        <div className={`col-3 ${styles.navbar__item}`}>
           <select name="genre" onChange={change}>
             <option value="">Genres</option>
             {genresList?.map((genre) => (
@@ -42,7 +42,7 @@ const SubNavBar = ({ handlerFilter }) => {
             ))}
           </select>
         </div>
-        <div className={styles.navbar__item}>
+        <div className={`col-3 ${styles.navbar__item}`}>
           <select name="platforms" onChange={change}>
             <option value="">Platforms</option>
             {platformsList?.map((platform) => (
@@ -52,31 +52,29 @@ const SubNavBar = ({ handlerFilter }) => {
             ))}
           </select>
         </div>
-        <div className={styles.navbar__item}>
-          <Link to="/videogames" className={styles.allGamesButton}>
-            🎮All Games
-          </Link>
+        <div className={`col-3 ${styles.navbar__item}`}>
+            <Link to="/videogames" className={styles.allGamesButton}>
+            <a className={styles.allGamesLink}>🎮All Games</a>            </Link>
         </div>
+        <div className={`col-3 d-flex flex-row ${styles.navbar__item}`}>
+              <div className="col-5">
+                <Link to="/favorites">
+                     <FontAwesomeIcon icon={faHeart} className={styles.heartIcon} />
+                      </Link>
+             </div>
+              <div className={`col-5 ${styles.navbar__item}`}>
+                   {isAuthenticated ? (
+                      <Link to="/" className={styles.loginLink}>
+                         <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
+                      </Link>
+                            ) : (
+                      < Link to="/login" className={styles.loginLink}>
+                     <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
+                        </Link>)}
+  </div>
+</div>
 
-
-        <div className={styles.navbar__item}>
-          <Link to="/favorites">
-            <FontAwesomeIcon icon={faHeart} className={styles.heartIcon} />
-          </Link>
-        </div>
-
-
-        <div className={styles.navbar__item}>
-          {isAuthenticated ? (
-            <Link to="/" className={styles.loginLink}>
-              <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
-            </Link>
-          ) : (
-            <Link to="/login" className={styles.loginLink}>
-              <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
-            </Link>
-          )}
-        </div>
+        
         
         {/* <div className="col-3"> 
               {isAuthenticated?<Logout/>:<Login rute="http://localhost:3000/"/> }  

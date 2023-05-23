@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import styles from "./navBar.module.css";
 import SearchBar from "../SearchBar/SearchBar";
+import SubNavBar from "../SubNavBar/SubNavBar";
 
 function NavBar() {
   return (
@@ -22,6 +23,9 @@ function NavBar() {
         <div className={`col-md-6 ${styles.searchBarContainer}`}>
           <SearchBar />
         </div>
+      </div>
+      <div className="row">
+        <SubNavBar/>
       </div>
   </div>
       

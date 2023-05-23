@@ -35,8 +35,8 @@ function Videogames (){
 
       const handlerFilter=(event)=>{
           setPage(event.target.value)
-          
         }
+
 useEffect(()=>{
   const get = ()=>{
      dispatch(getAllVideogames(query))
