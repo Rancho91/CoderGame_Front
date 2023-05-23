@@ -17,6 +17,7 @@ const Home = () =>{
             return response.data
         }
         videogames().then((response)=>{
+            console.log(response)
             const sliderImage= imagenSlader(response.Videogames,5)
             setArrSlader(sliderImage)
             const imageFooter = imagenSlader(response.Videogames,2)
