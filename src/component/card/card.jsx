@@ -2,9 +2,15 @@ import React from "react";
 import styles from "./card.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+
 
 function Card ({game}){
  const {name, image, description, price, released} = game
+
+  const addDleneteFavorites=()=>{
+    
+  }
 
     return(
       <div className={`col-md-12 text-center ${styles.container}`}>
@@ -31,10 +37,12 @@ function Card ({game}){
     
       <div className="row">
         <div className={`col-6 ${styles.price}`}>
-        <FontAwesomeIcon
-          icon={faHeart}
-          className={styles.heartIcon}
-        />       
+        <button>
+            <FontAwesomeIcon
+            icon={faHeart}
+            className={styles.heartIcon}
+            /> 
+        </button>      
          </div>
         <div className={`col-6 ${styles.price}`}>
           <p>Buy</p>
