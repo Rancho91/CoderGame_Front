@@ -34,7 +34,7 @@
 
 .description{
     flex-grow: 1;
-    color: aliceblue;
+    color: rgb(3, 9, 15);
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
