@@ -5,22 +5,31 @@ import { useDispatch, useSelector } from "react-redux";
 import SubNavBar from "../SubNavBar/SubNavBar";
 import { all } from "axios";
 import { getAllVideogames } from "../../redux/actions/actions";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 function Videogames (){
     const dispatch = useDispatch()
     const {Videogames, pages} = useSelector((state)=>state.allVideogames)
-    const [filter, setFilter] = useState({})
+    const [refresh, setRefresh] = useState(true)
     const [page, setPage] = useState(1)
-  let query = useSelector((state)=>{return {...state.query, page}})
-
-  console.log(query)
+    const {user, isAuthenticated} = useAuth0()
+    let query =useSelector((state)=>{
+       if(isAuthenticated){
+      return {...state.query, page, sub:user.sub}
+    } else{
+      return {...state.query, page}
+    }})
+    const refreshHandler = () =>{
+      console.log(refresh)
+      setRefresh(!refresh)
+    }
 
       const renderButtons = () =>{
         let paginas = []
         for(let i=1; i< pages;i++){
             paginas.push(i)
         }
-        console.log(paginas)
         return paginas
       }
 
@@ -33,7 +42,7 @@ useEffect(()=>{
      dispatch(getAllVideogames(query))
   }
   get()
-},[page])
+},[page, refresh])
 
 
     return(
@@ -46,7 +55,7 @@ useEffect(()=>{
     Videogames.map((game) => (
       <div className="col-4">
         
-          <Card game={game} />
+          <Card game={game} refreshHandler={refreshHandler}/>
     
       </div>
     ))

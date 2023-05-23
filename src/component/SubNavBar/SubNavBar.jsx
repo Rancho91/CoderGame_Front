@@ -20,11 +20,7 @@ const SubNavBar = ({handlerFilter}) =>{
     const dispatch = useDispatch()
 
       const change = (event)=>{
-        // if(event.target.value === "genres" || event.target.value==="platforms"){
-            
-        // }
         setFilter({...filter, [event.target.name]:event.target.value})
-        
       }
       useEffect(()=>{
         const get = () =>{

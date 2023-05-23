@@ -1,15 +1,32 @@
-import React from "react";
+import React,{useState} from "react";
 import styles from "./card.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
+
+function Card ({game, refreshHandler}){
+ const {name, image, description, price, released,Favorites, id} = game
+ const {user} = useAuth0()
 
 
-function Card ({game}){
- const {name, image, description, price, released} = game
-
-  const addDleneteFavorites=()=>{
-    
+ const addDleneteFavorites= async()=>{
+  
+    if(!Favorites.length){
+      try {
+        await axios.post("http://localhost:3001/user/favorites",{idUser:user.sub, idVideogame:id})
+        refreshHandler()
+          } catch (error) {
+        window.alert(error.message)
+      }
+    } else{
+      try {
+        await axios.put("http://localhost:3001/user/favorites",{idUser:user.sub, idVideogame:id})
+        refreshHandler()
+      } catch (error) {
+        window.alert(error.message)
+      }
+    }
   }
 
     return(
@@ -37,10 +54,10 @@ function Card ({game}){
     
       <div className="row">
         <div className={`col-6 ${styles.price}`}>
-        <button>
+        <button onClick={addDleneteFavorites}>
             <FontAwesomeIcon
             icon={faHeart}
-            className={styles.heartIcon}
+            className={Favorites?.length?styles.heartIconFav:styles.heartIcon}
             /> 
         </button>      
          </div>
