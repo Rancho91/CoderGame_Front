@@ -20,9 +20,18 @@ const SubNavBar = ({handlerFilter}) =>{
     const dispatch = useDispatch()
 
       const change = (event)=>{
+        // if(event.target.value === "genres" || event.target.value==="platforms"){
+            
+        // }
         setFilter({...filter, [event.target.name]:event.target.value})
-        dispatch(getAllVideogames(filter))
+        
       }
+      useEffect(()=>{
+        const get = () =>{
+          dispatch(getAllVideogames(filter))
+        }
+        get()
+      },[filter])
 
     return (
         <div className={style.navbar}>
@@ -31,7 +40,7 @@ const SubNavBar = ({handlerFilter}) =>{
                 </div>
 
                 <select id="mySelect" name="genre" onChange={change}>
-                <option>genres</option>
+                <option value="">genres</option>
         {
           genresList?.map((genre)=>{
             
@@ -42,7 +51,7 @@ const SubNavBar = ({handlerFilter}) =>{
         }
                 </select>
             <select id="mySelect" name="platforms" onChange={change}>
-            <option>platforms</option>
+            <option value="">platforms</option>
 
             {
                 platformsList?.map((platform)=>{
