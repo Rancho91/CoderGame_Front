@@ -32,6 +32,9 @@ function Card ({game, refreshHandler}){
     return(
       <div className={`col-md-12 text-center ${styles.container}`}>
       <div className={`row ${styles.title}`}>
+        <div className={`col-1 ${styles.price}`}>
+          <p>{price}</p>
+        </div>
         <div className="col-12">
           <h1>{name}</h1>
         </div>
@@ -40,20 +43,20 @@ function Card ({game, refreshHandler}){
       <div  className={`row ${styles.image}`} style={{ backgroundImage: `url(${image})` }} >
       </div>
     
-      <div className="row">
+      {/* <div className="row">
         <div className="col-12 d-flex align-items-center flex-column">
           <p className={styles.description}>{released}</p>
         </div>
-      </div>
+      </div> */}
     
-      <div className="row">
+      {/* <div className="row">
         <div className="col-12 d-flex align-items-center">
           <p className={styles.description}>{description?description:null}</p>
         </div>
-      </div>
+      </div> */}
     
       <div className="row">
-        <div className={`col-6 ${styles.price}`}>
+        <div className={`col-6 ${styles.buy}`}>
         <button onClick={addDleneteFavorites}>
             <FontAwesomeIcon
             icon={faHeart}
@@ -61,7 +64,7 @@ function Card ({game, refreshHandler}){
             /> 
         </button>      
          </div>
-        <div className={`col-6 ${styles.price}`}>
+        <div className={`col-6 ${styles.buy}`}>
           <p>Buy</p>
         </div>
       </div>

@@ -53,7 +53,7 @@ useEffect(()=>{
           <div className="row justify-content-center">
           {Videogames ? (
     Videogames.map((game) => (
-      <div className="col-4">
+      <div className="col-3">
         
           <Card game={game} refreshHandler={refreshHandler}/>
     

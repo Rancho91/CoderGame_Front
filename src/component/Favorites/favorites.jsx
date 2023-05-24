@@ -27,6 +27,7 @@ function Favorites (){
     },[refresh])
 console.log(listFavorites)
     return(
+    <div className="container">
         <div className="row">
             {listFavorites?.map((game)=>{
                 game = {...game, Favorites:[{"buy": false}]}
@@ -40,6 +41,12 @@ console.log(listFavorites)
             {isAuthenticated?null:<Login rute="http://localhost:3000/favorites"/>}
          </div>
         </div>
+    
+    
+    
+    
+    </div>
+
     )
 }
 
