@@ -30,10 +30,10 @@ function Card ({game, refreshHandler}){
   }
 
     return(
-      <div className={`col-md-12 text-center ${styles.container}`}>
+      <div className={`col-sm-12 col-md-12 text-center ${styles.container}`}>
       <div className={`row ${styles.title}`}>
-        <div className={`col-1 ${styles.price}`}>
-          <p>{price}</p>
+        <div className={`${styles.price}`}>
+          <p className="mt-3 mr-3">{price}</p>
         </div>
         <div className="col-12">
           <h1>{name}</h1>

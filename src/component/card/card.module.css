@@ -77,18 +77,20 @@
 
 }
 
-.price p{
+.price {
+    position: relative;
+  }
+  
+  .price p {
     transition: opacity 1s ease;
     font-size: 1.3rem;
     background-color: rgb(5, 83, 4);
     box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
-    border-radius: 10px;
-    position: absolute; 
-    transform: translateY(+100%) translateX(+130%) rotate(35deg);
-    padding: 0 1% 0 1%; 
+    padding: 0 1% 0 1%;
     color: white;
-    @media (max-width: 768px) {
-        font-size: 1.5rem;
-      }
+    position:absolute;
+    border-radius: 10px;
+    padding: 0 5% 0 5% ;
+    transform: translateY(+50%) translatex(-10%)
 
-}
+  }

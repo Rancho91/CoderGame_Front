@@ -32,7 +32,7 @@ console.log(listFavorites)
             {listFavorites?.map((game)=>{
                 game = {...game, Favorites:[{"buy": false}]}
                return( 
-               <div className="col-3">
+               <div className="col-sm-12 col-md-3">
                 <Card game={game} refreshHandler={refreshHandler}/>
 
                </div>
