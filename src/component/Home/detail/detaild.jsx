@@ -4,9 +4,10 @@ import { useParams } from "react-router";
 import Comments from "../../Comment/Comment";
 import axios from "axios";
 
-function Detial() {
+function Detail() {
   const [game, setGame] = useState({});
   const [commentToReport, setCommentToReport] = useState(null);
+
   const { id } = useParams();
 
   const handleReport = async (event) => {
@@ -24,10 +25,6 @@ function Detial() {
     }
   };
 
-
-
-
-
   useEffect(() => {
     const detail = async () => {
       try {
@@ -43,7 +40,6 @@ function Detial() {
 
     detail();
   }, [id]);
-  console.log(game);
 
   return (
     <div className="container">
@@ -115,4 +111,4 @@ function Detial() {
   );
 }
 
-export default Detial;
+export default Detail;

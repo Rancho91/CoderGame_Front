@@ -18,6 +18,7 @@ const Comments = ({ id }) => {
       });
       setComments([...comments, comment]);
       setComment("");
+      window.location.reload(); // Reload the page after submitting the comment
     } catch (error) {
       console.error(error);
     }
@@ -39,7 +40,6 @@ const Comments = ({ id }) => {
       ) : (
         <p>Please log in to leave a comment</p>
       )}
-
     </div>
   );
 };

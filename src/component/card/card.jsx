@@ -32,8 +32,8 @@ function Card ({game, refreshHandler}){
   }
 
     return(
-      <Link to={`/videogames/${id}`}>
       <div className={`col-sm-12 col-md-12 text-center ${styles.container}`}>
+        <Link to={`/videogames/${id}`}>
       <div className={`row ${styles.title}`}>
         <div className={`${styles.price}`}>
           <p className="mt-3 mr-3">{price}</p>
@@ -45,6 +45,7 @@ function Card ({game, refreshHandler}){
     
       <div  className={`row ${styles.image}`} style={{ backgroundImage: `url(${image})` }} >
       </div>
+      </Link> 
     
       {/* <div className="row">
         <div className="col-12 d-flex align-items-center flex-column">
@@ -72,7 +73,6 @@ function Card ({game, refreshHandler}){
         </div>
       </div>
     </div>
-    </Link>
         )
 }
 
