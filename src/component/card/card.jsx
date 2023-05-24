@@ -1,9 +1,11 @@
 import React,{useState} from "react";
+import { Link } from "react-router-dom";
 import styles from "./card.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+
 
 function Card ({game, refreshHandler}){
  const {name, image, description, price, released,Favorites, id} = game
@@ -30,6 +32,7 @@ function Card ({game, refreshHandler}){
   }
 
     return(
+      <Link to={`/videogames/${id}`}>
       <div className={`col-sm-12 col-md-12 text-center ${styles.container}`}>
       <div className={`row ${styles.title}`}>
         <div className={`${styles.price}`}>
@@ -69,7 +72,7 @@ function Card ({game, refreshHandler}){
         </div>
       </div>
     </div>
-    
+    </Link>
         )
 }
 

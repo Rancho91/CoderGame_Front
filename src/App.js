@@ -1,15 +1,15 @@
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Route, Routes } from "react-router-dom";
+import {postUser, getGenresFilter, getPlatformsFilter} from "./redux/actions/actions"
 import Home from './component/Home/home'
 import NavBar from "./component/NavBar/navBar";
 import Videogames from "./component/Videogames/videogames";
 import CreateGameForm from "./component/CreateGameForm/CreateGameForm";
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Detail from "./component/Home/detail/detaild";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import {postUser, getGenresFilter, getPlatformsFilter} from "./redux/actions/actions"
 import Favorites from "./component/Favorites/favorites"
 
 
