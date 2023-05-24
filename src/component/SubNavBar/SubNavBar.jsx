@@ -133,4 +133,3 @@ const SubNavBar = ({ handlerFilter }) => {
 };
 
 export default SubNavBar;
-

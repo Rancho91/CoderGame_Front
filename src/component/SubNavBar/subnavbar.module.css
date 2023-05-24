@@ -1,18 +1,12 @@
 /* subnavbar.module.css */
 
 .subnavbar {
-  background: radial-gradient(
-    ellipse at center bottom,
-    rgb(139, 136, 136) 00%,
-    rgba(29, 29, 29, 0) 70%
-  );  
   height: 100%;
   align-items: center;
   padding: 0;
   padding-bottom: 0;
   padding-top: 4%;
-  border-top-right-radius:100% ;
-  border-top-left-radius: 100%;
+  background-color: grey;
 }
 
 .navbar {
@@ -28,7 +22,7 @@
 }
 
 .heartIcon {
-  font-size: 100%;
+  font-size: 2rem; /* Ajusta el tamaño del icono de corazón */
 }
 
 .userIcon {
@@ -40,7 +34,7 @@
 }
 
 .navbar__item a.allGamesButton {
-  font-size: 1.5rem;
+  font-size: 3rem; /* Ajusta el tamaño del texto "All Games" */
 }
 
 .navbar__item:last-child {
@@ -51,8 +45,9 @@
   background-color: transparent;
   color: #ffffff;
   border: none;
-}
+  font-size: 2rem; /* Asegúrate de que '2rem' es el tamaño que deseas */
 
+}
 
 .navbar__item select option {
   background-color: black;
@@ -61,11 +56,11 @@
 
 .allGamesLink {
   display: inline-block;
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  width: 100%; 
-  font-size: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  font-size: 1.rem; /* Ajusta el tamaño del texto de enlace */
   display: flex;
   align-items: flex-end;
   margin-bottom: 0;
@@ -74,13 +69,14 @@
 .navbar__item a {
   color: white;
   text-decoration: none;
-  padding-right:30%;
-  font-size:1.4rem;
+  padding-right: 30%;
+  font-size: 1.7rem; /* Ajusta el tamaño del texto de enlace */
 }
+
 .navbar__item p {
   color: white;
   text-decoration: none;
-  padding-right:30%;
+  padding-right: 30%;
   font-size: 1rem;
 }
 

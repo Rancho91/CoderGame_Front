@@ -24,9 +24,9 @@ function NavBar() {
           <SearchBar />
         </div>
       </div>
-      <div className="row">
+      {/* <div className="row">
         <SubNavBar/>
-      </div>
+      </div> */}
   </div>
       
     </nav>
