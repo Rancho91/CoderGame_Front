@@ -21,7 +21,6 @@ function Videogames (){
       return {...state.query, page}
     }})
     const refreshHandler = () =>{
-      console.log(refresh)
       setRefresh(!refresh)
     }
 
