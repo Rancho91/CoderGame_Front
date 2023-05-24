@@ -43,35 +43,35 @@ function Detail() {
 
   return (
     <div className="container">
-      <h1>{game.price}</h1>
+      <h1>{game?.price}</h1>
       <div className="row">
         <hr />
         <div className="row">
-          {game.Genregames?.map((genre) => (
-            <div className="col-2">
+          {game?.Genregames?.map((genre) => (
+            <div className="col-2" key={genre.id}>
               <p>{genre.name}</p>
             </div>
           ))}
         </div>
       </div>
       <hr />
-      <h1 className="col-12">{game.name}</h1>
+      <h1 className="col-12">{game?.name}</h1>
       <hr />
-      <img src={game.image} alt="" className="img-fluid" />
+      <img src={game?.image} alt="" className="img-fluid" />
       <hr />
       <div className="row">
-        {game.Platforms?.map((platform) => (
-          <div className="col-2">
+        {game?.Platforms?.map((platform) => (
+          <div className="col-2" key={platform.id}>
             <p>{platform.name}</p>{" "}
           </div>
         ))}
       </div>
       <hr />
-      <h3>{game.released}</h3>
+      <h3>{game?.released}</h3>
       <hr />
-      <p className="col-12">{game.description}</p>
+      <p className="col-12">{game?.description}</p>
       <hr />
-      {game.ComentariosVs?.map((comment) => (
+      {game?.ComentariosVs?.map((comment) => (
         <div key={comment.id}>
           <button onClick={() => setCommentToReport(comment.id)}>
             {comment.id === commentToReport ? "x" : "!"}
@@ -100,7 +100,7 @@ function Detail() {
               </button>
             </div>
           )}
-          <p>{comment.User.name}</p>
+          <p>{comment.User?.name}</p>
           <p>{comment.message}</p>
           <p>Date: {comment.date}</p>
         </div>
