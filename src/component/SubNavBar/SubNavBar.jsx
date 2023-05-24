@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllVideogames } from "../../redux/actions/actions";
+import { getAllVideogames, postUser } from "../../redux/actions/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./subnavbar.module.css";
@@ -10,7 +10,7 @@ import Login from "../NavBar/login/login";
 import Logout from "../NavBar/logaut/logaut";
 
 const SubNavBar = ({ handlerFilter }) => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   const genresList = useSelector((state) => state.genresFilter);
   const platformsList = useSelector((state) => state.platformsFilter);
   const [filter, setFilter] = useState({});
@@ -28,6 +28,29 @@ const SubNavBar = ({ handlerFilter }) => {
         }
         get()
       },[filter])
+
+      const onChangeUser = (event) =>{
+          switch(event.target.value){
+            case "Login":{
+              loginWithRedirect();
+              break
+            };
+            case "Logout":{
+              logout();
+
+              break
+            };
+            case "caca":{
+              console.log(event.target.value);
+            }
+
+            default: break
+          }
+      }
+
+
+
+
 
     return (
     <div className={`row ${styles.subnavbar} ${styles.noMarginBottom}`}>
@@ -62,6 +85,17 @@ const SubNavBar = ({ handlerFilter }) => {
                      <FontAwesomeIcon icon={faHeart} className={styles.heartIcon} />
                       </Link>
              </div>
+
+
+              <select name="User" id="" onChange={onChangeUser}>
+                    <option value="caca">caca</option>
+                    {isAuthenticated?
+                    (<option value="Logout" >Logout</option>):
+                    (<option value="Login">Login</option>)}
+
+              </select>
+
+
               <div className={`col-5 ${styles.navbar__item}`}>
                    {isAuthenticated ? (
                       <Link to="/" className={styles.loginLink}>
@@ -71,7 +105,7 @@ const SubNavBar = ({ handlerFilter }) => {
                       < Link to="/login" className={styles.loginLink}>
                      <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
                         </Link>)}
-  </div>
+                </div>
 </div>
 
         

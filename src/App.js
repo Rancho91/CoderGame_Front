@@ -18,8 +18,9 @@ function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
     if(isAuthenticated){
+      console.log('post user')
       const {sub,name,email} = user
-      dispatch(postUser({sub,name,email}))
+       dispatch(postUser({sub,name,email}))
     }
     dispatch(getGenresFilter())
     dispatch(getPlatformsFilter())

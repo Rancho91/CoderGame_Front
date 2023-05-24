@@ -20,11 +20,16 @@ function Login({rute}){
 
 
     return(
-        <div>
-            <button onClick={()=>loginWithRedirect({
-                    redirectUri: rute 
-                  })}>Login</button>
-        </div>
+            <option value="Login">
+                Login
+            </option>
+
+
+        // <div>
+        //     <button onClick={()=>loginWithRedirect({
+        //             redirectUri: rute 
+        //           })}>Login</button>
+        // </div>
     )
 }
 
