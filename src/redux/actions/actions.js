@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_VIDEOGAMES, GET_GENRES_FILTER, GET_PLATFORMS_FILTER, GET_GENRES, GET_PLATFORMS, POST_USER, USER_LOGOUT } from './actionsTypes';
+import { QUERY, GET_ALL_VIDEOGAMES, GET_GENRES_FILTER, GET_PLATFORMS_FILTER, GET_GENRES, GET_PLATFORMS, POST_USER, USER_LOGOUT } from './actionsTypes';
 
 
 export const getGenresFilter = () => {
@@ -18,8 +18,8 @@ export const getAllVideogames = (query) =>{
   return async (dispatch) =>{
     try {
       const {data} = await axios.get("http://localhost:3001/videogames", {params: query})
-      console.log(data)
-      dispatch ({type:GET_ALL_VIDEOGAMES, payload:{data,query}})
+      console.log(query)
+      dispatch ({type:GET_ALL_VIDEOGAMES, payload:data})
     } catch (error) {
       window.alert(error.message)
     }
@@ -89,3 +89,7 @@ export const postGame = (payload, token) => {
     return info;
   };
 };
+
+export const query=(query)=>{
+  return {type:QUERY, payload:query}
+} 

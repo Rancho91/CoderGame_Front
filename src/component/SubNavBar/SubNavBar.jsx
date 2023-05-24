@@ -1,30 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllVideogames, postUser } from "../../redux/actions/actions";
+import { getAllVideogames, query } from "../../redux/actions/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./subnavbar.module.css";
-import Login from "../NavBar/login/login";
-import Logout from "../NavBar/logaut/logaut";
+
 
 const SubNavBar = ({ handlerFilter }) => {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   const genresList = useSelector((state) => state.genresFilter);
+  const queryState = useSelector((state) => state.query)
   const platformsList = useSelector((state) => state.platformsFilter);
   const [filter, setFilter] = useState({});
 
   const dispatch = useDispatch();
 
-
+  const navigate = useNavigate()
 
       const change = (event)=>{
-        setFilter({...filter, [event.target.name]:event.target.value})
+        let query
+        if(isAuthenticated){
+         query = {...filter, sub:user.sub, [event.target.name]:event.target.value}}
+         else {query = {...filter, [event.target.name]:event.target.value}}
+        setFilter(query)
       }
       useEffect(()=>{
+        
         const get = () =>{
-          dispatch(getAllVideogames(filter))
+          dispatch(getAllVideogames({...filter,...queryState, page:1}))
         }
         get()
       },[filter])
@@ -42,6 +47,9 @@ const SubNavBar = ({ handlerFilter }) => {
             };
             case "caca":{
               console.log(event.target.value);
+            };
+            case "Create Game":{
+              navigate("/creategame")
             }
 
             default: break
@@ -86,16 +94,21 @@ const SubNavBar = ({ handlerFilter }) => {
                       </Link>
              </div>
 
+              <div className={`col-5 ${styles.navbar__item}`}>
+                <FontAwesomeIcon icon={faUser} className={`${styles.userIcon}`} />
 
               <select name="User" id="" onChange={onChangeUser}>
-                    <option value="caca">caca</option>
+                    
+                    <option value="options" disabled selected>Options</option>
+                  <option name="Create Game" > Create Game</option>
                     {isAuthenticated?
                     (<option value="Logout" >Logout</option>):
-                    (<option value="Login">Login</option>)}
+                    (<option value="Login" >Login</option>)}
 
               </select>
-
-
+              </div>
+              
+{/* 
               <div className={`col-5 ${styles.navbar__item}`}>
                    {isAuthenticated ? (
                       <Link to="/" className={styles.loginLink}>
@@ -105,7 +118,7 @@ const SubNavBar = ({ handlerFilter }) => {
                       < Link to="/login" className={styles.loginLink}>
                      <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
                         </Link>)}
-                </div>
+                </div> */}
 </div>
 
         

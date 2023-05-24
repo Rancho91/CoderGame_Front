@@ -1,4 +1,4 @@
-import { GET_ALL_VIDEOGAMES ,GET_GENRES_FILTER, GET_PLATFORMS_FILTER, GET_GENRES, GET_PLATFORMS, POST_USER, USER_LOGOUT } from '../actions/actionsTypes';
+import { GET_ALL_VIDEOGAMES ,GET_GENRES_FILTER, GET_PLATFORMS_FILTER, GET_GENRES, GET_PLATFORMS, POST_USER, USER_LOGOUT, QUERY } from '../actions/actionsTypes';
 
 
 
@@ -37,9 +37,9 @@ export default function reducer(state = initialState, action) {
         case GET_PLATFORMS_FILTER:
           return{...state, platformsFilter:action.payload};
           case GET_ALL_VIDEOGAMES:
-            return{...state, allVideogames:action.payload.data, query:action.payload.query};
-        
-            
+            return{...state, allVideogames:action.payload};
+          case QUERY:
+            return{...state, query: action.payload}
         default:
                 return state;
         

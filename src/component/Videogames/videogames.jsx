@@ -4,7 +4,7 @@ import  Card  from "../card/card";
 import { useDispatch, useSelector } from "react-redux";
 import SubNavBar from "../SubNavBar/SubNavBar";
 import { all } from "axios";
-import { getAllVideogames } from "../../redux/actions/actions";
+import { getAllVideogames, query } from "../../redux/actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
@@ -14,12 +14,16 @@ function Videogames (){
     const [refresh, setRefresh] = useState(true)
     const [page, setPage] = useState(1)
     const {user, isAuthenticated} = useAuth0()
-    let query =useSelector((state)=>{
+
+    let queryState =useSelector((state)=>{
        if(isAuthenticated){
+
       return {...state.query, page, sub:user.sub}
     } else{
+
       return {...state.query, page}
     }})
+
     const refreshHandler = () =>{
       setRefresh(!refresh)
     }
@@ -38,10 +42,11 @@ function Videogames (){
 
 useEffect(()=>{
   const get = ()=>{
-     dispatch(getAllVideogames(query))
+     dispatch(getAllVideogames(queryState))
+     dispatch(query(queryState))
   }
   get()
-},[page, refresh])
+},[page,refresh])
 
 
     return(
@@ -49,7 +54,7 @@ useEffect(()=>{
       <div>
         <SubNavBar handlerFilter={handlerFilter}/>
       <div className="container justify-content-center">
-        <div className="container d-flex justify-content-start">
+       
           <div className="row justify-content-center">
           {Videogames ? (
     Videogames.map((game) => (
@@ -62,7 +67,7 @@ useEffect(()=>{
   ) : (
     <div className="col-12">Loading</div>
   )}
-    </div>
+
   </div>
   <div className="row justify-content-center">
   <div className="col-md-12 d-flex justify-content-center">
