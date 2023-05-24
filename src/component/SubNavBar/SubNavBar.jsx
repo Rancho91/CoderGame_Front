@@ -20,11 +20,12 @@ const SubNavBar = ({ handlerFilter }) => {
   const navigate = useNavigate()
 
       const change = (event)=>{
-        let query
+        let querys
         if(isAuthenticated){
-         query = {...filter, sub:user.sub, [event.target.name]:event.target.value}}
-         else {query = {...filter, [event.target.name]:event.target.value}}
-        setFilter(query)
+         querys = {...filter, sub:user.sub, [event.target.name]:event.target.value,...queryState}}
+         else {query = {...filter, [event.target.name]:event.target.value, ...queryState}}
+        setFilter(querys)
+        dispatch(query(querys))
       }
       useEffect(()=>{
         

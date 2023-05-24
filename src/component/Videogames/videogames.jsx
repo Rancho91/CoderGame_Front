@@ -43,7 +43,7 @@ function Videogames (){
 useEffect(()=>{
   const get = ()=>{
      dispatch(getAllVideogames(queryState))
-     dispatch(query(queryState))
+     
   }
   get()
 },[page,refresh])
