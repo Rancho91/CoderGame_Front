@@ -32,7 +32,7 @@ console.log(listFavorites)
 
                </div>
             )})}
-         <divad
+         <div>
             {isAuthenticated?null:<Login rute="http://localhost:3000/favorites"/>}
          </div>
         </div>
