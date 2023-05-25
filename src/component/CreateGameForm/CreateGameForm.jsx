@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage, } from "formik";
 import style from "./creategameform.module.css";
 import {  getGenres, getPlatforms, postGame } from "../../redux/actions/actions";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
@@ -12,6 +13,7 @@ const CreateGameForm = () => {
   const dispatch = useDispatch();
   const allGenres = useSelector((state) => state.allGenres);
   const allPlatforms = useSelector((state) => state.allPlatforms);
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
     dispatch(getGenres());
@@ -33,6 +35,7 @@ const CreateGameForm = () => {
           gameLink: "",
           description: "",
           imageFile: null,
+          sub: user.sub
         }}
         
         validate={(valores) => {
@@ -66,8 +69,8 @@ const CreateGameForm = () => {
           }
           
          if (!valores.description) {errores.description = "Por favor ingrese la description del juego";
-          } else if (valores.description.length < 500)
-            errores.description = "Tiene que ser mayor a 500 caracteres";
+          } else if (valores.description.length > 500)
+            errores.description = "no puede ser mayor a 500 caracteres";
 
          if (!valores.imageFile) errores.imageFile = "Por favor ingrese una imagen";
           else if (!/\.(jpg|png)$/i.test(valores.imageFile.name))
@@ -97,10 +100,9 @@ const CreateGameForm = () => {
                 description: valores.description,
                 genres: valores.genres,
                 image: imageUrl,
-                price: valores.price,
                 gameLink: valores.gameLink,
-                sub: 'auth0%7C64412badb349afebdba606cd'
-                
+                sub: user.sub,
+                price: valores.price,
               }, )
             );
         
@@ -196,7 +198,7 @@ const CreateGameForm = () => {
 
             <div>
               <label htmlFor="imageFile">Imagen</label>
-              <input id="imageFile" name="imageFile" type="file" onChange={(event) => {
+              <input id="image" name="image" type="file" onChange={(event) => {
                 setFieldValue("imageFile", event.currentTarget.files[0]);
               }} />
               {errors.imageFile && touched.imageFile && <div className="error">{errors.imageFile}</div>}

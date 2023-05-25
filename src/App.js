@@ -11,6 +11,7 @@ import Videogames from "./component/Videogames/videogames";
 import CreateGameForm from "./component/CreateGameForm/CreateGameForm";
 import Detail from "./component/Home/detail/detaild";
 import Favorites from "./component/Favorites/favorites"
+import Profile from "./component/Profile/Profile";
 
 
 function App() {
@@ -34,7 +35,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/creategame" element={<CreateGameForm />} />
           <Route path="/videogames" element={<Videogames />} />
-          <Route path="/videogames/:id" element={<Detail/>}/> 
+          <Route path="/videogames/:id" element={<Detail />}/> 
+          <Route path="/profile" element={<Profile />}/>
         </Routes>
       </div>
   );

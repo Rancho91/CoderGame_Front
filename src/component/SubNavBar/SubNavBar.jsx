@@ -8,6 +8,7 @@ import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./subnavbar.module.css";
 
 
+
 const SubNavBar = ({ handlerFilter }) => {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   const genresList = useSelector((state) => state.genresFilter);
@@ -46,8 +47,9 @@ const SubNavBar = ({ handlerFilter }) => {
 
               break
             };
-            case "caca":{
-              console.log(event.target.value);
+            case "Profile":{
+              navigate("/profile");
+              break;
             };
             case "Create Game":{
               navigate("/creategame")
@@ -98,15 +100,18 @@ const SubNavBar = ({ handlerFilter }) => {
               <div className={`col-5 ${styles.navbar__item}`}>
                 <FontAwesomeIcon icon={faUser} className={`${styles.userIcon}`} />
 
-              <select name="User" id="" onChange={onChangeUser}>
-                    
-                    <option value="options" disabled selected>Options</option>
-                  <option name="Create Game" > Create Game</option>
-                    {isAuthenticated?
-                    (<option value="Logout" >Logout</option>):
-                    (<option value="Login" >Login</option>)}
-
-              </select>
+                <select name="User" id="" onChange={onChangeUser}>
+  <option value="options" disabled selected>Options</option>
+  <option name="Create Game"> Create Game</option>
+  {isAuthenticated ? (
+    <>
+      <option value="Profile">Profile</option>
+      <option value="Logout">Logout</option>
+    </>
+  ) : (
+    <option value="Login">Login</option>
+  )}
+</select>
               </div>
               
 {/* 
