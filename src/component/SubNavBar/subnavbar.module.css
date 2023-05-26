@@ -34,7 +34,7 @@
 }
 
 .navbar__item a.allGamesButton {
-  font-size: 3rem; /* Ajusta el tamaño del texto "All Games" */
+  font-size: 3rem;
 }
 
 .navbar__item:last-child {

@@ -4,9 +4,8 @@ import  Card  from "../card/card";
 import { useDispatch, useSelector } from "react-redux";
 import SubNavBar from "../SubNavBar/SubNavBar";
 import { all } from "axios";
-import { getAllVideogames, query } from "../../redux/actions/actions";
+import { getAllVideogames, query, orderBy } from "../../redux/actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
-
 
 function Videogames (){
     const dispatch = useDispatch()
@@ -28,7 +27,11 @@ function Videogames (){
       setRefresh(!refresh)
     }
 
-      const renderButtons = () =>{
+    const orderByHandler=(event)=>{
+      dispatch({order:event.target.name, ascDesc:event.target.value})
+    }      
+    
+    const renderButtons = () =>{
         let paginas = []
         for(let i=1; i< pages;i++){
             paginas.push(i)
@@ -53,8 +56,12 @@ useEffect(()=>{
       
       <div>
         <SubNavBar handlerFilter={handlerFilter}/>
+        <div >
+            <button name="name" onClick={orderByHandler} value="asc">A-Z</button>
+            <button name="name" onClick={orderByHandler} value="desc"></button>
+        </div>
       <div className="container justify-content-center">
-       
+
           <div className="row justify-content-center">
           {Videogames ? (
     Videogames.map((game) => (

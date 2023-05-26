@@ -1,5 +1,5 @@
 import axios from "axios";
-import { QUERY, GET_ALL_VIDEOGAMES, GET_GENRES_FILTER, GET_PLATFORMS_FILTER, GET_GENRES, GET_PLATFORMS, POST_USER, USER_LOGOUT } from './actionsTypes';
+import { ORDEN_NAMES, ORDER_BY, QUERY, GET_ALL_VIDEOGAMES, GET_GENRES_FILTER, GET_PLATFORMS_FILTER, GET_GENRES, GET_PLATFORMS, POST_USER, USER_LOGOUT } from './actionsTypes';
 
 
 export const getGenresFilter = () => {
@@ -93,3 +93,7 @@ export const postGame = (payload, token) => {
 export const query=(query)=>{
   return {type:QUERY, payload:query}
 } 
+
+export const orderBy=(order)=>{
+return {type:ORDEN_NAMES, payload:order}
+}
