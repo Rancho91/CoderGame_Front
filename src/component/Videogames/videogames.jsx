@@ -12,23 +12,25 @@ function Videogames (){
     const {Videogames, pages} = useSelector((state)=>state.allVideogames)
     const [refresh, setRefresh] = useState(true)
     const [page, setPage] = useState(1)
+    const [order, setOrder] = useState({})
     const {user, isAuthenticated} = useAuth0()
 
     let queryState =useSelector((state)=>{
        if(isAuthenticated){
 
-      return {...state.query, page, sub:user.sub}
+      return {...state.query, page, sub:user.sub,...order}
     } else{
 
-      return {...state.query, page}
+      return {...state.query, page, ...order}
     }})
 
     const refreshHandler = () =>{
       setRefresh(!refresh)
     }
-
+    console.log(queryState)
     const orderByHandler=(event)=>{
-      dispatch({order:event.target.name, ascDesc:event.target.value})
+
+      setOrder({order:event.target.name, ascDesc:event.target.value})
     }      
     
     const renderButtons = () =>{
@@ -49,7 +51,7 @@ useEffect(()=>{
      
   }
   get()
-},[page,refresh])
+},[page,refresh, order])
 
 
     return(
@@ -58,7 +60,7 @@ useEffect(()=>{
         <SubNavBar handlerFilter={handlerFilter}/>
         <div >
             <button name="name" onClick={orderByHandler} value="asc">A-Z</button>
-            <button name="name" onClick={orderByHandler} value="desc"></button>
+            <button name="name" onClick={orderByHandler} value="desc">Z-A</button>
         </div>
       <div className="container justify-content-center">
 

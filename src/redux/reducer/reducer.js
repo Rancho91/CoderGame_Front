@@ -40,54 +40,7 @@ export default function reducer(state = initialState, action) {
             return{...state, allVideogames:action.payload};
           case QUERY:
             return{...state, query: action.payload};
-            case ORDEN_NAMES:{
-              const {order, ascDesc} = action.payload;
-              let videogamesOrder= []
-              if(order==="name"){
-                if (ascDesc === "asc") {
-                  videogamesOrder= state.allVideogames.sort((a, b) => {
-                    const nameA = a.name.toUpperCase();
-                    const nameB = b.name.toUpperCase();
-                    if (nameA < nameB) {
-                      return -1;
-                    }
-                    if (nameA > nameB) {
-                      return 1;
-                    }
-                    return 0;
-                  });
-                }
-                else {
-                  videogamesOrder= state.allVideogames.sort((a, b) => {
-                    const nameA = a.name.toUpperCase();
-                    const nameB = b.name.toUpperCase();
-                    if (nameA > nameB) {
-                      return -1;
-                    }
-                    if (nameA < nameB) {
-                      return 1;
-                    }
-                    return 0;
-                  });
-                }
-              }
-              if(order==="released"){
-                if(order==="asc"){
-                  videogamesOrder= state.allVideogames.sort((a,b)=>{
-                    const dateA = new Date(a.released);
-                    const dateB = new Date(b.released);
-                    return dateA - dateB;
-                  })
-                } else{
-                  videogamesOrder=state.allVideogames.sort((a,b)=>{
-                    const dateA = new Date(a.released);
-                    const dateB = new Date(b.released);
-                    return dateB + dateA;
-                  })
-                }
-              }
-              return{...state, allVideogames:videogamesOrder}
-            }
+           
         default:
                 return state;
         
