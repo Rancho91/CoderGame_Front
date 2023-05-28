@@ -58,7 +58,7 @@ useEffect(()=>{
     return(
       
       <div>
-        <SubNavBar handlerFilter={handlerFilter}/>
+        {/* <SubNavBar handlerFilter={}/> */}
 
       <div className="container justify-content-center">
       <div className="row" >

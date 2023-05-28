@@ -5,8 +5,11 @@
   align-items: center;
   padding: 0;
   padding-bottom: 0;
-  padding-top: 4%;
+  padding-top: 0;
   background-color: grey;
+  padding-bottom: 1%;
+  border-bottom-left-radius:50px ;
+  border-bottom-right-radius: 50px;
 }
 
 .navbar {
@@ -45,9 +48,21 @@
   background-color: transparent;
   color: #ffffff;
   border: none;
-  font-size: 2rem; /* Asegúrate de que '2rem' es el tamaño que deseas */
-
+  font-size: 2rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('https://res.cloudinary.com/dxatwbzff/image/upload/v1685315009/60995_clqlod.png'); 
+  background-repeat: no-repeat;
+  background-position:bottom center ;
+  background-size: 1rem; 
+ padding-bottom: 3%;
+ padding-top: 0;
+ text-align: center;
 }
+
+
+
 
 .navbar__item select option {
   background-color: black;
@@ -82,4 +97,50 @@
 
 .navbar__item a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .heartIcon {
+    font-size: 1.5rem;
+  }
+
+  .userIcon {
+    font-size: 120%;
+  }
+
+  .navbar__item a.allGamesButton {
+    font-size: 2.5rem;
+  }
+
+  .navbar__item select {
+    font-size: 1.5rem;
+  }
+
+  .navbar__item a,
+  .navbar__item p {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heartIcon {
+    font-size: 0.6rem;
+  }
+
+  .userIcon {
+    font-size: 100%;
+  }
+
+  .navbar__item a.allGamesButton {
+    font-size: 1.5rem;
+  }
+
+  .navbar__item select {
+    font-size: 0.8rem;
+  }
+
+  .navbar__item a,
+  .navbar__item p {
+    font-size: 0.6rem;
+  }
 }

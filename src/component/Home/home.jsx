@@ -28,9 +28,9 @@ const Home = () =>{
     
     return(
         <div className="container">
-            <p />
+            {/* <p />
             <SubNavBar />
-            <p />
+            <p /> */}
             <div className="col-12 d-flex justify-content-center">
                 <Slider image={arrSlader}/>        
             </div>

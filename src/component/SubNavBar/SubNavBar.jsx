@@ -9,13 +9,13 @@ import styles from "./subnavbar.module.css";
 
 
 
+
 const SubNavBar = () => {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   const genresList = useSelector((state) => state.genresFilter);
   const queryState = useSelector((state) => state.query)
   const platformsList = useSelector((state) => state.platformsFilter);
   const [filter, setFilter] = useState({});
-
   const dispatch = useDispatch();
 
   const navigate = useNavigate()
@@ -23,11 +23,17 @@ const SubNavBar = () => {
       const change = (event)=>{
         let querys
         if(isAuthenticated){
-         querys = {...filter, sub:user?user.sub:null, [event.target.name]:event.target.value,...queryState}}
-         else {querys = {...filter, [event.target.name]:event.target.value, ...queryState}}
-        setFilter(querys)
+          setFilter({...filter, sub:user.sub, ...queryState, [event.target.name]:event.target.value, })
+         querys = {...filter, sub:user.sub,...queryState, [event.target.name]:event.target.value,}}
+         else {
+          setFilter({...filter,...queryState, [event.target.name]:event.target.value })
+          querys = {...filter,...queryState, [event.target.name]:event.target.value }}
+        
         dispatch(query(querys))
+        navigate('./videogames')
       }
+      console.log(filter)
+      
       useEffect(()=>{
         
         const get = () =>{

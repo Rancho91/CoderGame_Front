@@ -12,6 +12,7 @@ import CreateGameForm from "./component/CreateGameForm/CreateGameForm";
 import Detail from "./component/Home/detail/detaild";
 import Favorites from "./component/Favorites/favorites"
 import Profile from "./component/Profile/Profile";
+import SubNavBar from "./component/SubNavBar/SubNavBar"
 
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
   return (
       <div class="fondo">
         <NavBar />
+        <div className="container ">
+           <SubNavBar/>
+        </div>
+       
         <Routes>
           <Route path="/favorites" element={<Favorites/>}/>
           <Route path="/" element={<Home />} />
