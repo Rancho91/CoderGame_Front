@@ -1,0 +1,42 @@
+.pageButton{
+    border: none;
+    margin:1%;
+    box-shadow: 6px 4px 9px 0px rgb(0 0 0 / 70%);
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding:1%;
+    border-radius: 50%;
+}
+.selectedButton {
+    border: none;
+    margin:1%;
+    box-shadow: 6px 4px 9px 0px rgb(0 0 0 / 70%);
+    background-color: rgb(115, 113, 113);
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding:1%;
+    border-radius: 50%;
+}
+  
+.orderButton {
+    border: none;
+    margin:1%;
+    box-shadow: 6px 4px 9px 0px rgb(0 0 0 / 70%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding:2%;
+    border-radius: 15px;
+    
+}
+
+.selectedOrder {
+    border: none;
+    margin:1%;
+    box-shadow: 6px 4px 9px 0px rgb(0 0 0 / 70%);
+    background-color: rgb(115, 113, 113);
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding:2%;
+    border-radius: 15px;
+    
+}

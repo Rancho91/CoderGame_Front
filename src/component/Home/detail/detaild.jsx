@@ -17,11 +17,11 @@ function Detail() {
         "http://localhost:3001/email/report/comment",
         obj
       );
-      alert("Report submitted!"); // feedback to the user
-      setCommentToReport(null); // reset the state after sending the report
+      alert("Report submitted!"); 
+      setCommentToReport(null); 
     } catch (error) {
       console.error(error);
-      alert("Failed to submit report."); // feedback to the user in case of error
+      alert("Failed to submit report."); 
     }
   };
 
