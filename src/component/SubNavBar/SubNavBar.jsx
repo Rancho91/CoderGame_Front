@@ -9,7 +9,7 @@ import styles from "./subnavbar.module.css";
 
 
 
-const SubNavBar = ({ handlerFilter }) => {
+const SubNavBar = () => {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   const genresList = useSelector((state) => state.genresFilter);
   const queryState = useSelector((state) => state.query)
@@ -23,8 +23,8 @@ const SubNavBar = ({ handlerFilter }) => {
       const change = (event)=>{
         let querys
         if(isAuthenticated){
-         querys = {...filter, sub:user.sub, [event.target.name]:event.target.value,...queryState}}
-         else {query = {...filter, [event.target.name]:event.target.value, ...queryState}}
+         querys = {...filter, sub:user?user.sub:null, [event.target.name]:event.target.value,...queryState}}
+         else {querys = {...filter, [event.target.name]:event.target.value, ...queryState}}
         setFilter(querys)
         dispatch(query(querys))
       }
