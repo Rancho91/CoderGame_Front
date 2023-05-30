@@ -9,7 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function Card ({game, refreshHandler}){
  const {name, image, description, price, released,Favorites, id} = game
- const {user} = useAuth0()
+ const {user, isAuthenticated, loginWithRedirect} = useAuth0()
 
 
  const addDleneteFavorites= async()=>{
@@ -30,6 +30,20 @@ function Card ({game, refreshHandler}){
       }
     }
   }
+  const handlerBuy = async () =>{
+    if(isAuthenticated){
+      const body = {idUser:user?user.sub:null, idVideogame:[id]}
+    try {
+      await axios.post('http://localhost:3001/checkout/buy',body )
+
+    } catch (error) {
+      window.alert(error.response.data)
+    }
+  } else{
+    loginWithRedirect()
+  }
+    }
+    
 
     return(
       <div className={`col-sm-12 col-md-12 text-center ${styles.container}`}>
@@ -60,17 +74,23 @@ function Card ({game, refreshHandler}){
       </div> */}
     
       <div className="row">
-        <div className={`col-6 ${styles.buy}`}>
-        <button onClick={addDleneteFavorites}>
-            <FontAwesomeIcon
-            icon={faHeart}
-            className={Favorites?.length?styles.heartIconFav:styles.heartIcon}
-            /> 
-        </button>      
-         </div>
-        <div className={`col-6 ${styles.buy}`}>
-          <p>Buy</p>
-        </div>
+        {Favorites[0]?.buy?(<p>purchased</p>):(
+        <>
+          <div className={`col-6 ${styles.buy}`}>
+          <button onClick={addDleneteFavorites}>
+              <FontAwesomeIcon
+              icon={faHeart}
+              className={Favorites?.length?styles.heartIconFav:styles.heartIcon}
+              /> 
+          </button>      
+           </div>
+          <div className={`col-6 ${styles.buy}`}>
+            <button onClick={handlerBuy}>Buy</button>
+          </div>
+        
+        </>
+ 
+        )}
       </div>
     </div>
         )
