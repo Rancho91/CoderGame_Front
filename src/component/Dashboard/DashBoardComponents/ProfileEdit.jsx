@@ -174,9 +174,7 @@ const Perfil = () => {
           <>
             <p>Coins Balance:</p>
             <Metric>{userInfo?.balance.balance} coins.</Metric>
-            <Link to="/payment">
-              Buy Coins
-            </Link>
+            
           </>
         )}
         <p>Youtube link:</p>

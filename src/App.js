@@ -12,8 +12,9 @@ import CreateGameForm from "./component/CreateGameForm/CreateGameForm";
 import Detail from "./component/Home/detail/detaild";
 import Favorites from "./component/Favorites/favorites"
 import Profile from "./component/Profile/Profile";
-import SubNavBar from "./component/SubNavBar/SubNavBar"
-
+import SubNavBar from "./component/SubNavBar/SubNavBar";
+import CoinBuyer from "./component/CoinBuyer/CoinBuyer";
+import PaymentSuccess from "../src/component/CoinBuyer/PaymentSuccess"
 
 function App() {
   const {isAuthenticated,user}=useAuth0()
@@ -42,6 +43,8 @@ function App() {
           <Route path="/videogames" element={<Videogames />} />
           <Route path="/videogames/:id" element={<Detail />}/> 
           <Route path="/profile" element={<Profile />}/>
+          <Route path="/payment" element={<CoinBuyer />}/>
+          <Route path="/payment/success" element={<PaymentSuccess />} />
         </Routes>
       </div>
   );
