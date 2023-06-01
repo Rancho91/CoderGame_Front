@@ -15,6 +15,7 @@ import Profile from "./component/Profile/Profile";
 import SubNavBar from "./component/SubNavBar/SubNavBar";
 import CoinBuyer from "./component/CoinBuyer/CoinBuyer";
 import PaymentSuccess from "../src/component/CoinBuyer/PaymentSuccess"
+import PaymentFailure from "../src/component/CoinBuyer/PaymentFailure"
 
 function App() {
   const {isAuthenticated,user}=useAuth0()
@@ -45,6 +46,7 @@ function App() {
           <Route path="/profile" element={<Profile />}/>
           <Route path="/payment" element={<CoinBuyer />}/>
           <Route path="/payment/success" element={<PaymentSuccess />} />
+          <Route path="/payment/failure" element={<PaymentFailure />}/>
         </Routes>
       </div>
   );
