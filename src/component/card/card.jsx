@@ -6,14 +6,12 @@
 // import axios from "axios";
 // import { useAuth0 } from "@auth0/auth0-react";
 
-
 // function Card ({game, refreshHandler}){
 //  const {name, image, description, price, released,Favorites, id} = game
 //  const {user} = useAuth0()
 
-
 //  const addDleneteFavorites= async()=>{
-  
+
 //     if(!Favorites.length){
 //       try {
 //         await axios.post("http://localhost:3001/user/favorites",{idUser:user.sub, idVideogame:id})
@@ -42,31 +40,31 @@
 //         </div>
 //       </div>
 //         <Link to={`/videogames/${id}`}>
-    
+
 //       <div  className={`row ${styles.image}`} style={{ backgroundImage: `url(${image})` }} >
 //       </div>
-//       </Link> 
-    
+//       </Link>
+
 //       {/* <div className="row">
 //         <div className="col-12 d-flex align-items-center flex-column">
 //           <p className={styles.description}>{released}</p>
 //         </div>
 //       </div> */}
-    
+
 //       {/* <div className="row">
 //         <div className="col-12 d-flex align-items-center">
 //           <p className={styles.description}>{description?description:null}</p>
 //         </div>
 //       </div> */}
-    
+
 //       <div className="row">
 //         <div className={`col-6 ${styles.buy}`}>
 //         <button onClick={addDleneteFavorites}>
 //             <FontAwesomeIcon
 //             icon={faHeart}
 //             className={Favorites?.length?styles.heartIconFav:styles.heartIcon}
-//             /> 
-//         </button>      
+//             />
+//         </button>
 //          </div>
 //         <div className={`col-6 ${styles.buy}`}>
 //           <p>Buy</p>
@@ -77,9 +75,6 @@
 // }
 
 // export default Card
-
-
-
 
 
 import React, { useState } from "react";
@@ -156,8 +151,8 @@ function Card({ game, refreshHandler, onBuyClick }) {
           </button>
         </div>
         <div className={`col-6 ${styles.buy}`}>
-  <button onClick={() => onBuyClick(game)}>Buy</button>
-</div>
+          <button onClick={() => onBuyClick(game)}>Buy</button>
+        </div>
       </div>
     </div>
   );

@@ -1,98 +1,93 @@
-.container{
-    margin: 2%;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
-    padding: 5%;
-
+.container {
+  margin: 2%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
+  padding: 5%;
 }
 
-.title{
-    display: flex;
-    background-color: rgb(55, 53, 53);
-    height: 50px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
-
-
-}
-.title h1{
-    font-size: 1.2rem;
-    color: aliceblue;
+.title {
+  display: flex;
+  background-color: rgb(55, 53, 53);
+  height: 50px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
 }
 
-
-
-.image{
-    height: 150px; 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 2%;
-    margin:2%;
-    
+.title h1 {
+  font-size: 1.2rem;
+  color: aliceblue;
 }
 
-.description{
-    flex-grow: 1;
-    color: rgb(3, 9, 15);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
-    max-height: 100%; 
-    text-overflow: ellipsis;
+.image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2%;
+  margin: 2%;
+}
+
+.description {
+  flex-grow: 1;
+  color: rgb(3, 9, 15);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  max-height: 100%;
+  text-overflow: ellipsis;
 }
 
 .buy {
-    display: flex;
-    background-color: rgb(5, 90, 0);
-    box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
-    color: rgb(63, 169, 63);
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-
-    
+  display: flex;
+  background-color: rgb(5, 90, 0);
+  box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
+  color: rgb(63, 169, 63);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
+
 .buy button {
-    font-weight: bold;
-    border: none;
-    font-size: 1.2rem;
-    color: rgb(63, 169, 63);
-    background-color: rgba(240, 248, 255, 0);
+  font-weight: bold;
+  border: none;
+  font-size: 1.2rem;
+  color: rgb(63, 169, 63);
+  background-color: rgba(240, 248, 255, 0);
 }
 
 .heartIcon {
-    color: #00000071;
-    background-color: transparent;
-  }
+  color: #00000071;
+  background-color: transparent;
+}
 
 .heartIconFav {
-    color: #fe0404;
-
+  color: #fe0404;
 }
 
 .price {
-    position: relative;
-  }
-  
-  .price p {
-    transition: opacity 1s ease;
-    font-size: 1.3rem;
-    background-color: rgb(5, 83, 4);
-    box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
-    padding: 0 1% 0 1%;
-    color: white;
-    position:absolute;
-    border-radius: 10px;
-    padding: 0 5% 0 5% ;
-    transform: translateY(+50%) translatex(-10%)
+  position: relative;
+}
 
-  }
+.price p {
+  transition: opacity 1s ease;
+  font-size: 1.3rem;
+  background-color: rgb(5, 83, 4);
+  box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
+  padding: 0 1% 0 1%;
+  color: white;
+  position: absolute;
+  border-radius: 10px;
+  padding: 0 5% 0 5%;
+  transform: translateY(+50%) translatex(-10%);
+}
 
-  
+.buySelected {
+  background-color: red;
+  color: white;
+}

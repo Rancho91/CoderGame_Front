@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
+import styles from "./comment.module.css";
 
 const Comments = ({ id }) => {
   const [comment, setComment] = useState("");
@@ -25,7 +26,7 @@ const Comments = ({ id }) => {
   };
 
   return (
-    <div>
+    <div className={styles.commentsContainer}>
       {isAuthenticated ? (
         <form onSubmit={handleSubmit}>
           <div>
