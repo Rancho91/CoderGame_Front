@@ -71,7 +71,9 @@ const SubNavBar = () => {
 
     return (
     <div className={`row ${styles.subnavbar} ${styles.noMarginBottom}`}>
-      <nav className={styles.navbar}>
+      <nav className={`navbar navbar-expand`}>
+        <div className="container-fuild">
+        </div>
         <div className={`col-3 ${styles.navbar__item}`}>
           <select name="genre" onChange={change}>
             <option value="">Genres</option>
@@ -120,24 +122,9 @@ const SubNavBar = () => {
 </select>
               </div>
               
-{/* 
-              <div className={`col-5 ${styles.navbar__item}`}>
-                   {isAuthenticated ? (
-                      <Link to="/" className={styles.loginLink}>
-                         <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
-                      </Link>
-                            ) : (
-                      < Link to="/login" className={styles.loginLink}>
-                     <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
-                        </Link>)}
-                </div> */}
 </div>
 
-        
-        
-        {/* <div className="col-3"> 
-              {isAuthenticated?<Logout/>:<Login rute="http://localhost:3000/"/> }  
-            </div> */}
+
       </nav>
     </div>
   );

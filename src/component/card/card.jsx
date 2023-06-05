@@ -81,14 +81,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./card.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faWindowRestore } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import {useLocation} from "react-router-dom"
 
-function Card({ game, refreshHandler, onBuyClick }) {
+function Card({ game, refreshHandler, handleAddList, selectedGames }) {
   const { name, image, description, price, released, Favorites, id } = game;
-  const { user } = useAuth0();
+  const { user, loginWithRedirect , isAuthenticated } = useAuth0();
   const [isSelected, setIsSelected] = useState(false);
+  const location = useLocation()
 
   const addDleneteFavorites = async () => {
     if (!Favorites.length) {
@@ -120,10 +122,34 @@ function Card({ game, refreshHandler, onBuyClick }) {
     }
   };
 
+
   const handleCardClick = () => {
-    setIsSelected(!isSelected);
+   setIsSelected(!isSelected);
   };
 
+  const onBuyClick =async()=>{
+    if(isAuthenticated)
+   { try {
+      const requestData = {
+        idVideogame: [game.id],
+        idUser: user?.sub
+      };
+      const response = await axios.post("http://localhost:3001/payment/buy", requestData);
+      window.alert("se realizo la compra de forma exitosa")
+    } catch (error) {
+      window.alert(error.message)
+    }
+    }else {
+      loginWithRedirect()
+    }
+  }
+
+  const handleAdd = () =>{
+    
+    handleAddList(id, selectedGames.includes(game.id) )
+  }
+
+  
   return (
     <div
       className={`col-sm-12 col-md-12 text-center ${
@@ -157,7 +183,20 @@ function Card({ game, refreshHandler, onBuyClick }) {
           </button>
         </div>
         <div className={`col-6 ${styles.buy}`}>
-          <button onClick={() => onBuyClick(game)}>Buy</button>
+          {
+            location?.pathname=="/favorites"?(
+
+              
+            <button onClick={handleAdd}>{
+             selectedGames?.includes(game.id)?"-":"+" }</button>
+            )
+            :(
+
+              <button onClick={onBuyClick}>Buy</button>
+            )
+          }
+     
+          
         </div>
       </div>
     </div>

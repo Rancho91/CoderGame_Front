@@ -69,7 +69,7 @@ function Favorites() {
   const [refresh, setRefresh] = useState(true);
 
   const refreshHandler = () => {
-    setRefresh(!refresh);
+    // setRefresh(!refresh);
   };
 
   useEffect(() => {
@@ -85,17 +85,20 @@ function Favorites() {
         }
       }
     };
-    getFavorites();
-  }, [refresh]);
+     getFavorites();
+  }, [refresh ]);
 
-  function handleBuyClick(game) {
-    if (selectedGames.includes(game)) {
-      setSelectedGames(selectedGames.filter(g => g.id !== game.id));
-    } else {
-      setSelectedGames([...selectedGames, game]);
+ console.log(selectedGames)
+
+  function handleAddList(id, condition) {
+    if(!condition){
+      setSelectedGames([...selectedGames, id]);
+    } else{
+      setSelectedGames(selectedGames.filter(g => g !== id));
+
     }
-    console.log("Selected Games:", selectedGames); // Verificar juegos seleccionados
   }
+
 
   async function handlePurchase() {
     try {
@@ -103,8 +106,6 @@ function Favorites() {
         idVideogame: selectedGames.map(game => game.id),
         idUser: user?.sub
       };
-  
-      console.log("Buy request data:", requestData); // Imprimir datos antes de enviar la solicitud
   
       const response = await axios.post("http://localhost:3001/payment/buy", requestData);
       console.log("Buy request response:", response.data);
@@ -124,8 +125,9 @@ function Favorites() {
             <div className="col-sm-12 col-md-3">
               <Card
                 game={game}
-                refreshHandler={refreshHandler}
-                onBuyClick={() => handleBuyClick(game)}
+                 refreshHandler={refreshHandler}
+                handleAddList={handleAddList}
+                 selectedGames={selectedGames}
               />
             </div>
           );
