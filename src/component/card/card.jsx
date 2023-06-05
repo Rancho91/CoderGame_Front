@@ -1,52 +1,136 @@
-import React,{useState} from "react";
+// import React,{useState} from "react";
+// import { Link } from "react-router-dom";
+// import styles from "./card.module.css"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faHeart} from "@fortawesome/free-solid-svg-icons";
+// import axios from "axios";
+// import { useAuth0 } from "@auth0/auth0-react";
+
+// function Card ({game, refreshHandler}){
+//  const {name, image, description, price, released,Favorites, id} = game
+//  const {user} = useAuth0()
+
+//  const addDleneteFavorites= async()=>{
+
+//     if(!Favorites.length){
+//       try {
+//         await axios.post("http://localhost:3001/user/favorites",{idUser:user.sub, idVideogame:id})
+//         refreshHandler()
+//           } catch (error) {
+//         window.alert(error.message)
+//       }
+//     } else{
+//       try {
+//         await axios.put("http://localhost:3001/user/favorites",{idUser:user.sub, idVideogame:id})
+//         refreshHandler()
+//       } catch (error) {
+//         window.alert(error.message)
+//       }
+//     }
+//   }
+
+//     return(
+//       <div className={`col-sm-12 col-md-12 text-center ${styles.container}`}>
+//       <div className={`row ${styles.title}`}>
+//         <div className={`${styles.price}`}>
+//           <p className="mt-3 mr-3">{price}</p>
+//         </div>
+//         <div className="col-12">
+//           <h1>{name}</h1>
+//         </div>
+//       </div>
+//         <Link to={`/videogames/${id}`}>
+
+//       <div  className={`row ${styles.image}`} style={{ backgroundImage: `url(${image})` }} >
+//       </div>
+//       </Link>
+
+//       {/* <div className="row">
+//         <div className="col-12 d-flex align-items-center flex-column">
+//           <p className={styles.description}>{released}</p>
+//         </div>
+//       </div> */}
+
+//       {/* <div className="row">
+//         <div className="col-12 d-flex align-items-center">
+//           <p className={styles.description}>{description?description:null}</p>
+//         </div>
+//       </div> */}
+
+//       <div className="row">
+//         <div className={`col-6 ${styles.buy}`}>
+//         <button onClick={addDleneteFavorites}>
+//             <FontAwesomeIcon
+//             icon={faHeart}
+//             className={Favorites?.length?styles.heartIconFav:styles.heartIcon}
+//             />
+//         </button>
+//          </div>
+//         <div className={`col-6 ${styles.buy}`}>
+//           <p>Buy</p>
+//         </div>
+//       </div>
+//     </div>
+//         )
+// }
+
+// export default Card
+
+
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./card.module.css"
+import styles from "./card.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart} from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
+function Card({ game, refreshHandler, onBuyClick }) {
+  const { name, image, description, price, released, Favorites, id } = game;
+  const { user } = useAuth0();
+  const [isSelected, setIsSelected] = useState(false);
 
-function Card ({game, refreshHandler}){
- const {name, image, description, price, released,Favorites, id} = game
- const {user, isAuthenticated, loginWithRedirect} = useAuth0()
-
-
- const addDleneteFavorites= async()=>{
-  
-    if(!Favorites.length){
+  const addDleneteFavorites = async () => {
+    if (!Favorites.length) {
       try {
-        await axios.post("http://localhost:3001/user/favorites",{idUser:user.sub, idVideogame:id})
-        refreshHandler()
-          } catch (error) {
-        window.alert(error.message)
-      }
-    } else{
-      try {
-        await axios.put("http://localhost:3001/user/favorites",{idUser:user.sub, idVideogame:id})
-        refreshHandler()
+        await axios.post("http://localhost:3001/user/favorites", {
+          idUser: user.sub,
+          idVideogame: id,
+        });
+        refreshHandler();
+        console.log("Updated Game Data (Add Favorite):", refreshHandler); // Log new game data
+
       } catch (error) {
-        window.alert(error.message)
+        window.alert(error.message);
+      }
+    } else {
+      console.log("Deleting favorite game...");
+
+      try {
+        await axios.put("http://localhost:3001/user/favorites", {
+          idUser: user.sub,
+          idVideogame: id,
+        });
+        refreshHandler();
+        console.log("Updated Game Data (Remove Favorite):", refreshHandler);
+
+      } catch (error) {
+        window.alert(error.message);
       }
     }
-  }
-  const handlerBuy = async () =>{
-    if(isAuthenticated){
-      const body = {idUser:user?user.sub:null, idVideogame:[id]}
-    try {
-      await axios.post('http://localhost:3001/checkout/buy',body )
+  };
 
-    } catch (error) {
-      window.alert(error.response.data)
-    }
-  } else{
-    loginWithRedirect()
-  }
-    }
-    
+  const handleCardClick = () => {
+    setIsSelected(!isSelected);
+  };
 
-    return(
-      <div className={`col-sm-12 col-md-12 text-center ${styles.container}`}>
+  return (
+    <div
+      className={`col-sm-12 col-md-12 text-center ${
+        isSelected ? styles.selected : ""
+      } ${styles.container}`}
+      onClick={handleCardClick}
+    >
       <div className={`row ${styles.title}`}>
         <div className={`${styles.price}`}>
           <p className="mt-3 mr-3">{price}</p>
@@ -55,45 +139,29 @@ function Card ({game, refreshHandler}){
           <h1>{name}</h1>
         </div>
       </div>
-        <Link to={`/videogames/${id}`}>
-    
-      <div  className={`row ${styles.image}`} style={{ backgroundImage: `url(${image})` }} >
-      </div>
-      </Link> 
-    
-      {/* <div className="row">
-        <div className="col-12 d-flex align-items-center flex-column">
-          <p className={styles.description}>{released}</p>
-        </div>
-      </div> */}
-    
-      {/* <div className="row">
-        <div className="col-12 d-flex align-items-center">
-          <p className={styles.description}>{description?description:null}</p>
-        </div>
-      </div> */}
-    
+      <Link to={`/videogames/${id}`}>
+        <div
+          className={`row ${styles.image}`}
+          style={{ backgroundImage: `url(${image})` }}
+        ></div>
+      </Link>
       <div className="row">
-        {Favorites[0]?.buy?(<p>purchased</p>):(
-        <>
-          <div className={`col-6 ${styles.buy}`}>
+        <div className={`col-6 ${styles.buy}`}>
           <button onClick={addDleneteFavorites}>
-              <FontAwesomeIcon
+            <FontAwesomeIcon
               icon={faHeart}
-              className={Favorites?.length?styles.heartIconFav:styles.heartIcon}
-              /> 
-          </button>      
-           </div>
-          <div className={`col-6 ${styles.buy}`}>
-            <button onClick={handlerBuy}>Buy</button>
-          </div>
-        
-        </>
- 
-        )}
+              className={
+                Favorites?.length ? styles.heartIconFav : styles.heartIcon
+              }
+            />
+          </button>
+        </div>
+        <div className={`col-6 ${styles.buy}`}>
+          <button onClick={() => onBuyClick(game)}>Buy</button>
+        </div>
       </div>
     </div>
-        )
+  );
 }
 
-export default Card
+export default Card;

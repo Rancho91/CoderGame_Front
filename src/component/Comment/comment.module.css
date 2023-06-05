@@ -1,0 +1,44 @@
+.commentsContainer {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.commentsContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.commentsContainer label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  
+}
+
+.commentsContainer textarea {
+  width: 100%;
+  height: 8rem;
+  resize: vertical;
+  margin-bottom: 1rem;
+  
+}
+
+.commentsContainer button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.commentsContainer p {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .commentsContainer form {
+    max-width: 600px; /* Ajusta el ancho máximo según sea necesario */
+  }
+}

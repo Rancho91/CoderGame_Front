@@ -1,26 +1,37 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { userLogout } from "../../redux/actions/actions";
 import Perfil from "../Dashboard/DashBoardComponents/ProfileEdit";
+import CoinBuyer from "../CoinBuyer/CoinBuyer";
 
 function Profile() {
-  const dispatch = useDispatch();
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
+  const navigate = useNavigate();
 
-  const userId = useSelector((state) => state.userId);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(userLogout(user));
-    }
-  }, [isAuthenticated, user, dispatch]);
+  // const handleButtonClick = () => {
+  //   navigate("/payment");
+  // }
 
   return isLoading ? (
     <div>Loading ...</div>
   ) : (
-    isAuthenticated && <div> <Perfil/> </div>
+    isAuthenticated && (
+      <div>
+        <div>
+          <h2>Cargar Coin</h2>
+          <CoinBuyer />
+          {/* <button onClick={handleButtonClick}>Cargar saldo</button> */}
+        </div>
+        
+        <div>
+          {/* <h2>Perfil</h2> */}
+          <Perfil />
+        </div>
+      </div>
+    )
   );
 }
-// todook
+
 export default Profile;

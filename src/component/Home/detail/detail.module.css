@@ -1,0 +1,190 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.col-md-4 {
+  max-width: 70%;
+}
+
+@media (min-width: 992px) {
+  .col-md-4 {
+    max-width: 70%;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.rowGenres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
+
+.genreButton,
+.platformButton {
+  margin: 0.2rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.genreButton {
+  background-color: #333;
+  color: #fff;
+}
+
+.platformButton {
+  background-color: #fff;
+  color: #000;
+}
+
+.platformMargin {
+  margin: 0.2rem;
+}
+
+.platformBorder {
+  border: 1px solid #000;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.description {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: 1px solid black;
+}
+
+.date {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-container {
+  margin-top: 2rem;
+}
+
+.comment-container p {
+  margin-bottom: 0.5rem;
+}
+
+.comment-container button {
+  margin-bottom: 0.5rem;
+  background-color: #00ffcc;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment-container .reported button {
+  background-color: red;
+}
+
+.separator {
+  margin: 0.1rem;
+}
+
+.commentItem {
+  border: 1px solid #010705; 
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .genreButton,
+  .platformButton {
+    margin: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.45rem;
+  }
+
+  .price {
+    font-size: 1.2rem;
+  }
+
+  .date {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .rowGenres {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 0.1rem;
+  }
+
+  .rowGenres > div:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+
+  .rowPlatforms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .rowPlatforms > div:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+
+  .rowPlatforms > div:last-child {
+    margin-right: 0;
+  }
+
+  .comment-container p {
+    margin-bottom: 0.5rem;
+    font-size: 1rem; 
+  }
+
+  .comment-container button {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem; 
+  }
+
+  .commentItem {
+    border: 1px solid #010705;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+}
