@@ -5,11 +5,44 @@ import Comments from "../../Comment/Comment";
 import axios from "axios";
 import styles from "./detail.module.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { useAuth0 } from "@auth0/auth0-react";
+
 function Detail() {
+  const { id } = useParams();
+  const { user } = useAuth0();
   const [game, setGame] = useState({});
   const [commentToReport, setCommentToReport] = useState(null);
+  const [isInFavorites, setIsInFavorites] = useState(false);
 
-  const { id } = useParams();
+  const addDeleteFavorites = async () => {
+    const requestData = {
+      idUser: user.sub,
+      idVideogame: id,
+    };
+
+    console.log("Request Data:", requestData);
+
+    if (!isInFavorites) {
+      try {
+        await axios.post("http://localhost:3001/user/favorites", requestData);
+        setIsInFavorites(true);
+        console.log("Game added to favorites");
+      } catch (error) {
+        window.alert(error.message);
+      }
+    } else {
+      try {
+        console.log("Deleting favorite game...");
+        await axios.put("http://localhost:3001/user/favorites", requestData);
+        setIsInFavorites(false);
+        console.log("Game removed from favorites");
+      } catch (error) {
+        window.alert(error.message);
+      }
+    }
+  };
 
   const handleReport = async (event) => {
     try {
@@ -41,6 +74,15 @@ function Detail() {
 
     detail();
   }, [id]);
+
+  useEffect(() => {
+    const checkFavorites = () => {
+      const foundGame = game?.Favorites?.find((favorite) => favorite.id === id);
+      setIsInFavorites(foundGame ? true : false);
+    };
+
+    checkFavorites();
+  }, [game]);
 
   return (
     <div className={`${styles.container} mt-3 mb-3`}>
@@ -77,6 +119,14 @@ function Detail() {
           <div className="row">
             <div className="col-md-6">
               <p className={styles.price}>Coin: ${game?.price}</p>
+              <button onClick={addDeleteFavorites}>
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  className={
+                    isInFavorites ? styles.heartIconFav : styles.heartIcon
+                  }
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -91,52 +141,49 @@ function Detail() {
         </div>
       </div>
       <hr />
-      <div className="row"></div>
       <div>
-      {game?.ComentariosVs?.map((comment) => (
-  <div
-    key={comment.id}
-    className={`${styles.commentItem} ${styles.commentContainer}`}
-  >
-    <div className={styles.commentHeader}>
-      <p>
-        {comment.User?.name} - Date: {comment.date}    .
-        <button onClick={() => setCommentToReport(comment.id)}>
-          Report
-        </button>
-        <br />
-      </p>
-    </div>
-    {comment.id === commentToReport && (
-      <div className={styles.reportOptions}>
-        <button
-          id={comment.id}
-          value="Hate or discriminatory speech"
-          onClick={handleReport}
-        >
-          Hate or discriminatory speech
-        </button>
-        <button
-          id={comment.id}
-          value="Threats or violent expressions."
-          onClick={handleReport}
-        >
-          Threats or violent expressions
-        </button>
-        <button id={comment.id} value="Obscenity" onClick={handleReport}>
-          Obscenity
-        </button>
-        <button id={comment.id} value="others" onClick={handleReport}>
-          Others
-        </button>
-        <button onClick={() => setCommentToReport(null)}>Close</button>
-      </div>
-    )}
-    {comment.id !== commentToReport && <p>{comment.message}</p>}
-  </div>
-))}
-
-
+        {game?.ComentariosVs?.map((comment) => (
+          <div
+            key={comment.id}
+            className={`${styles.commentItem} ${styles.commentContainer}`}
+          >
+            <div className={styles.commentHeader}>
+              <p>
+                {comment.User?.name} - Date: {comment.date} .
+                <button onClick={() => setCommentToReport(comment.id)}>
+                  Report
+                </button>
+                <br />
+              </p>
+            </div>
+            {comment.id === commentToReport && (
+              <div className={styles.reportOptions}>
+                <button
+                  id={comment.id}
+                  value="Hate or discriminatory speech"
+                  onClick={handleReport}
+                >
+                  Hate or discriminatory speech
+                </button>
+                <button
+                  id={comment.id}
+                  value="Threats or violent expressions."
+                  onClick={handleReport}
+                >
+                  Threats or violent expressions
+                </button>
+                <button id={comment.id} value="Obscenity" onClick={handleReport}>
+                  Obscenity
+                </button>
+                <button id={comment.id} value="others" onClick={handleReport}>
+                  Others
+                </button>
+                <button onClick={() => setCommentToReport(null)}>Close</button>
+              </div>
+            )}
+            {comment.id !== commentToReport && <p>{comment.message}</p>}
+          </div>
+        ))}
       </div>
       <Comments id={id} />
     </div>

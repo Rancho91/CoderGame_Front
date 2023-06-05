@@ -98,16 +98,22 @@ function Card({ game, refreshHandler, onBuyClick }) {
           idVideogame: id,
         });
         refreshHandler();
+        console.log("Updated Game Data (Add Favorite):", refreshHandler); // Log new game data
+
       } catch (error) {
         window.alert(error.message);
       }
     } else {
+      console.log("Deleting favorite game...");
+
       try {
         await axios.put("http://localhost:3001/user/favorites", {
           idUser: user.sub,
           idVideogame: id,
         });
         refreshHandler();
+        console.log("Updated Game Data (Remove Favorite):", refreshHandler);
+
       } catch (error) {
         window.alert(error.message);
       }
