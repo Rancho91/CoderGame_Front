@@ -11,37 +11,36 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function Detail() {
   const { id } = useParams();
-  const { user } = useAuth0();
+  const { user,isAuthenticated, loginWithRedirect } = useAuth0();
   const [game, setGame] = useState({});
   const [commentToReport, setCommentToReport] = useState(null);
-  const [isInFavorites, setIsInFavorites] = useState(false);
+  const [refresh, setRefresh] = useState(false)
+
 
   const addDeleteFavorites = async () => {
     const requestData = {
-      idUser: user.sub,
+      idUser: user?.sub,
       idVideogame: id,
     };
-
-    console.log("Request Data:", requestData);
-
-    if (!isInFavorites) {
+    if(!isAuthenticated){ loginWithRedirect()}
+   else{
+    if (!game.Favorites.length) {
       try {
+        console.log(requestData)
         await axios.post("http://localhost:3001/user/favorites", requestData);
-        setIsInFavorites(true);
-        console.log("Game added to favorites");
+        setRefresh(!refresh)
       } catch (error) {
         window.alert(error.message);
       }
     } else {
       try {
-        console.log("Deleting favorite game...");
+        console.log('entre a delete')
         await axios.put("http://localhost:3001/user/favorites", requestData);
-        setIsInFavorites(false);
-        console.log("Game removed from favorites");
+        setRefresh(!refresh)
       } catch (error) {
         window.alert(error.message);
       }
-    }
+    }}
   };
 
   const handleReport = async (event) => {
@@ -62,27 +61,20 @@ function Detail() {
   useEffect(() => {
     const detail = async () => {
       try {
-        const gameData = await fetchData(
-          `http://localhost:3001/videogames/${id}`,
-          "get"
+        const gameData = await axios.put(
+          `http://localhost:3001/videogames/${id}`, {sub:user?user.sub:null}
         );
-        setGame(gameData);
+        setGame(gameData.data);
       } catch (error) {
         console.error(error);
       }
     };
 
     detail();
-  }, [id]);
+    
+  }, [id, refresh]);
 
-  useEffect(() => {
-    const checkFavorites = () => {
-      const foundGame = game?.Favorites?.find((favorite) => favorite.id === id);
-      setIsInFavorites(foundGame ? true : false);
-    };
-
-    checkFavorites();
-  }, [game]);
+console.log(game)
 
   return (
     <div className={`${styles.container} mt-3 mb-3`}>
@@ -120,12 +112,18 @@ function Detail() {
             <div className="col-md-6">
               <p className={styles.price}>Coin: ${game?.price}</p>
               <button onClick={addDeleteFavorites}>
-                <FontAwesomeIcon
+                {
+                  game.Favorites?.length && game.Favorites[0].buy?(<p>Purched</p>):(
+                    <FontAwesomeIcon
                   icon={faHeart}
                   className={
-                    isInFavorites ? styles.heartIconFav : styles.heartIcon
+                    game.Favorites?.length?styles.heartIconFav : styles.heartIcon
                   }
                 />
+
+                  )
+                }
+                
               </button>
             </div>
           </div>
