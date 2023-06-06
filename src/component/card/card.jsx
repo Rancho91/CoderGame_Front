@@ -91,7 +91,7 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
           style={{ backgroundImage: `url(${image})` }}
         ></div>
       </Link>
-      {Favorites.length && Favorites[0].buy?(<p>Purched</p>):(
+      {Favorites?.length && Favorites[0].buy?(<p>Purched</p>):(
       <div className="row">
         <div className={`col-6 ${styles.buy}`}>
           
