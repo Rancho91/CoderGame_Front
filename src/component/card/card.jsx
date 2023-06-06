@@ -43,7 +43,6 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
     }
   };
 
-
   const handleCardClick = () => {
    setIsSelected(!isSelected);
   };
@@ -55,8 +54,8 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
         idVideogame: [game.id],
         idUser: user?.sub
       };
-      console.log(requestData)
       const response = await axios.post("http://localhost:3001/payment/buy", requestData);
+      refreshHandler();
     } catch (error) {
       window.alert(error.message)
     }
@@ -92,18 +91,20 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
           style={{ backgroundImage: `url(${image})` }}
         ></div>
       </Link>
+      {Favorites.length && Favorites[0].buy?(<p>Purched</p>):(
       <div className="row">
         <div className={`col-6 ${styles.buy}`}>
-          <button onClick={addDleneteFavorites}>
-          {
-                  game?.Favorites?.buy?(<p>Purched</p>):(
+          
+         
+                    <button onClick={addDleneteFavorites}>
                     <FontAwesomeIcon
                     icon={faHeart}
                     className={
                       Favorites?.length ? styles.heartIconFav : styles.heartIcon
-                    }
-                  />)}
-          </button>
+                    }/>
+                    </button>
+                  
+          
         </div>
         <div className={`col-6 ${styles.buy}`}>
           {
@@ -118,10 +119,8 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
               <button onClick={onBuyClick}>Buy</button>
             )
           }
-     
-          
         </div>
-      </div>
+      </div>)}
     </div>
   );
 }
