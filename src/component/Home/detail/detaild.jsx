@@ -113,16 +113,13 @@ console.log(game)
               <p className={styles.price}>Coin: ${game?.price}</p>
               <button onClick={addDeleteFavorites}>
                 {
-                  game.Favorites?.length && game.Favorites[0].buy?(<p>Purched</p>):(
+                  game?.Favorites?.length && game?.Favorites[0].buy?(<p>Purched</p>):(
                     <FontAwesomeIcon
                   icon={faHeart}
                   className={
                     game.Favorites?.length?styles.heartIconFav : styles.heartIcon
                   }
-                />
-
-                  )
-                }
+                />)}
                 
               </button>
             </div>
