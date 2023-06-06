@@ -27,7 +27,7 @@ const Home = () =>{
 
     
     return(
-        <div className="container">
+        <div className={`container ${styles.home}`}>
             {/* <p />
             <SubNavBar />
             <p /> */}

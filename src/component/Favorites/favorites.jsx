@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from "../card/card";
 import { useAuth0 } from "@auth0/auth0-react";
 import Login from "../NavBar/login/login";
+import styles from "./favorites.module.css"
 
 function Favorites() {
   const [listFavorites, setListFavorites] = useState([]);
@@ -59,7 +60,7 @@ function Favorites() {
   
 
   return (
-    <div className="container">
+    <div className={`container ${styles.favorites}`}>
       <div className="row">
         {listFavorites?.map((game) => {
           game = { ...game, Favorites: [{ buy: false }] };

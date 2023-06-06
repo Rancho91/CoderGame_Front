@@ -1,3 +1,7 @@
+.videogames{
+    min-height:50vh;
+}
+
 .pageButton{
     border: none;
     margin:1%;
