@@ -1,0 +1,23 @@
+.footer {
+  background-image: url('https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686080483/g4guvzr3ivxfgxgrwc6v.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.imgSmaller{
+  max-width: 30px;
+}
+
+.title {
+  font-size: 1.4rem;
+  color: rgb(220, 209, 209);
+  font-weight: bold;
+
+}
+
+.text{
+  font-size: 1.2rem;
+  color: rgb(220, 209, 209);
+  font-weight: bold;
+}

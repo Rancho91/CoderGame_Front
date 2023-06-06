@@ -8,3 +8,7 @@
     margin:1%;
     height: 150px;
 }
+
+.home{
+   min-height:50vh;
+}

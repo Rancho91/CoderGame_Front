@@ -16,7 +16,8 @@ import SubNavBar from "./component/SubNavBar/SubNavBar";
 import CoinBuyer from "./component/CoinBuyer/CoinBuyer";
 import PaymentSuccess from "../src/component/CoinBuyer/PaymentSuccess"
 import PaymentFailure from "../src/component/CoinBuyer/PaymentFailure"
-
+import Footer from "./component/footer/footer";
+ 
 function App() {
   const {isAuthenticated,user}=useAuth0()
   const dispatch = useDispatch()
@@ -28,16 +29,18 @@ function App() {
     }
     dispatch(getGenresFilter())
     dispatch(getPlatformsFilter())
+    
 
   })
   return (
-      <div class="fondo">
+      <div class="fondo app-container">
         <NavBar />
         <div className="container ">
            <SubNavBar/>
         </div>
-       
-        <Routes>
+        <div className="main-content">
+        <Routes >
+          
           <Route path="/favorites" element={<Favorites/>}/>
           <Route path="/" element={<Home />} />
           <Route path="/creategame" element={<CreateGameForm />} />
@@ -48,6 +51,8 @@ function App() {
           <Route path="/payment/success" element={<PaymentSuccess />} />
           <Route path="/payment/failure" element={<PaymentFailure />}/>
         </Routes>
+        </div>
+                <Footer/>
       </div>
   );
 }

@@ -56,11 +56,9 @@ useEffect(()=>{
 
 
     return(
-      
-      <div>
-        {/* <SubNavBar handlerFilter={}/> */}
 
-      <div className="container justify-content-center">
+
+      <div className={`container justify-content-center ${styles.videogames}`}>
       <div className="row" >
         <div className="col-2">
             <button name="name" onClick={orderByHandler} value="asc" className={order?.order==="name"&&order?.ascDesc==="asc"?styles.selectedOrder:styles.orderButton}>A-Z</button>
@@ -111,8 +109,7 @@ useEffect(()=>{
     </div>
   </div>
 </div>
-</div>
-    )
-}
+
+    )}
 
 export default Videogames
