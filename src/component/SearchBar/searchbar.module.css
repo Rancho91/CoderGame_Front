@@ -1,49 +1,68 @@
 .searchBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .searchForm {
-    position: relative;
-    width: 100%;
-} 
+  position: relative;
+  width: 100%;
+}
 
- .searchInput {
-    padding: 2% 2% 2% 2%;
-    padding-right: 20%;
-    width: 100%;
-    height: 40%;
-    font-size: 100%;
-    border: none;
-    border-radius: 20px;
-} 
- 
+.searchInput {
+  padding: 2% 2% 2% 2%;
+  padding-right: 20%;
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px; /* Borde redondeado existente */
+  border: 2px solid #ccc; /* Borde adicional */
+}
+
 .searchInput::placeholder,
 .searchInput::-webkit-input-placeholder {
-    color: rgb(17, 8, 8);
+  color: rgb(17, 8, 8);
 }
 
 .searchInput:focus::placeholder,
 .searchInput:focus::-webkit-input-placeholder {
-    color: #ccc;
+  color: #ccc;
 }
 
 .searchButton {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-} 
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
 
- .searchIcon {
-    font-size: 100%;
+.searchIcon {
+  font-size: 16px;
+}
+
+/* Estilos CSS para dispositivos móviles */
+@media (max-width: 767px) {
+  .searchForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .searchInput {
+    width: 100%;
+    max-width: 85%;
+    margin-bottom: 1rem /* Elimina el margen inferior */
+  }
+
+  .searchButton {
+    display: none; /* Oculta el botón de búsqueda en dispositivos móviles */
+  }
 }

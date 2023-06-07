@@ -9,9 +9,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const SearchBar = () => {
   const [name, setName] = useState("");
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const {user, isAuthenticated } = useAuth0()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth0();
 
   const handleInput = (e) => {
     setName(e.target.value);
@@ -19,16 +19,15 @@ const SearchBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(isAuthenticated){
-      dispatch(query({name, sub:user.sub}))
-      dispatch(getAllVideogames({name, sub:user.sub}))
+    if (isAuthenticated) {
+      dispatch(query({ name, sub: user.sub }));
+      dispatch(getAllVideogames({ name, sub: user.sub }));
     } else {
-      dispatch(query({name}))
-      dispatch(getAllVideogames(name))
+      dispatch(query({ name }));
+      dispatch(getAllVideogames(name));
     }
-    
 
-    navigate("/videogames")
+    navigate("/videogames");
   };
 
   return (

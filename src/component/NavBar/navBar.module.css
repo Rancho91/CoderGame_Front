@@ -1,5 +1,9 @@
 .navBar {
-  background-color: rgb(0, 0, 0);
+  background-image: url('https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686080483/g4guvzr3ivxfgxgrwc6v.png');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding-top: 2%;
   margin-bottom: 0;
   height: 25vh;
@@ -8,13 +12,16 @@
 .container {
   display: flex;
   align-items: center;
-
   margin-left: 0;
   margin-right: 0;
 }
 
+ .searchBarContainer {
+  
+ } 
+
 .logoContainer {
-  flex: 0 0 auto;
+  margin-bottom: 20px; /* Agrega un margen inferior para separarlo del SearchBar */
 }
 
 .logoLink {
@@ -22,6 +29,8 @@
 }
 
 .searchBarContainer {
-  flex: 1 1 auto;
- 
+  flex: 0 0 400px; /* Ajusta el ancho según tus necesidades */
+  margin-left: 10px; /* Agrega un margen izquierdo para separarlo del logo */
 }
+
+

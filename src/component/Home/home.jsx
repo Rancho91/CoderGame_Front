@@ -6,6 +6,7 @@ import imagenSlader from "./helper/imagenSlader";
 import SubNavBar from "../SubNavBar/SubNavBar";
 import Card from "../card/card"
 import styles from './home.module.css'
+import Carousel from "../Carousel/Carousel";
 
 const Home = () =>{
     const [arrSlader, setArrSlader] = useState([])
@@ -30,10 +31,11 @@ const Home = () =>{
         <div className={`container ${styles.home}`}>
             {/* <p />
             <SubNavBar />
-            <p /> */}
-            <div className="col-12 d-flex justify-content-center">
+        <p /> */}
+        <div> <Carousel /> </div>
+            {/* <div className="col-12 d-flex justify-content-center">
                 <Slider image={arrSlader}/>        
-            </div>
+            </div> */}
             <div className={`row d-flex justify-content-center ${styles.cardFooter}`}>
                     {arrGamesFooter?.map((game) => (
                     <div className={`col-md-5 col-sm-6${styles.card}`}>

@@ -70,6 +70,7 @@ const SubNavBar = () => {
 
 
     return (
+      <div className="container">
     <div className={`row ${styles.subnavbar} ${styles.noMarginBottom}`}>
       <nav className={`navbar navbar-expand`}>
         <div className="container-fuild">
@@ -126,6 +127,7 @@ const SubNavBar = () => {
 
 
       </nav>
+    </div>
     </div>
   );
 };
