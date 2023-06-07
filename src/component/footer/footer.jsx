@@ -7,6 +7,7 @@ const Footer = () =>{
     
     
     return(        
+        <div className="container">
         <footer className={`footer text-center ${styles.footer} `}>
         <div className="row">
             <div className="col-md-3">
@@ -75,6 +76,7 @@ const Footer = () =>{
         </div>
         
     </footer>
+    </div>
     )
     
 }
