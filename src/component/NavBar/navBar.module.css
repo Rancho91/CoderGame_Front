@@ -3,34 +3,35 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding-top: 2%;
-  margin-bottom: 0;
-  height: 25vh;
+  padding-top: 1%;
 }
 
+.logoContainer {
+  margin-bottom: 2%;
+  text-align: center; /* Centra horizontalmente el contenido */
+}
+
+.logo {
+  width: 60%; /* Ajusta el ancho del logo según tus necesidades */
+  height: auto; /* La altura se ajustará automáticamente proporcionalmente al ancho */
+  max-width: 100%; /* Asegura que el logo no exceda el ancho del contenedor */
+}
 
 .container {
   display: flex;
   align-items: center;
+  justify-content: center; /* Centra horizontalmente el contenido */
   margin-left: 0;
   margin-right: 0;
 }
 
- .searchBarContainer {
-  
- } 
-
-.logoContainer {
-  margin-bottom: 20px; /* Agrega un margen inferior para separarlo del SearchBar */
-}
-
-.logoLink {
-  display: inline-block;
-}
-
 .searchBarContainer {
-  flex: 0 0 400px; /* Ajusta el ancho según tus necesidades */
-  margin-left: 10px; /* Agrega un margen izquierdo para separarlo del logo */
+  flex: 0 0 350px; /* Ajusta el ancho según tus necesidades */
 }
 
-
+@media (max-width: 767px) {
+  .logoContainer {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido en dispositivos móviles */
+  }
+}
