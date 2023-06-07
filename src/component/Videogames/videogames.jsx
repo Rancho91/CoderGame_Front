@@ -2,12 +2,10 @@ import React from "react";
 import { useEffect, useState } from "react";
 import  Card  from "../card/card";
 import { useDispatch, useSelector } from "react-redux";
-import SubNavBar from "../SubNavBar/SubNavBar";
 import { all } from "axios";
 import { getAllVideogames, query, orderBy } from "../../redux/actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import styles from "./videogames.module.css"
-import Pagination from "./pagination"
 
 
 function Videogames (){
