@@ -1,5 +1,4 @@
-/* subnavbar.module.css */
-
+/* 
 .subnavbar {
   height: 100%;
   align-items: center;
@@ -8,8 +7,7 @@
   padding-top: 0;
   background-color: grey;
   padding-bottom: 1%;
-  /* border-bottom-left-radius:50px ;
-  border-bottom-right-radius: 50px; */
+ 
 }
 
 .navbar {
@@ -25,7 +23,7 @@
 }
 
 .heartIcon {
-  font-size: 2rem; /* Ajusta el tamaño del icono de corazón */
+  font-size: 2rem; 
 }
 
 .userIcon {
@@ -75,7 +73,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
-  font-size: 1.rem; /* Ajusta el tamaño del texto de enlace */
+  font-size: 1.rem;
   display: flex;
   align-items: flex-end;
   margin-bottom: 0;
@@ -85,7 +83,7 @@
   color: white;
   text-decoration: none;
   padding-right: 30%;
-  font-size: 1.7rem; /* Ajusta el tamaño del texto de enlace */
+  font-size: 1.7rem;
 }
 
 .navbar__item p {
@@ -143,4 +141,79 @@
   .navbar__item p {
     font-size: 0.6rem;
   }
+} */
+
+
+
+.subnavbar {
+  height: 50px; /* Ajusta la altura según tus necesidades */
+  margin-top: 3px; /* Ajusta el margen superior según tus necesidades */
+  margin-bottom: 3px;
+  align-items: center;
+  padding: 10px;
+  background-color: #B6FE02;
+}
+.siguienteElemento {
+  margin-top: 3px; /* Ajusta el margen superior según tus necesidades */
+}
+
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+.navbar__item select {
+  padding: 6px 12px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: rgb(6, 3, 3);
+  border: none;
+  flex-direction: row; /* Cambia "column" a "row" */
+  align-items: center; /* Agrega esta línea */
+  max-width: 150px;
+  font-size: 17px;
+}
+
+.navbar__item select option {
+  background-color: black;
+  color: white;
+}
+
+.genres,
+.platforms,
+.options,
+.allGamesLink{
+  margin-right: 1px; /* Ajusta el margen derecho según tus necesidades */
+  padding: 2px 6px; /* Ajusta el padding según tus necesidades */
+  font-size: 14px; /* Ajusta el tamaño de fuente según tus necesidades */
+}
+
+.allGamesButton {
+  text-decoration: none;
+  background-color: #B6FE02;
+
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.allGamesLink {
+  color: rgb(5, 1, 1);
+  font-weight: bold;
+}
+
+.heartIcon,
+.userIcon {
+  font-size: 24px;
+  margin-right: 5px;
+  color: rgb(10, 3, 3);
 }

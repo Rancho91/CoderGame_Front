@@ -7,74 +7,84 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./subnavbar.module.css";
 
-
-
-
 const SubNavBar = () => {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   const genresList = useSelector((state) => state.genresFilter);
-  const queryState = useSelector((state) => state.query)
+  const queryState = useSelector((state) => state.query);
   const platformsList = useSelector((state) => state.platformsFilter);
   const [filter, setFilter] = useState({});
   const dispatch = useDispatch();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-      const change = (event)=>{
-        let querys
-        if(isAuthenticated){
-          setFilter({...filter, sub:user.sub, ...queryState, [event.target.name]:event.target.value, })
-         querys = {...filter, sub:user.sub,...queryState, [event.target.name]:event.target.value,}}
-         else {
-          setFilter({...filter,...queryState, [event.target.name]:event.target.value })
-          querys = {...filter,...queryState, [event.target.name]:event.target.value }}
-        
-        dispatch(query(querys))
-        navigate('./videogames')
+  const change = (event) => {
+    let querys;
+    if (isAuthenticated) {
+      setFilter({
+        ...filter,
+        sub: user.sub,
+        ...queryState,
+        [event.target.name]: event.target.value,
+      });
+      querys = {
+        ...filter,
+        sub: user.sub,
+        ...queryState,
+        [event.target.name]: event.target.value,
+      };
+    } else {
+      setFilter({
+        ...filter,
+        ...queryState,
+        [event.target.name]: event.target.value,
+      });
+      querys = {
+        ...filter,
+        ...queryState,
+        [event.target.name]: event.target.value,
+      };
+    }
+
+    dispatch(query(querys));
+    navigate("./videogames");
+  };
+  console.log(filter);
+
+  useEffect(() => {
+    const get = () => {
+      dispatch(getAllVideogames({ ...filter, ...queryState, page: 1 }));
+    };
+    get();
+  }, [filter]);
+
+  const onChangeUser = (event) => {
+    switch (event.target.value) {
+      case "Login": {
+        loginWithRedirect();
+        break;
       }
-      console.log(filter)
-      
-      useEffect(()=>{
-        
-        const get = () =>{
-          dispatch(getAllVideogames({...filter,...queryState, page:1}))
-        }
-        get()
-      },[filter])
+      case "Logout": {
+        logout();
 
-      const onChangeUser = (event) =>{
-          switch(event.target.value){
-            case "Login":{
-              loginWithRedirect();
-              break
-            };
-            case "Logout":{
-              logout();
-
-              break
-            };
-            case "Profile":{
-              navigate("/profile");
-              break;
-            };
-            case "Create Game":{
-              navigate("/creategame")
-            }
-
-            default: break
-          }
+        break;
+      }
+      case "Profile": {
+        navigate("/profile");
+        break;
+      }
+      case "Create Game": {
+        navigate("/creategame");
       }
 
-
-
-
+      default:
+        break;
+    }
+  };
 
     return (
       <div className="container">
     <div className={`row ${styles.subnavbar} ${styles.noMarginBottom}`}>
-      <nav className={`navbar navbar-expand`}>
-        <div className="container-fuild">
-        </div>
+      <nav className={styles.navbar}>
         <div className={`col-3 ${styles.navbar__item}`}>
           <select name="genre" onChange={change}>
             <option value="">Genres</option>
@@ -97,17 +107,18 @@ const SubNavBar = () => {
         </div>
         <div className={`col-3 ${styles.navbar__item}`}>
             <Link to="/videogames" className={styles.allGamesButton}>
-            <a className={styles.allGamesLink}>🎮All Games</a>            </Link>
-        </div>
-        <div className={`col-3 d-flex flex-row ${styles.navbar__item}`}>
-              <div className="col-5">
-                <Link to="/favorites">
-                     <FontAwesomeIcon icon={faHeart} className={styles.heartIcon} />
-                      </Link>
-             </div>
+              <a className={styles.allGamesLink}>🎮All Games</a>{" "}
+            </Link>
+          </div>
+          <div className={`col-3 d-flex flex-row ${styles.navbar__item}`}>
+            <div className="col-5">
+              <Link to="/favorites">
+                <FontAwesomeIcon icon={faHeart} className={styles.heartIcon} />
+              </Link>
+            </div>
 
-              <div className={`col-5 ${styles.navbar__item}`}>
-                <FontAwesomeIcon icon={faUser} className={`${styles.userIcon}`} />
+            <div className={`col-5 ${styles.navbar__item}`}>
+              <FontAwesomeIcon icon={faUser} className={`${styles.userIcon}`} />
 
                 <select name="User" id="" onChange={onChangeUser}>
   <option value="options" disabled selected>Options</option>
@@ -123,9 +134,24 @@ const SubNavBar = () => {
 </select>
               </div>
               
+{/* 
+              <div className={`col-5 ${styles.navbar__item}`}>
+                   {isAuthenticated ? (
+                      <Link to="/" className={styles.loginLink}>
+                         <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
+                      </Link>
+                            ) : (
+                      < Link to="/login" className={styles.loginLink}>
+                     <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
+                        </Link>)}
+                </div> */}
 </div>
 
-
+        
+        
+        {/* <div className="col-3"> 
+              {isAuthenticated?<Logout/>:<Login rute="http://localhost:3000/"/> }  
+            </div> */}
       </nav>
     </div>
     </div>

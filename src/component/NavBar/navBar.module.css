@@ -1,6 +1,5 @@
 .navBar {
   background-image: url('https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686080483/g4guvzr3ivxfgxgrwc6v.png');
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -8,6 +7,7 @@
   margin-bottom: 0;
   height: 25vh;
 }
+
 
 .container {
   display: flex;

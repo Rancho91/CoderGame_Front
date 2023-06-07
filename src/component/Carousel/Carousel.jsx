@@ -42,7 +42,7 @@ const Carousel = () => {
   const images = [
     'https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686060579/lyhyzkvdovptmizpvrtm.png',
     'https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686060565/zjjo0pw4we6kdnheg6g8.png',
-    'https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686060560/yo3wmgb3bk1ggnq5cloy.png',
+    'https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686090081/xei361pmgikgj25hnqdr.png',
   ];
 
   const nextSlide = () => {
