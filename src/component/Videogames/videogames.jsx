@@ -7,6 +7,8 @@ import { all } from "axios";
 import { getAllVideogames, query, orderBy } from "../../redux/actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import styles from "./videogames.module.css"
+import Pagination from "./pagination"
+
 
 function Videogames (){
     const dispatch = useDispatch()
@@ -28,24 +30,35 @@ function Videogames (){
     const refreshHandler = () =>{
       setRefresh(!refresh)
     }
-    console.log(queryState)
     const orderByHandler=(event)=>{
 
       setOrder({order:event.target.name, ascDesc:event.target.value})
     }      
-    
+    console.log(pages, page)
     const renderButtons = () =>{
         let paginas = []
-        for(let i=1; i< pages;i++){
-            paginas.push(i)
+        if (page <= 3) {
+          for (let i = 1; i <= 5; i++) {
+            paginas.push(i);
+          }
+        } else if (page <= pages - 2) {
+          for (let i = page - 2; i <= page+2; i++) {
+            paginas.push(i);
+          }
+        } else{
+          for (let i = pages - 5; i <= pages; i++) {
+            paginas.push(i);
+          }
         }
         return paginas
       }
-
       const handlerFilter=(event)=>{
-          setPage(event.target.value)
+        if(event.target.value === "previous"){setPage(page-1)} 
+        else if(event.target.value === "next") {setPage(page+1)}
+        else{setPage(Number(event.target.value))}
+          
         }
-
+        console.log(page)
 useEffect(()=>{
   const get = ()=>{
      dispatch(getAllVideogames(queryState))
@@ -97,6 +110,8 @@ useEffect(()=>{
   </div>
   <div className="row justify-content-center">
   <div className={`col-md-12 d-flex justify-content-center `}>
+    {page == 1?(null):(<button onClick={handlerFilter} value="previous"> {"<"} </button>)}
+    
       {pages ? (
         renderButtons().map((pageNumb) => {
           return (
@@ -106,6 +121,8 @@ useEffect(()=>{
           );
         })
       ) : null}
+      {page == pages? (null):(<button onClick={handlerFilter} value="next"> {">"} </button>)}
+      
     </div>
   </div>
 </div>

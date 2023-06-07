@@ -33,12 +33,12 @@ function App() {
 
   })
   return (
-      <div class="fondo app-container">
+      <div class="fondo">
         <NavBar />
         <div className="container ">
            <SubNavBar/>
         </div>
-        <div className="main-content">
+
         <Routes >
           
           <Route path="/favorites" element={<Favorites/>}/>
@@ -51,8 +51,8 @@ function App() {
           <Route path="/payment/success" element={<PaymentSuccess />} />
           <Route path="/payment/failure" element={<PaymentFailure />}/>
         </Routes>
-        </div>
-                <Footer/>
+
+            <Footer/>
       </div>
   );
 }

@@ -7,7 +7,7 @@ const Footer = () =>{
     
     
     return(        
-        <footer className={`footer text-center ${styles.footer}`}>
+        <footer className={`footer text-center ${styles.footer} `}>
         <div className="row">
             <div className="col-md-3">
                 <img src="https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686082344/f7disvq5mkgf0jpvzgsy.png" alt="" 
