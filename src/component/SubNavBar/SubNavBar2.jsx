@@ -5,9 +5,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { getAllVideogames, query } from "../../redux/actions/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
-import styles from "./subnavbar.module.css";
+import styles from "./subnavbar2.module.css";
 
-const SubNavBar = () => {
+const SubNavBar2 = () => {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   const genresList = useSelector((state) => state.genresFilter);
   const queryState = useSelector((state) => state.query);
@@ -154,4 +154,4 @@ const SubNavBar = () => {
   );
 };
 
-export default SubNavBar;
+export default SubNavBar2;
