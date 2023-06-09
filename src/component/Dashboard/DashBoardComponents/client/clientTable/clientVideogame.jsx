@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Card, Table, TableHead, TableHeaderCell, TableBody, TableRow, TableCell, Text, Title, Badge } from "@tremor/react";
+import { Grid, Card, Table, TableHead, TableHeaderCell, TableBody, TableRow, TableCell, Text, Title, Badge } from "@tremor/react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const ClientVideogames = ({favorites}) =>{
@@ -7,6 +7,7 @@ const ClientVideogames = ({favorites}) =>{
 
 
     return (
+      <Grid>
         <Card>
         <Title>List of Swiss Federal Councillours</Title>
         <Table className="mt-5">
@@ -38,6 +39,7 @@ const ClientVideogames = ({favorites}) =>{
           </TableBody>
         </Table>
       </Card>
+      </Grid>
     )
 
 }

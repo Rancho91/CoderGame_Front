@@ -31,8 +31,7 @@ function Favorites() {
      getFavorites();
   }, [refresh ]);
 
- console.log(selectedGames)
-
+console.log(selectedGames)
   function handleAddList(id, condition) {
     if(!condition){
       setSelectedGames([...selectedGames, id]);
@@ -46,7 +45,7 @@ function Favorites() {
   async function handlePurchase() {
     try {
       const requestData = {
-        idVideogame: selectedGames.map(game => game.id),
+        idVideogame: selectedGames,
         idUser: user?.sub
       };
   

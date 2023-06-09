@@ -193,7 +193,7 @@ const Perfil = () => {
             {errors.linkYoutube && <p>{errors.linkYoutube}</p>}
             <label> Description:</label>
             <input           
-             className={styles.inputs}
+              className={styles.inputs}
               name="description"
               value={input.description}
               onChange={handleChange}
