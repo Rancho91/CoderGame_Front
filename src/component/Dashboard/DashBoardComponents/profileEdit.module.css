@@ -1,0 +1,92 @@
+.container{
+    padding: 1%;
+
+}
+.containerProfile{
+    padding:1%;
+    box-shadow: black;
+    border: black solid;
+}
+
+.text span{
+ color: white;
+ font-size: 1rem;
+ padding: 1%;
+ margin: 1%;
+
+}
+
+.inputs{
+    background-color: rgba(68, 66, 66, 0.331);
+    color:rgb(164, 161, 161);
+    font-size: 1.3rem;
+}
+
+.buttonEdit {
+    border:none;
+    padding: 1%;
+    margin:1%;
+    background-color: #b7fe0200;
+    flex-wrap: wrap;
+    margin-left: 10%;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: white;
+    font-weight:500;
+    font-size: 1.2rem;
+
+
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    background-color: #b7fe02be;
+    min-height: 30vh;
+    justify-content: space-around;
+    box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
+
+}
+
+.logout{
+    align-items: flex-end;
+    margin-left: 15%;
+}
+
+.logout button{
+    border:none;
+    padding: 1%;
+    margin-top: 2%;
+    margin:1%;
+    background-color: #b7fe0200;
+    flex-wrap: wrap;
+    
+    border-radius: 5px;
+    font-size: 1rem;
+    color: white;
+    font-weight:500;
+    font-size: 1.2rem;
+
+}
+
+.buttonNav {
+    border:none;
+    padding: 1%;
+    margin:1%;
+    background-color: #b7fe0200;
+    flex-wrap: wrap;
+    font-weight:500;
+    font-size: 1.2rem;
+    color: #b7fe02be;
+
+
+}
+
+.img img{
+    min-height: 15vh;
+}
+img{
+    border:  black solid 1px;
+    padding: 1%;
+}

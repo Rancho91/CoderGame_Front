@@ -10,7 +10,7 @@ function NavBar() {
       <nav className={`${styles.navBar}`}>
         <div className="container">
           <div className={`row ${styles.container}`}>
-            <div className={`col-md-6 ${styles.logoContainer}`}>
+            <div className={`col-md-4 ${styles.logoContainer}`}>
               <Link to={"/"} className={styles.logoLink}>
                 <img
                   // src="https://res.cloudinary.com/dnkaxvkr9/image/upload/v1684796467/samples/vaxtuoeyophrccpxzont.png"
@@ -20,7 +20,7 @@ function NavBar() {
                 />
               </Link>
             </div>
-            <div className={styles.searchBarContainer}>
+            <div className={`col-md-8 ${styles.searchBarContainer}`}>
               <SearchBar />
             </div>
           </div>
