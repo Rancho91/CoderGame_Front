@@ -1,39 +1,3 @@
-// import React from 'react';
-// import { useState } from "react";
-
-// const Carousel = () => {
-//   return (
-//     <div id="carouselExampleIndicators" className="carousel slide">
-//       <div className="carousel-indicators">
-//         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-//         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-//         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-//       </div>
-//       <div className="carousel-inner">
-//         <div className="carousel-item active">
-//           <img src="https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686060579/lyhyzkvdovptmizpvrtm.png" className="d-block w-100" alt="..." />
-//         </div>
-//         <div className="carousel-item">
-//           <img src="https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686060565/zjjo0pw4we6kdnheg6g8.png" className="d-block w-100" alt="..." />
-//         </div>
-//         <div className="carousel-item">
-//           <img src="https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686060560/yo3wmgb3bk1ggnq5cloy.png" className="d-block w-100" alt="..." />
-//         </div>
-//       </div>
-//       <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-//         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-//         <span className="visually-hidden">Previous</span>
-//       </button>
-//       <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-//         <span className="carousel-control-next-icon" aria-hidden="true"></span>
-//         <span className="visually-hidden">Next</span>
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default Carousel;
-
 import React, { useState, useEffect } from 'react';
 
 const Carousel = () => {

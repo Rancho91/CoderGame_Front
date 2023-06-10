@@ -9,12 +9,15 @@
 .logoContainer {
   margin-bottom: 2%;
   text-align: center; /* Centra horizontalmente el contenido */
+  border-color: rgb(255, 0, 0);
 }
 
 .logo {
   width: 60%; /* Ajusta el ancho del logo según tus necesidades */
   height: auto; /* La altura se ajustará automáticamente proporcionalmente al ancho */
   max-width: 100%; /* Asegura que el logo no exceda el ancho del contenedor */
+  border-color: transparent;
+
 }
 
 .container {
