@@ -7,6 +7,7 @@ export const getGenresFilter = () => {
   return async (dispatch) => {
     try {
       const response = await api.get("genres/filter");
+      console.log(api)
       dispatch({ type: GET_GENRES_FILTER, payload: response.data });
     } catch (error) {
       return window.alert("No se pudo hacer el pedido de géneros al servidor");
@@ -41,7 +42,7 @@ export const getGenres = () => {
 export const getPlatformsFilter = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/platforms/filter");
+      const response = await api.get("platforms/filter");
       dispatch({ type: GET_PLATFORMS_FILTER, payload: response.data });
     } catch (error) {
       return window.alert("No se pudo hacer el pedido de plataformas al servidor");

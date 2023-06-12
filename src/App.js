@@ -22,7 +22,7 @@ import axios from "axios";
 const {RUTA} = process.env
 console.log(RUTA)
 const api = axios.create({
-  baseURL: RUTA || "http://localhost:3001/"
+  baseURL: "https://codergameback-1-production.up.railway.app/"
 });
 
 function App() {
