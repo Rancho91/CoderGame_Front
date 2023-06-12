@@ -17,7 +17,14 @@ import CoinBuyer from "./component/CoinBuyer/CoinBuyer";
 import PaymentSuccess from "../src/component/CoinBuyer/PaymentSuccess"
 import PaymentFailure from "../src/component/CoinBuyer/PaymentFailure"
 import Footer from "./component/footer/footer";
- 
+import axios from "axios";
+
+const {RUTA} = process.env
+console.log(RUTA)
+const api = axios.create({
+  baseURL: RUTA || "http://localhost:3001/"
+});
+
 function App() {
   const {isAuthenticated,user}=useAuth0()
   const dispatch = useDispatch()
@@ -56,6 +63,6 @@ function App() {
       </div>
   );
 }
-
+export {api}
 export default App;
 

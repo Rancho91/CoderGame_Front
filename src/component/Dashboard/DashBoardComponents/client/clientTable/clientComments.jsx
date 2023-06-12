@@ -6,7 +6,7 @@ const ClientComments = ({comments}) =>{
     return (
         <Card>
         <Title>List of Swiss Federal Councillours</Title>
-        <Table className="mt-5">
+        <Table className="mt-4">
           <TableHead>
             <TableRow>
               <TableHeaderCell>Game</TableHeaderCell>

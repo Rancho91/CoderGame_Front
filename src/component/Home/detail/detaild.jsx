@@ -4,10 +4,12 @@ import { useParams } from "react-router";
 import Comments from "../../Comment/Comment";
 import axios from "axios";
 import styles from "./detail.module.css";
+import { api } from '../../../App'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useAuth0 } from "@auth0/auth0-react";
+import { alignPropType } from "react-bootstrap/esm/types";
 
 function Detail() {
   const { id } = useParams();
@@ -35,7 +37,7 @@ function Detail() {
     } else {
       try {
         console.log('entre a delete')
-        await axios.put("http://localhost:3001/user/favorites", requestData);
+        await api.put("user/favorites", requestData);
         setRefresh(!refresh)
       } catch (error) {
         window.alert(error.message);
@@ -46,8 +48,8 @@ function Detail() {
   const handleReport = async (event) => {
     try {
       const obj = { comment: event.target.id, text: event.target.value };
-      const response = await axios.post(
-        "http://localhost:3001/email/report/comment",
+      const response = await alignPropType.post(
+        "email/report/comment",
         obj
       );
       alert("Report submitted!");
@@ -61,8 +63,8 @@ function Detail() {
   useEffect(() => {
     const detail = async () => {
       try {
-        const gameData = await axios.put(
-          `http://localhost:3001/videogames/${id}`, {sub:user?user.sub:null}
+        const gameData = await api.put(
+          `videogames/${id}`, {sub:user?user.sub:null}
         );
         setGame(gameData.data);
       } catch (error) {

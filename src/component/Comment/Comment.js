@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import styles from "./comment.module.css";
+import { api } from '../../App'
 
 const Comments = ({ id }) => {
   const [comment, setComment] = useState("");
@@ -12,7 +13,7 @@ const Comments = ({ id }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:3001/videogames/comentario`, {
+      await api.post(`videogames/comentario`, {
         sub: user.sub,
         idVideogame: parseInt(id),
         comentario: comment

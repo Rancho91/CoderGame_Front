@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { api } from '../../App'
 
 function CheckoutForm({ coins }) {
   const [isProcessing, setIsProcessing] = useState(false);
@@ -20,6 +21,7 @@ function CheckoutForm({ coins }) {
         headers: {
           "Content-Type": "application/json",
         },
+
         body: JSON.stringify({
           coins: parseFloat(inputValue),
             inputValue: parseFloat(inputValue), 

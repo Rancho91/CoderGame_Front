@@ -8,6 +8,8 @@ import styles from "./profileEdit.module.css"
 import ClientVideogames from "./client/clientTable/clientVideogame"
 import ClientComments from "./client/clientTable/clientComments"
 import ClientTransaction from "./client/clientTable/clientTransactions"
+import CardBalance from "./client/clientCard/cardBalance";
+import { api } from '../../../App'
 
 const validation = (input) => {
   let errors = {};
@@ -43,7 +45,7 @@ const Perfil = () => {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:3001/user/profile/bybalance/${user.sub}`);
+        const { data } = await api.get(`user/profile/bybalance/${user.sub}`);
         setUserInfo(data);
         console.log(data)
       } catch (error) {
@@ -52,7 +54,7 @@ const Perfil = () => {
     };
     const getData = async () =>{
       try {
-          const {data} = await axios.get(`http://localhost:3001/user/buyer/${user?.sub}`)
+          const {data} = await api.get(`user/buyer/${user?.sub}`)
           setData(data)
       } catch (error) {
         console.log(error.message)
@@ -62,7 +64,7 @@ const Perfil = () => {
 
   const getTransaction = async () =>{
     try {
-        const {data} = await axios.get(`http://localhost:3001/user/bytransaction/${user?.sub}`)
+        const {data} = await api.get(`user/bytransaction/${user?.sub}`)
         setTransaction(data)
         console.log(data.Wallet.Transactions)
     } catch (error) {
@@ -72,7 +74,7 @@ const Perfil = () => {
     
     const fetchUserRole = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:3001/user/bytransaction/${user.sub}`);
+        const { data } = await api.get(`user/bytransaction/${user.sub}`);
       } catch (error) {
         console.error(error);
       }
@@ -124,7 +126,7 @@ const Perfil = () => {
           : userInfo?.profile.description,
       };
   
-      await axios.put("http://localhost:3001/user/profile", update);
+      await axios.put("user/profile", update);
       setInput({
         image: null,
         nickname: '',
@@ -151,7 +153,7 @@ const Perfil = () => {
   // if (!userInfo || !rolUser) {
   //   return null;
   // }
-
+console.log(userInfo?.balance.balance)
   return (
     <div className={`container-fluid`}>
       <div className="row min-vh-100 flex-column flex-md-row ">
@@ -223,6 +225,9 @@ const Perfil = () => {
             <div className="text-center"><button name="comments" className={styles.buttonNav} onClick={handleTable}>Comments</button></div>
         </div>
           <div className={`col-md-9`}>
+          <div className="col-md-3">
+          <CardBalance balance={userInfo?.balance.balance}/>
+          </div>
             {table=== "videogames"?(<ClientVideogames favorites={data?.favorites}/>):(null)} 
             {table=== "comments"?(<ClientComments comments={data?.comments}/>):(null)} 
             {table=== "transactions"?(<ClientTransaction transaction={transaction?.Wallet?.Transactions}/>):(null)} 

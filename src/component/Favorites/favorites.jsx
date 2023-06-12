@@ -4,7 +4,7 @@ import Card from "../card/card";
 import { useAuth0 } from "@auth0/auth0-react";
 import Login from "../NavBar/login/login";
 import styles from "./favorites.module.css"
-
+import { api } from '../../App'
 function Favorites() {
   const [listFavorites, setListFavorites] = useState([]);
   const [selectedGames, setSelectedGames] = useState([]);
@@ -19,8 +19,8 @@ function Favorites() {
     const getFavorites = async () => {
       if (isAuthenticated) {
         try {
-          const response = await axios.get(
-            `http://localhost:3001/user/favorites/${user?.sub}`
+          const response = await api.get(
+            `user/favorites/${user?.sub}`
           );
           setListFavorites(response.data.listFavorites);
         } catch (error) {
@@ -49,9 +49,10 @@ console.log(selectedGames)
         idUser: user?.sub
       };
   
-      const response = await axios.post("http://localhost:3001/payment/buy", requestData);
+      const response = await api.post("payment/buy", requestData);
       console.log("Buy request response:", response.data);
       setSelectedGames([]);
+      setRefresh(!refresh)
     } catch (error) {
       console.error(error);
     }

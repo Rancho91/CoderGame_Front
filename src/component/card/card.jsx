@@ -6,7 +6,7 @@ import { faHeart, faWindowRestore } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import {useLocation} from "react-router-dom"
-
+import { api } from '../../App'
 function Card({ game, refreshHandler, handleAddList, selectedGames }) {
   const { name, image, description, price, released, Favorites, id } = game;
   const { user, loginWithRedirect , isAuthenticated } = useAuth0();
@@ -16,7 +16,7 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
   const addDleneteFavorites = async () => {
     if (!Favorites.length) {
       try {
-        await axios.post("http://localhost:3001/user/favorites", {
+        await api.post("user/favorites", {
           idUser: user.sub,
           idVideogame: id,
         });
@@ -30,7 +30,7 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
       console.log("Deleting favorite game...");
 
       try {
-        await axios.put("http://localhost:3001/user/favorites", {
+        await api.put("/user/favorites", {
           idUser: user.sub,
           idVideogame: id,
         });
@@ -54,7 +54,7 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
         idVideogame: [game.id],
         idUser: user?.sub
       };
-      const response = await axios.post("http://localhost:3001/payment/buy", requestData);
+      const response = await api.post("/payment/buy", requestData);
       refreshHandler();
     } catch (error) {
       window.alert(error.message)

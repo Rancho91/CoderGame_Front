@@ -7,6 +7,7 @@ import SubNavBar from "../SubNavBar/SubNavBar";
 import Card from "../card/card"
 import styles from './home.module.css'
 import Carousel from "../Carousel/Carousel";
+import { api } from '../../App'
 
 const Home = () =>{
     const [arrSlader, setArrSlader] = useState([])
@@ -14,7 +15,7 @@ const Home = () =>{
 
     useEffect(()=>{    
         const videogames = async () => {
-            const response = await axios.get("http://localhost:3001/videogames")
+            const response = await api.get("videogames")
             return response.data
         }
         videogames().then((response)=>{
