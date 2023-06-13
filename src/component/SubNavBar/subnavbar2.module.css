@@ -1,10 +1,10 @@
-.subnavbar {
+/* .subnavbar {
   height: 50px;
   margin-top: 3px;
   margin-bottom: 3px;
   align-items: center;
   padding: 10px;
-  background-color: #B6FE02;
+  background-color: #fe7302;
 }
 
 .siguienteElemento {
@@ -53,7 +53,7 @@
 
 .allGamesButton {
   text-decoration: none;
-  background-color: #B6FE02;
+  background-color: #fe7302;
   padding: 8px 12px;
   border-radius: 5px;
 }
@@ -65,9 +65,9 @@
 
 .heartIcon,
 .userIcon {
-  font-size: 15px;
+  font-size: 24px;
   margin-right: 5px;
-  color: rgb(10, 3, 3);
+  color: rgb(246, 240, 240);
 }
 
 @media (max-width: 576px) {
@@ -79,7 +79,7 @@
   .allGamesLink {
     padding: 4px 8px !important;
     max-width: 120px !important;
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
 
   .heartIcon,
@@ -87,5 +87,4 @@
     font-size: 12px !important;
     margin-right: 3px !important;
   }
-}
-
+} */

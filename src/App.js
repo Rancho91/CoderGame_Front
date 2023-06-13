@@ -13,6 +13,7 @@ import Detail from "./component/Home/detail/detaild";
 import Favorites from "./component/Favorites/favorites"
 import Profile from "./component/Profile/Profile";
 import SubNavBar from "./component/SubNavBar/SubNavBar";
+import SubNavBar2 from "./component/SubNavBar/SubNavBar2";
 import CoinBuyer from "./component/CoinBuyer/CoinBuyer";
 import PaymentSuccess from "../src/component/CoinBuyer/PaymentSuccess"
 import PaymentFailure from "../src/component/CoinBuyer/PaymentFailure"
@@ -43,9 +44,10 @@ function App() {
       <div class="fondo">
         <NavBar />
         <div className="container ">
-           <SubNavBar/>
+          <SubNavBar/>
+          {/* <SubNavBar2/> */}
         </div>
-
+        
         <Routes >
           
           <Route path="/favorites" element={<Favorites/>}/>

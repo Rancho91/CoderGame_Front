@@ -81,35 +81,46 @@ const SubNavBar = () => {
     }
   };
 
-    return (
-      <div className="container">
-    <div className={`row ${styles.subnavbar} ${styles.noMarginBottom}`}>
-      <nav className={styles.navbar}>
-        <div className={`col-3 ${styles.navbar__item}`}>
-          <select name="genre" onChange={change}>
-            <option value="">Genres</option>
-            {genresList?.map((genre) => (
-              <option key={genre.id} value={genre.name}>
-                {genre.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className={`col-3 ${styles.navbar__item}`}>
-          <select name="platforms" onChange={change}>
-            <option value="">Platforms</option>
-            {platformsList?.map((platform) => (
-              <option key={platform.id} value={platform.name}>
-                {platform.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className={`col-3 ${styles.navbar__item}`}>
+  return (
+    <div className="container">
+
+      <div className={`row ${styles.subnavbar} ${styles.noMarginBottom}`}>
+        <nav className={styles.navbar}>
+          <div className={`col-3 ${styles.navbar__item}`}>
+            <select name="genre" onChange={change}>
+              <option value="">Genres</option>
+              {genresList?.map((genre) => (
+                <option key={genre.id} value={genre.name}>
+                  {genre.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+
+
+          <div className={`col-3 ${styles.navbar__item}`}>
+            <select name="platforms" onChange={change}>
+              <option value="">Platforms</option>
+              {platformsList?.map((platform) => (
+                <option key={platform.id} value={platform.name}>
+                  {platform.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+
+          <div className={`col-3 ${styles.navbar__item}`}>
             <Link to="/videogames" className={styles.allGamesButton}>
-              <a className={styles.allGamesLink}>🎮All Games</a>{" "}
+              <a className={styles.allGamesLink}>AllGames</a>{" "}
             </Link>
           </div>
+
+
+
+
+          
           <div className={`col-3 d-flex flex-row ${styles.navbar__item}`}>
             <div className="col-5">
               <Link to="/favorites">
@@ -120,40 +131,25 @@ const SubNavBar = () => {
             <div className={`col-5 ${styles.navbar__item}`}>
               <FontAwesomeIcon icon={faUser} className={`${styles.userIcon}`} />
 
-                <select name="User" id="" onChange={onChangeUser}>
-  <option value="options" disabled selected>Options</option>
-  <option name="Create Game"> Create Game</option>
-  {isAuthenticated ? (
-    <>
-      <option value="Profile">Profile</option>
-      <option value="Logout">Logout</option>
-    </>
-  ) : (
-    <option value="Login">Login</option>
-  )}
-</select>
-              </div>
-              
-{/* 
-              <div className={`col-5 ${styles.navbar__item}`}>
-                   {isAuthenticated ? (
-                      <Link to="/" className={styles.loginLink}>
-                         <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
-                      </Link>
-                            ) : (
-                      < Link to="/login" className={styles.loginLink}>
-                     <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
-                        </Link>)}
-                </div> */}
-</div>
 
-        
-        
-        {/* <div className="col-3"> 
-              {isAuthenticated?<Logout/>:<Login rute="http://localhost:3000/"/> }  
-            </div> */}
-      </nav>
-    </div>
+              <select name="User" id="" onChange={onChangeUser}>
+                <option value="options" disabled selected>
+                  Options
+                </option>
+                <option name="Create Game"> Create Game</option>
+                {isAuthenticated ? (
+                  <>
+                    <option value="Profile">Profile</option>
+                    <option value="Logout">Logout</option>
+                  </>
+                ) : (
+                  <option value="Login">Login</option>
+                )}
+              </select>
+            </div>
+          </div>
+        </nav>
+      </div>
     </div>
   );
 };
