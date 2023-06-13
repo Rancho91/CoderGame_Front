@@ -158,13 +158,15 @@ console.log(userInfo?.balance.balance)
   return (
     <div className={`container-fluid`}>
       <div className="row min-vh-100 flex-column flex-md-row ">
-      <div className={`col-md-3 col-xl-2 p-0 bg-dark flex-srink-1 justify-content-center ${styles.containerProfile}`}>
-      <div className={styles.profile}>
-        <div>
-          <button onClick={editHandler} className={styles.buttonEdit}>
-            Edit
-          </button>
-        </div>
+      <div className={`col-sm-3 col-md-3 col-xl-2 bg-dark justify-content-center ${styles.containerProfile}`}>
+      <div className="row flex-md-column flex-sm-row">
+
+          <div className={`col-6 col-md-12 ${styles.profile}`}>
+            <div>
+            <button onClick={editHandler} className={styles.buttonEdit}>
+              Edit
+            </button>
+            </div>
 
       {isActive? (
           <form onSubmit={submitHandle}>
@@ -220,17 +222,22 @@ console.log(userInfo?.balance.balance)
 
       </div>
       
-      
+      <div className="col-6 col-md-12 d-flex flex-column justify-content-center align-items-center">
           <div className="text-center" ><button onClick={handleTable} className={styles.buttonNav} name="videogames">Games</button></div>
           <div className="text-center"><button name="transactions" className={styles.buttonNav} onClick={handleTable}>Transactions</button></div>
             <div className="text-center"><button name="comments" className={styles.buttonNav} onClick={handleTable}>Comments</button></div>
         </div>
-          <div className={`col-md-9`}>
+        </div>
+
+      </div>
+          
+          <div className={`col-12 col-md-9`}>
           <div className="row justify-content-center mx-3">
-             <div className="col-md-3 -mb-3">
+             <div className="col-6 col-md-3 mb-3">
               <CardBalance balance={userInfo?.balance.balance}/>
               </div>
-              <div className="col-md-6 mb-3">
+
+              <div className="col-12 mb-3">
              <CardBuy/>
               </div>
            </div>

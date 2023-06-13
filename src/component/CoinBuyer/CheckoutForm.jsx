@@ -49,7 +49,7 @@ function CheckoutForm({ coins }) {
     <form id="payment-form" onSubmit={handleSubmit}>
        <p className={styles.title}>Cargar Coins:</p>
        <div className="row justify-content-center mx-3">
-    <div className="col-8">
+       <div className="col-8 d-flex align-items-center">
       <input className={styles.input} type="number" value={inputValue} onChange={handleChange} />
     </div>
     <div className="col-4">
