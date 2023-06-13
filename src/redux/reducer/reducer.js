@@ -1,4 +1,4 @@
-import { ORDEN_NAMES,GET_ALL_VIDEOGAMES ,GET_GENRES_FILTER, GET_PLATFORMS_FILTER, GET_GENRES, GET_PLATFORMS, POST_USER, USER_LOGOUT, QUERY, ORDER_BY } from '../actions/actionsTypes';
+import { PAGINATION, ORDEN_NAMES,GET_ALL_VIDEOGAMES ,GET_GENRES_FILTER, GET_PLATFORMS_FILTER, GET_GENRES, GET_PLATFORMS, POST_USER, USER_LOGOUT, QUERY, ORDER_BY } from '../actions/actionsTypes';
 
 
 
@@ -11,6 +11,7 @@ const initialState = {
   platformsFilter: [],
   allVideogames: [],
   query:{},
+  page:1,
 }
   
 
@@ -40,6 +41,8 @@ export default function reducer(state = initialState, action) {
             return{...state, allVideogames:action.payload};
           case QUERY:
             return{...state, query: action.payload};
+            case PAGINATION:
+              return{...state, page:action.payload};
            
         default:
                 return state;

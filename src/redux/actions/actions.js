@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ORDEN_NAMES, ORDER_BY, QUERY, GET_ALL_VIDEOGAMES, GET_GENRES_FILTER, GET_PLATFORMS_FILTER, GET_GENRES, GET_PLATFORMS, POST_USER, USER_LOGOUT } from './actionsTypes';
+import { ORDEN_NAMES, PAGINATION, ORDER_BY, QUERY, GET_ALL_VIDEOGAMES, GET_GENRES_FILTER, GET_PLATFORMS_FILTER, GET_GENRES, GET_PLATFORMS, POST_USER, USER_LOGOUT } from './actionsTypes';
 import { api } from '../../App'
 
 
@@ -14,6 +14,10 @@ export const getGenresFilter = () => {
     }
   };
 };
+
+export const pagination = (page)=>{
+  return{type:PAGINATION , payload:page}
+}
 
 export const getAllVideogames = (query) =>{
 

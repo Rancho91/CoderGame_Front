@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import  Card  from "../card/card";
 import { useDispatch, useSelector } from "react-redux";
 import { all } from "axios";
-import { getAllVideogames, query, orderBy } from "../../redux/actions/actions";
+import { getAllVideogames, query, orderBy, pagination } from "../../redux/actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import styles from "./videogames.module.css"
 
@@ -11,8 +11,9 @@ import styles from "./videogames.module.css"
 function Videogames (){
     const dispatch = useDispatch()
     const {Videogames, pages} = useSelector((state)=>state.allVideogames)
+    const pageGlobal = useSelector((state)=>state.page)
     const [refresh, setRefresh] = useState(true)
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(pageGlobal)
     const [order, setOrder] = useState({})
     const {user, isAuthenticated} = useAuth0()
     const [pageButton, setpageButton] =useState([])
@@ -20,10 +21,10 @@ function Videogames (){
     let queryState =useSelector((state)=>{
        if(isAuthenticated){
 
-      return {...state.query, page, sub:user.sub,...order}
+      return {...state.query, page:pageGlobal, sub:user.sub,...order}
     } else{
 
-      return {...state.query, page, ...order}
+      return {...state.query, page:pageGlobal, ...order}
     }})
 
     const refreshHandler = () =>{
@@ -41,12 +42,12 @@ function Videogames (){
             paginas.push(i);
             
           }
-        }else if (page <= 3) {
+        }else if (pageGlobal <= 3) {
           for (let i = 1; i <= 5; i++) {
             paginas.push(i);
           }
-        } else if (page <= pages - 2) {
-          for (let i = page - 2; i <= page+2; i++) {
+        } else if (pageGlobal <= pages - 2) {
+          for (let i = pageGlobal - 2; i <= pageGlobal+2; i++) {
             paginas.push(i);
           }
         } else{
@@ -58,9 +59,10 @@ function Videogames (){
       }
 
 const handlerFilter=(event)=>{
-  if(event.target.value === "previous"){setPage(page-1)} 
-  else if(event.target.value === "next") {setPage(page+1)}
-  else{setPage(Number(event.target.value))}
+  if(event.target.value === "previous"){
+    dispatch(pagination(pageGlobal-1))} 
+  else if(event.target.value === "next") {pagination(pageGlobal+1)}
+  else{dispatch(pagination(Number(event.target.value)))}
   }
 useEffect(()=>{
   const get = ()=>{
@@ -70,7 +72,7 @@ useEffect(()=>{
   renderButtons()
   get()
   return(()=>{})
-},[refresh,page,  order])
+},[refresh,pageGlobal,  order])
 
 
     return(
@@ -115,20 +117,20 @@ useEffect(()=>{
   </div>
   <div className="row justify-content-center">
   <div className={`col-md-12 d-flex justify-content-center `}>
-  {page === 1 || pages < 6 ?  null : (
+  {pageGlobal === 1 || pages < 6 ?  null : (
   <button onClick={handlerFilter} value="previous">{"<"}</button>
 ) }
     
       {pages ? (
         pageButton.map((pageNumb) => {
           return (
-            <button  name="page" value={pageNumb} onClick={handlerFilter} className={pageNumb==page?styles.selectedButton:styles.pageButton}>
+            <button  name="page" value={pageNumb} onClick={handlerFilter} className={pageNumb==pageGlobal?styles.selectedButton:styles.pageButton}>
               {pageNumb}
             </button>
           );
         })
       ) : null}
-      {page == pages || pages<6? (null):(<button onClick={handlerFilter} value="next"> {">"} </button>)}
+      {pageGlobal == pages || pages<6? (null):(<button onClick={handlerFilter} value="next"> {">"} </button>)}
       
     </div>
   </div>

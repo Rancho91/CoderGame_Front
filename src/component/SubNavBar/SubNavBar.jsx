@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllVideogames, query } from "../../redux/actions/actions";
+import { getAllVideogames, query, pagination } from "../../redux/actions/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./subnavbar.module.css";
@@ -44,7 +44,7 @@ const SubNavBar = () => {
         [event.target.name]: event.target.value,
       };
     }
-
+    dispatch(pagination(1))
     dispatch(query(querys));
     navigate("./videogames");
   };
