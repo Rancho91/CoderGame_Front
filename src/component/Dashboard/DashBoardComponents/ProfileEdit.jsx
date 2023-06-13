@@ -209,7 +209,7 @@ console.log(userInfo?.balance.balance)
             <button>Confirm</button>
           </form>
         ):(<div>
-          <div className={`text-center ${styles.img}`}><img src={user?.picture} alt="" className="img-fluid"/></div>
+          <div className={`text-center ${styles.img}`}><img src={user?.picture} alt="" className=""/></div>
           <div className={`text-center ${styles.text}`}><span>{user?.email}</span></div>
           <div className={`text-center ${styles.text}`}> <span>{user?.name}</span></div>
           </div>
@@ -237,7 +237,7 @@ console.log(userInfo?.balance.balance)
               <CardBalance balance={userInfo?.balance.balance}/>
               </div>
 
-              <div className="col-12 col-md-9 mb-3">
+              <div className="col-12 col-md-6 mb-3">
              <CardBuy/>
               </div>
            </div>

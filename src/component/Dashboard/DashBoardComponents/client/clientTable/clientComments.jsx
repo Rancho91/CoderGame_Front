@@ -5,7 +5,7 @@ const ClientComments = ({comments}) =>{
 
     return (
         <Card>
-        <Title>List of Swiss Federal Councillours</Title>
+        <Title>Comments</Title>
         <Table className="mt-4">
           <TableHead>
             <TableRow>

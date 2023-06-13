@@ -3,9 +3,7 @@
 
 }
 .containerProfile{
-    padding:1%;
     box-shadow: black;
-    border: black solid;
 }
 
 .text span{
@@ -84,9 +82,36 @@
 }
 
 .img img{
-    min-height: 15vh;
+    min-height: 10vh;
 }
 img{
     border:  black solid 1px;
     padding: 1%;
 }
+
+@media screen and (max-width: 768px) {
+    .container {
+      padding: 0.5%;
+    }
+  
+    .text span {
+      font-size: 0.8rem;
+      padding: 0.5%;
+    }
+  
+    .inputs {
+      font-size: 1rem;
+    }
+  
+    .buttonEdit {
+      margin-left: 5%;
+      font-size: 1rem;
+    }
+  
+    .buttonNav {
+      font-size: 1rem;
+    }
+    .img img{
+        height: 20px;
+    }
+  }

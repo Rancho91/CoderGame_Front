@@ -7,7 +7,7 @@ const ClientVideogames = ({favorites}) =>{
 
     return (
         <Card>
-        <Title>List of Swiss Federal Councillours</Title>
+        <Title>Videogames</Title>
         <Table className={styles.table}>
           <TableHead>
             <TableRow>

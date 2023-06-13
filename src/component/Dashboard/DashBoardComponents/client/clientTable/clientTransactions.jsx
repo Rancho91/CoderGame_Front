@@ -7,7 +7,7 @@ console.log(transaction)
 
     return (
         <Card>
-        <Title>List of Swiss Federal Councillours</Title>
+        <Title>Transactions</Title>
         <Table className="mt-5">
           <TableHead>
             <TableRow>
