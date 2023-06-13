@@ -237,7 +237,7 @@ console.log(userInfo?.balance.balance)
               <CardBalance balance={userInfo?.balance.balance}/>
               </div>
 
-              <div className="col-12 mb-3">
+              <div className="col-12 col-md-9 mb-3">
              <CardBuy/>
               </div>
            </div>

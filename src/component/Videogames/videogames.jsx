@@ -15,6 +15,7 @@ function Videogames (){
     const [page, setPage] = useState(1)
     const [order, setOrder] = useState({})
     const {user, isAuthenticated} = useAuth0()
+    const [pageButton, setpageButton] =useState([])
 
     let queryState =useSelector((state)=>{
        if(isAuthenticated){
@@ -32,10 +33,15 @@ function Videogames (){
 
       setOrder({order:event.target.name, ascDesc:event.target.value})
     }      
-    console.log(pages, page)
+
     const renderButtons = () =>{
         let paginas = []
-        if (page <= 3) {
+        if(pages<6) {
+          for (let i = 1; i <= pages; i++) {
+            paginas.push(i);
+            
+          }
+        }else if (page <= 3) {
           for (let i = 1; i <= 5; i++) {
             paginas.push(i);
           }
@@ -48,22 +54,23 @@ function Videogames (){
             paginas.push(i);
           }
         }
-        return paginas
+        setpageButton(paginas)
       }
-      const handlerFilter=(event)=>{
-        if(event.target.value === "previous"){setPage(page-1)} 
-        else if(event.target.value === "next") {setPage(page+1)}
-        else{setPage(Number(event.target.value))}
-          
-        }
-        console.log(page)
+
+const handlerFilter=(event)=>{
+  if(event.target.value === "previous"){setPage(page-1)} 
+  else if(event.target.value === "next") {setPage(page+1)}
+  else{setPage(Number(event.target.value))}
+  }
 useEffect(()=>{
   const get = ()=>{
      dispatch(getAllVideogames(queryState))
      
   }
+  renderButtons()
   get()
-},[page,refresh, order])
+  return(()=>{})
+},[refresh,page,  order])
 
 
     return(
@@ -108,10 +115,12 @@ useEffect(()=>{
   </div>
   <div className="row justify-content-center">
   <div className={`col-md-12 d-flex justify-content-center `}>
-    {page == 1?(null):(<button onClick={handlerFilter} value="previous"> {"<"} </button>)}
+  {page === 1 || pages < 6 ?  null : (
+  <button onClick={handlerFilter} value="previous">{"<"}</button>
+) }
     
       {pages ? (
-        renderButtons().map((pageNumb) => {
+        pageButton.map((pageNumb) => {
           return (
             <button  name="page" value={pageNumb} onClick={handlerFilter} className={pageNumb==page?styles.selectedButton:styles.pageButton}>
               {pageNumb}
@@ -119,7 +128,7 @@ useEffect(()=>{
           );
         })
       ) : null}
-      {page == pages? (null):(<button onClick={handlerFilter} value="next"> {">"} </button>)}
+      {page == pages || pages<6? (null):(<button onClick={handlerFilter} value="next"> {">"} </button>)}
       
     </div>
   </div>
