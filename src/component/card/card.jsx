@@ -14,33 +14,40 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
   const location = useLocation()
 
   const addDleneteFavorites = async () => {
-    if (!Favorites.length) {
-      try {
-        await api.post("user/favorites", {
-          idUser: user.sub,
-          idVideogame: id,
-        });
-        refreshHandler();
-        console.log("Updated Game Data (Add Favorite):", refreshHandler); // Log new game data
-
-      } catch (error) {
-        window.alert(error.message);
+    if(isAuthenticated){
+      if (!Favorites.length) {
+        try {
+          await api.post("user/favorites", {
+            idUser: user.sub,
+            idVideogame: id,
+          });
+          refreshHandler();
+          console.log("Updated Game Data (Add Favorite):", refreshHandler); // Log new game data
+  
+        } catch (error) {
+          window.alert(error.message);
+        }
+      } else {
+        console.log("Deleting favorite game...");
+  
+        try {
+          await api.put("/user/favorites", {
+            idUser: user.sub,
+            idVideogame: id,
+          });
+          refreshHandler();
+          console.log("Updated Game Data (Remove Favorite):", refreshHandler);
+  
+        } catch (error) {
+          window.alert(error.message);
+        }
       }
-    } else {
-      console.log("Deleting favorite game...");
 
-      try {
-        await api.put("/user/favorites", {
-          idUser: user.sub,
-          idVideogame: id,
-        });
-        refreshHandler();
-        console.log("Updated Game Data (Remove Favorite):", refreshHandler);
-
-      } catch (error) {
-        window.alert(error.message);
-      }
+    } else{
+      loginWithRedirect()
     }
+
+    
   };
 
   const handleCardClick = () => {

@@ -9,6 +9,7 @@ import ClientVideogames from "./client/clientTable/clientVideogame"
 import ClientComments from "./client/clientTable/clientComments"
 import ClientTransaction from "./client/clientTable/clientTransactions"
 import CardBalance from "./client/clientCard/cardBalance";
+import CardBuy from "./client/clientCard/cardBuy"
 import { api } from '../../../App'
 
 const validation = (input) => {
@@ -225,9 +226,15 @@ console.log(userInfo?.balance.balance)
             <div className="text-center"><button name="comments" className={styles.buttonNav} onClick={handleTable}>Comments</button></div>
         </div>
           <div className={`col-md-9`}>
-          <div className="col-md-3">
-          <CardBalance balance={userInfo?.balance.balance}/>
-          </div>
+          <div className="row justify-content-center mx-3">
+             <div className="col-md-3 -mb-3">
+              <CardBalance balance={userInfo?.balance.balance}/>
+              </div>
+              <div className="col-md-6 mb-3">
+             <CardBuy/>
+              </div>
+           </div>
+          
             {table=== "videogames"?(<ClientVideogames favorites={data?.favorites}/>):(null)} 
             {table=== "comments"?(<ClientComments comments={data?.comments}/>):(null)} 
             {table=== "transactions"?(<ClientTransaction transaction={transaction?.Wallet?.Transactions}/>):(null)} 

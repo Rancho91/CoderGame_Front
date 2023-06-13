@@ -1,14 +1,14 @@
 import React from "react"
 import { Card } from "react-bootstrap"
 import styles from "./cardBalance.module.css"
+import CoinBuyer from "../../../../CoinBuyer/CoinBuyer";
 
-const CardBalance = ({balance}) =>{
+const CardBuy = () =>{
 
 return (
 <Card className={`max-w-xs mx-auto ${styles.container}`}decoration="top" decorationColor="indigo">
-    <h3 className={styles.title}>Coins</h3>
-    <p className={styles.balance}>{balance?balance:0}</p>
-  </Card>
+        <CoinBuyer />
+</Card>
 )}
 
-export default CardBalance
+export default CardBuy

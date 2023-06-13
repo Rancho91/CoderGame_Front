@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { userLogout } from "../../redux/actions/actions";
 import Perfil from "../Dashboard/DashBoardComponents/ProfileEdit";
 import CoinBuyer from "../CoinBuyer/CoinBuyer";
-
+import styles from "./profile.module.css"
 function Profile() {
   const { isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
@@ -18,17 +18,8 @@ function Profile() {
     <div>Loading ...</div>
   ) : (
     isAuthenticated && (
-      <div>
-        <div>
-          <h2>Cargar Coin</h2>
-          <CoinBuyer />
-          {/* <button onClick={handleButtonClick}>Cargar saldo</button> */}
-        </div>
-        
-        <div>
-          {/* <h2>Perfil</h2> */}
+      <div className={styles.container}>
           <Perfil />
-        </div>
       </div>
     )
   );

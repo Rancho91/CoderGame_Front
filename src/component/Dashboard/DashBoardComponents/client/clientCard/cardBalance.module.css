@@ -1,0 +1,23 @@
+.title{
+    margin: 2%;
+    font-size: 1.2rem;
+    margin-left: 10%;
+    margin-bottom: 0;
+    color: #b7fe02be;
+    
+}
+.container{
+    background-color: rgb(68, 66, 66);
+    box-shadow: inset 2px -1px 20px rgba(177, 254, 153, 0.7);
+    border:none;
+}
+
+.balance{
+    margin: 2%;
+    margin-top: 0;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #b7fe02be;
+    font-weight:500;
+
+}

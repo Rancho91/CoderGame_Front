@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { api } from '../../App'
-
+import styles from "./CoinBuyer.module.css"
 function CheckoutForm({ coins }) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [message, setMessage] = useState(null);
@@ -47,15 +47,23 @@ function CheckoutForm({ coins }) {
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
-      <label>
-        Cargar Coins:
-        <input type="number" value={inputValue} onChange={handleChange} />
-      </label>
-      <button disabled={isProcessing} id="submit">
-        <span id="button-text">
-          {isProcessing ? "Processing..." : "Pay now"}
-        </span>
-      </button>
+       <p className={styles.title}>Cargar Coins:</p>
+       <div className="row justify-content-center mx-3">
+    <div className="col-8">
+      <input className={styles.input} type="number" value={inputValue} onChange={handleChange} />
+    </div>
+    <div className="col-4">
+        <button disabled={isProcessing} id="submit" className={styles.button}>
+          <span id="button-text">
+            {isProcessing ? "Processing..." : "Pay now"}
+          </span>
+        </button>
+    </div>
+      
+      
+
+ </div>
+        
       {message && <div id="payment-message">{message}</div>}
     </form>
   );

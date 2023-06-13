@@ -1,0 +1,32 @@
+.container{
+    padding:1%;
+}
+
+.button{
+    border:none;
+    background-color: #b7fe0200;
+    flex-wrap: wrap;
+    font-weight:500;
+    font-size: 2rem;
+    color: #b7fe02be;
+}
+.input{
+    font-size: 1.5rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: none;
+    padding: 1%;
+    padding-left: 3%;
+    background-color: #b7fe0269;
+    border-radius: 10px;
+}
+.title{
+    margin: 2%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    margin-left: 10%;
+    color: #b7fe02be;
+}
