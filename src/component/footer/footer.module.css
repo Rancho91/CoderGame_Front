@@ -22,3 +22,17 @@
   color: rgb(220, 209, 209);
   font-weight: bold;
 }
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 1rem;
+  }
+
+  .text {
+    font-size: 0.9rem;
+  }
+  .imgSmaller{
+    height: 15px;
+  }
+}
+
