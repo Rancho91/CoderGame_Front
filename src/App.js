@@ -45,7 +45,7 @@ function App() {
         <NavBar />
         <div className="container ">
           <SubNavBar/>
-          <SubNavBar2/>
+          {/* <SubNavBar2/> */}
         </div>
         
         <Routes >
