@@ -48,7 +48,6 @@ const SubNavBar = () => {
     dispatch(query(querys));
     navigate("./videogames");
   };
-  console.log(filter);
 
   useEffect(() => {
     const get = () => {

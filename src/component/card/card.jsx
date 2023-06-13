@@ -84,35 +84,38 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
       } ${styles.container}`}
       onClick={handleCardClick}
     >
-      <div className={`row ${styles.title}`}>
-        <div className={`${styles.price}`}>
-          <p className="mt-3 mr-3">{price}</p>
-        </div>
-        <div className="col-12">
-          <h1>{name}</h1>
-        </div>
-      </div>
-      <Link to={`/videogames/${id}`}>
+
+      
         <div
           className={`row ${styles.image}`}
           style={{ backgroundImage: `url(${image})` }}
-        ></div>
+        >
+                     
+          <button onClick={addDleneteFavorites} className={styles.buttonHeart}>
+            <FontAwesomeIcon
+            icon={faHeart}
+            className={
+            Favorites?.length ? styles.heartIconFav : styles.heartIcon
+            }/>
+          </button>
+        </div>
+
+        
+        <div className={`row ${styles.title}`}>
+        
+        <Link to={`/videogames/${id}`} className={styles.link}> <div className="col-12">
+          <h1 className={styles.name}>{name}</h1>
+
+         </div>   
       </Link>
+      </div>
       {Favorites?.length && Favorites[0].buy?(<p>Purched</p>):(
       <div className="row">
+
         <div className={`col-6 ${styles.buy}`}>
-          
-         
-                    <button onClick={addDleneteFavorites}>
-                    <FontAwesomeIcon
-                    icon={faHeart}
-                    className={
-                      Favorites?.length ? styles.heartIconFav : styles.heartIcon
-                    }/>
-                    </button>
-                  
-          
+          <p className="mt-3 mr-3">{price}</p>
         </div>
+
         <div className={`col-6 ${styles.buy}`}>
           {
             location?.pathname=="/favorites"?(

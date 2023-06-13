@@ -1,9 +1,9 @@
 .container {
-  margin: 2%;
+  margin: 5%;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
-  padding: 5%;
+
 }
 
 .title {
@@ -16,18 +16,27 @@
   box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
 }
 
+.link{
+  text-decoration:none;
+  text-decoration-style: none;
+  text-decoration-line: none;
+}
+
 .title h1 {
   font-size: 1.2rem;
   color: aliceblue;
 }
 
 .image {
-  height: 150px;
+  min-height: 180px;
+  display:flex;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 2%;
-  margin: 2%;
+
+  justify-content: flex-end;
+  align-items: flex-start;
+
 }
 
 .description {
@@ -62,32 +71,42 @@
 }
 
 .heartIcon {
-  color: #00000071;
+  color: #ffffffba;
+  font-size: 1.8rem;
+  background-color: transparent;
+}
+.buttonHeart{
+  background-color: #05000000;
+  padding-right:10%;
+  padding-top: 2%;
+  border:none;
+  display:flex;
+  justify-content: flex-end;
+
+}
+.heartIconFav {
+  color: #fe0404;
+  font-size: 1.8rem;
   background-color: transparent;
 }
 
-.heartIconFav {
-  color: #fe0404;
-}
 
-.price {
-  position: relative;
-}
-
-.price p {
-  transition: opacity 1s ease;
-  font-size: 1.3rem;
-  background-color: rgb(5, 83, 4);
-  box-shadow: inset 2px -1px 20px rgb(0 0 0 / 70%);
-  padding: 0 1% 0 1%;
-  color: white;
-  position: absolute;
-  border-radius: 10px;
-  padding: 0 5% 0 5%;
-  transform: translateY(+50%) translatex(-10%);
-}
 
 .buySelected {
   background-color: red;
   color: white;
+}
+
+.container:hover .heartIcon {
+  color: #79fe04;
+}
+
+.container:hover .name {
+  color: red;
+
+}
+
+.name{
+  font-size: 1.2rem;
+  color: aliceblue;
 }
