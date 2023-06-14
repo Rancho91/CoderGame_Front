@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Card from "../card/card";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVideogames, query, orderBy } from "../../redux/actions/actions";
+import {
+  getAllVideogames,
+  query,
+  orderBy,
+  pagination,
+} from "../../redux/actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import styles from "./videogames.module.css";
+import { useNavigate } from "react-router-dom";
 
 function Videogames() {
   const dispatch = useDispatch();
@@ -14,13 +20,22 @@ function Videogames() {
   const { user, isAuthenticated } = useAuth0();
   const [pageButton, setpageButton] = useState([]);
 
-  let queryState = useSelector((state) => {
-    if (isAuthenticated) {
-      return { ...state.query, page, sub: user.sub, ...order };
-    } else {
-      return { ...state.query, page, ...order };
-    }
-  });
+  const genresList = useSelector((state) => state.genresFilter);
+  const platformsList = useSelector((state) => state.platformsFilter);
+  const [filter, setFilter] = useState({});
+  const navigate = useNavigate();
+
+  const change = (event) => {
+    setFilter({
+      ...filter,
+      [event.target.name]: event.target.value,
+      page,
+      ...order,
+      sub: isAuthenticated ? user.sub : undefined,
+    });
+    dispatch(pagination(1));
+    dispatch(query(filter));
+  };
 
   const refreshHandler = () => {
     setRefresh(!refresh);
@@ -67,12 +82,19 @@ function Videogames() {
 
   useEffect(() => {
     const get = () => {
-      dispatch(getAllVideogames(queryState));
+      const queryData = {
+        ...filter,
+        page,
+        order: order.order,
+        ascDesc: order.ascDesc,
+        sub: isAuthenticated ? user.sub : undefined,
+      };
+      dispatch(getAllVideogames(queryData));
     };
     renderButtons();
     get();
     return () => {};
-  }, [refresh, page, order]);
+  }, [refresh, page, order, filter]);
 
   return (
     <div className={`container justify-content-center ${styles.videogames}`}>
@@ -86,15 +108,44 @@ function Videogames() {
               className={styles.orderSelect}
             >
               <option value="">Ordering</option>
-
               <option value="price-asc">Price: Low to High</option>
               <option value="price-desc">Price: High to Low</option>
-
               <option value="released-asc">Date: Newest First</option>
               <option value="released-desc">Date: Oldest First</option>
-
               <option value="name-asc">Alphabet: A-Z</option>
               <option value="name-desc">Alphabet: Z-A</option>
+            </select>
+          </div>
+
+          <div className="mx-2">
+            <select
+              name="genre"
+              onChange={change}
+              value={filter.genre || ""}
+              className={`${styles.orderSelect} ${styles.selectedSelect}`}
+            >
+              <option value="">Genres</option>
+              {genresList?.map((genre) => (
+                <option key={genre.id} value={genre.name}>
+                  {genre.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mx-2">
+            <select
+              name="platforms"
+              onChange={change}
+              value={filter.platforms || ""}
+              className={`${styles.orderSelect} ${styles.selectedSelect}`}
+            >
+              <option value="">Platforms</option>
+              {platformsList?.map((platform) => (
+                <option key={platform.id} value={platform.name}>
+                  {platform.name}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -124,6 +175,7 @@ function Videogames() {
             ? pageButton.map((pageNumb) => {
                 return (
                   <button
+                    key={pageNumb}
                     name="page"
                     value={pageNumb}
                     onClick={handlerFilter}
@@ -150,4 +202,3 @@ function Videogames() {
 }
 
 export default Videogames;
-
