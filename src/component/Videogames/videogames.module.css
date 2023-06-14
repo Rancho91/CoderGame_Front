@@ -1,46 +1,34 @@
-.videogames{
-    min-height:50vh;
-}
-
-.pageButton{
-    border: none;
-    margin:1%;
-    box-shadow: 6px 4px 9px 0px rgb(0 0 0 / 70%);
-    font-size: 1.3rem;
-    font-weight: bold;
-    padding:1%;
-    border-radius: 50%;
-}
-.selectedButton {
-    border: none;
-    margin:1%;
-    box-shadow: 6px 4px 9px 0px rgb(0 0 0 / 70%);
-    background-color: rgb(115, 113, 113);
-    font-size: 1.3rem;
-    font-weight: bold;
-    padding:1%;
-    border-radius: 50%;
-}
+.videogames {
+    min-height: 50vh;
+  }
   
-.orderButton {
+  .ordering {
+    height: 50px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    align-items: center;
+    padding: 10px;
+    background-color: #fe7302;
+  }
+  
+  .orderSelect {
     border: none;
-    margin:1%;
-    box-shadow: 6px 4px 9px 0px rgb(0 0 0 / 70%);
-    font-size: 1.5rem;
+    margin: 1%;
+    font-size: 14px;
     font-weight: bold;
-    padding:2%;
+    padding: 2%;
     border-radius: 15px;
-    
-}
-
-.selectedOrder {
+    background-color: transparent;
+  }
+  
+  .selectedSelect {
     border: none;
-    margin:1%;
-    box-shadow: 6px 4px 9px 0px rgb(0 0 0 / 70%);
-    background-color: rgb(115, 113, 113);
-    font-size: 1.5rem;
+    margin: 1%;
+    font-size: 14px;
     font-weight: bold;
-    padding:2%;
+    padding: 2%;
     border-radius: 15px;
+    background-color:transparent;
     
-}
+  }
+  
