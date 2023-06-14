@@ -103,7 +103,7 @@ function Videogames() {
       <div className="row justify-content-center">
         {Videogames ? (
           Videogames.map((game) => (
-            <div className="col-sm-12 col-md-3">
+            <div className="col-sm-6 col-md-3">
               <Card game={game} refreshHandler={refreshHandler} />
             </div>
           ))
