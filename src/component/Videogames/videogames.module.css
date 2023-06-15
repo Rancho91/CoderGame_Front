@@ -1,34 +1,61 @@
 .videogames {
-    min-height: 50vh;
-  }
+  min-height: 50vh;
   
+}
+
+.ordering {
+  height: 50px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #fe7302;
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
+
+.orderSelect {
+  border: none;
+  margin: 1% 0;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 2%;
+  border-radius: 15px;
+  background-color: transparent;
+  flex: 1 1 auto;
+  max-width: calc(80% - 11%);
+}
+
+.selectedSelect {
+  border: none;
+  margin: 1% 0;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 2%;
+  border-radius: 15px;
+  background-color: transparent;
+  flex: 1 1 auto;
+  max-width: calc(80% - 11%);
+}
+
+@media (max-width: 576px) {
   .ordering {
-    height: 50px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    align-items: center;
-    padding: 10px;
-    background-color: #fe7302;
+    font-size: 10px;
   }
-  
-  .orderSelect {
-    border: none;
-    margin: 1%;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 2%;
-    border-radius: 15px;
-    background-color: transparent;
-  }
-  
+
+  .orderSelect,
+  select,
   .selectedSelect {
-    border: none;
-    margin: 1%;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 2%;
-    border-radius: 15px;
-    background-color:transparent;
-    
+    padding: 4px 8px;
+    max-width: 85px;
+    font-size: 10px;
   }
-  
+
+  .ordering > div {
+    margin: 1% 1%;
+    width: 100%;
+  }
+}

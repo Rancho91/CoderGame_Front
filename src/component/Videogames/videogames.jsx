@@ -100,7 +100,7 @@ function Videogames() {
     <div className={`container justify-content-center ${styles.videogames}`}>
       <div className={styles.ordering}>
         <div className="d-flex justify-content-center align-items-center">
-          <div className="mx-2">
+          <div className="mx-1">
             <select
               name="order"
               onChange={orderByHandler}
@@ -116,8 +116,8 @@ function Videogames() {
               <option value="name-desc">Alphabet: Z-A</option>
             </select>
           </div>
-
-          <div className="mx-2">
+  
+          <div className="mx-1">
             <select
               name="genre"
               onChange={change}
@@ -132,8 +132,8 @@ function Videogames() {
               ))}
             </select>
           </div>
-
-          <div className="mx-2">
+  
+          <div className="mx-1">
             <select
               name="platforms"
               onChange={change}
@@ -150,7 +150,7 @@ function Videogames() {
           </div>
         </div>
       </div>
-
+  
       <div className="row justify-content-center">
         {Videogames ? (
           Videogames.map((game) => (
@@ -162,7 +162,7 @@ function Videogames() {
           <div className="col-12">Loading</div>
         )}
       </div>
-
+  
       <div className="row justify-content-center">
         <div className={`col-md-12 d-flex justify-content-center`}>
           {page === 1 || pages < 6 ? null : (
@@ -170,7 +170,7 @@ function Videogames() {
               {"<"}
             </button>
           )}
-
+  
           {pages
             ? pageButton.map((pageNumb) => {
                 return (
@@ -199,6 +199,7 @@ function Videogames() {
       </div>
     </div>
   );
+  
 }
 
 export default Videogames;
