@@ -4,6 +4,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  
+}
+.logo {
+  border-color: transparent;
 }
 
 .imgSmaller{
