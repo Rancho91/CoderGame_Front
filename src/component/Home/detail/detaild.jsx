@@ -79,6 +79,7 @@ function Detail() {
 console.log(game)
 
   return (
+    <div className="container">
     <div className={`${styles.container} mt-3 mb-3`}>
       <div className="row">
         <div className="col-md-4">
@@ -183,6 +184,7 @@ console.log(game)
         ))}
       </div>
       <Comments id={id} />
+    </div>
     </div>
   );
 }
