@@ -50,10 +50,12 @@ button {
   background-color: #fe7302;
 }
 
-button:hover {
+
+
+/* button:hover {
   color: #fe7302;
   background-color: #79fe04;
-}
+} */
 
 
 @media (max-width: 576px) {
