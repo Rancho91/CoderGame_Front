@@ -10,6 +10,8 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import styles from "./videogames.module.css";
 import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function Videogames() {
   const dispatch = useDispatch();
@@ -97,7 +99,8 @@ function Videogames() {
   }, [refresh, page, order, filter]);
 
   return (
-    <div className={`container justify-content-center ${styles.videogames}`}>
+    <div className="container">
+    <div className={` ${styles.videogames}`}>
       <div className={styles.ordering}>
         <div className="d-flex justify-content-center align-items-center">
           <div className="mx-1">
@@ -197,6 +200,7 @@ function Videogames() {
           )}
         </div>
       </div>
+    </div>
     </div>
   );
   

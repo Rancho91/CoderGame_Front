@@ -1,11 +1,15 @@
 .videogames {
   min-height: 50vh;
+  border-color: #fe7302;
+  border: 2px solid #fe7302;
+  align-items: center;
+  /* background-color: #fe7302 */
   
 }
 
 .ordering {
   height: 50px;
-  margin-top: 3px;
+  
   margin-bottom: 3px;
   flex-direction: column;
   align-items: center;
@@ -14,7 +18,7 @@
   background-color: #fe7302;
   display: flex;
   flex-wrap: wrap;
- 
+  /* border-radius: 15px; */
 }
 
 .orderSelect {
