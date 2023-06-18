@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from "./carousel.module.css";
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -34,7 +35,8 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="carousel">
+    
+  <div className={styles.carousel}>
       <div className="carousel-inner">
         {images.map((image, index) => (
           <div

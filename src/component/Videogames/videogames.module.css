@@ -32,6 +32,8 @@
   background-color: transparent;
   flex: 1 1 auto;
   max-width: calc(80% - 11%);
+  color: aliceblue;
+
 }
 
 .selectedSelect {
