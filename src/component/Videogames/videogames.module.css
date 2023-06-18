@@ -45,6 +45,17 @@
   max-width: calc(80% - 11%);
 }
 
+button {
+  margin: 1px;
+  background-color: #fe7302;
+}
+
+button:hover {
+  color: #fe7302;
+  background-color: #79fe04;
+}
+
+
 @media (max-width: 576px) {
   .ordering {
     font-size: 10px;
