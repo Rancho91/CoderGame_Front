@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;  
+  
 }
 
 .searchForm {
@@ -18,10 +19,16 @@
   border: 2px solid #B6FE02;
   border-radius: 10px;
   outline: none;
+  align-items: center;
 }
 
 .searchInput::placeholder {
   color: rgb(17, 8, 8);
+  text-align: center;
+}
+
+.searchInput:focus::placeholder {
+  color: transparent;
 }
 
 .searchButton {
