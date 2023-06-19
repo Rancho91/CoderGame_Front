@@ -1,29 +1,30 @@
 .popupBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
   
-  .popupContent {
-    background-color: #B6FE02;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
-    overflow: auto;
-  }
+}
+
+.popupContent {
+  background-color: #B6FE02;
+  border-radius: 10px;
+  position: relative;
   
-  .popupCloseButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-  }
+  overflow: auto;
+}
+
+.popupContent img {
+  margin: 0;
+}
+
+.popupCloseButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
