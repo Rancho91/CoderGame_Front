@@ -156,6 +156,8 @@ const Perfil = () => {
   // }
 console.log(userInfo?.balance.balance)
   return (
+    <div className="container">
+
     <div className={`container-fluid`}>
       <div className="row min-vh-100 flex-column flex-md-row ">
       <div className={`col-sm-3 col-md-3 col-xl-2 bg-dark justify-content-center ${styles.containerProfile}`}>
@@ -246,6 +248,7 @@ console.log(userInfo?.balance.balance)
             {table=== "comments"?(<ClientComments comments={data?.comments}/>):(null)} 
             {table=== "transactions"?(<ClientTransaction transaction={transaction?.Wallet?.Transactions}/>):(null)} 
         </div>
+    </div>
     </div>
     </div>
   );

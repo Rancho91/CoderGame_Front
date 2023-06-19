@@ -70,7 +70,7 @@ function App() {
           <Route path="/payment/failure" element={<PaymentFailure />}/>
         </Routes>
 
-        <Popup isOpen={isPopupOpen} handleClose={handleClose} imgSrc="ruta/a/tu/imagen.jpg" />
+        {/* <Popup isOpen={isPopupOpen} handleClose={handleClose}  /> */}
 
         <Footer/>
       </div>
