@@ -163,7 +163,7 @@ console.log(userInfo?.balance.balance)
       <div className={`col-sm-3 col-md-3 col-xl-2 bg-dark justify-content-center ${styles.containerProfile}`}>
       <div className="row flex-md-column flex-sm-row">
 
-          <div className={`col-6 col-md-12 ${styles.profile}`}>
+          <div className={isActive?(`col-12 col-md-12 ${styles.profile}`):(`col-6 col-md-12 ${styles.profile}`)}>
             <div>
             <button onClick={editHandler} className={styles.buttonEdit}>
               Edit
@@ -171,7 +171,9 @@ console.log(userInfo?.balance.balance)
             </div>
 
       {isActive? (
-          <form onSubmit={submitHandle}>
+
+          <form onSubmit={submitHandle} className="container">
+            <div>
             <label> Img:</label>
             <input
               className={styles.inputs}
@@ -180,7 +182,9 @@ console.log(userInfo?.balance.balance)
               onChange={(e) => handleImageChange(e)}
               placeholder=""
             />
-            <label> Nickname:</label>
+            </div>
+           <div>
+           <label> Nickname:</label>
             <input
             className={styles.inputs}
               name="nickname"
@@ -188,6 +192,8 @@ console.log(userInfo?.balance.balance)
               onChange={handleChange}
               placeholder="Nickname"
             />
+           </div>
+            <div>
             {errors.nickname && <p>{errors.nickname}</p>}
             <label> Youtube Link:</label>
             <input
@@ -197,6 +203,8 @@ console.log(userInfo?.balance.balance)
               onChange={handleChange}
               placeholder="Youtube"
             />
+            </div>
+            <div>
             {errors.linkYoutube && <p>{errors.linkYoutube}</p>}
             <label> Description:</label>
             <input           
@@ -206,9 +214,13 @@ console.log(userInfo?.balance.balance)
               onChange={handleChange}
               placeholder="Description"
             />
-            {errors.description && <p>{errors.description}</p>}
+            </div>
+          <div>
+          {errors.description && <p>{errors.description}</p>}
             <br/>
-            <button>Confirm</button>
+            <button onClick={submitHandle}>Confirm</button>
+          </div>
+           
           </form>
         ):(<div>
           <div className={`text-center ${styles.img}`}><img src={user?.picture} alt="" className=""/></div>
@@ -223,12 +235,15 @@ console.log(userInfo?.balance.balance)
         </div>
 
       </div>
-      
-      <div className="col-6 col-md-12 d-flex flex-column justify-content-center align-items-center">
-          <div className="text-center" ><button onClick={handleTable} className={styles.buttonNav} name="videogames">Games</button></div>
-          <div className="text-center"><button name="transactions" className={styles.buttonNav} onClick={handleTable}>Transactions</button></div>
-            <div className="text-center"><button name="comments" className={styles.buttonNav} onClick={handleTable}>Comments</button></div>
-        </div>
+      {isActive?(null):(
+         <div className="col-6 col-md-12 d-flex flex-column justify-content-center align-items-center">
+         <div className="text-center" ><button onClick={handleTable} className={styles.buttonNav} name="videogames">Games</button></div>
+         <div className="text-center"><button name="transactions" className={styles.buttonNav} onClick={handleTable}>Transactions</button></div>
+           <div className="text-center"><button name="comments" className={styles.buttonNav} onClick={handleTable}>Comments</button></div>
+       </div>
+      )}
+
+     
         </div>
 
       </div>
@@ -243,7 +258,6 @@ console.log(userInfo?.balance.balance)
              <CardBuy/>
               </div>
            </div>
-          
             {table=== "videogames"?(<ClientVideogames favorites={data?.favorites}/>):(null)} 
             {table=== "comments"?(<ClientComments comments={data?.comments}/>):(null)} 
             {table=== "transactions"?(<ClientTransaction transaction={transaction?.Wallet?.Transactions}/>):(null)} 
