@@ -6,20 +6,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
-  
+  background-color: rgba(0, 0, 0, 0.5); /* Agregar un fondo oscuro semi-transparente */
 }
 
 .popupContent {
   background-color: #B6FE02;
   border-radius: 10px;
   position: relative;
-  
+  padding: 20px; /* Espacio alrededor del texto y los botones */
+  width: 80%; /* Ancho relativo al contenedor */
+  max-width: 600px; /* Ancho máximo para grandes pantallas */
+  text-align: center; /* Centrar el texto y los botones */
   overflow: auto;
 }
 
 .popupContent img {
   margin: 0;
+  width: 100%; /* Hacer que la imagen sea del mismo ancho que el contenido */
+  border-radius: 10px; /* Redondear las esquinas de la imagen para que coincida con el contenido */
+}
+
+.popupContent h2, .popupContent p {
+  margin: 10px 0; /* Espacio alrededor del texto */
 }
 
 .popupCloseButton {
@@ -27,4 +35,13 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+.subscribeButton {
+  background-color: #ff0000; /* Color de fondo rojo, por ejemplo */
+  color: #ffffff; /* Texto blanco */
+  padding: 10px 20px; /* Espacio alrededor del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Esquinas redondeadas */
+  cursor: pointer; /* Cambiar el cursor al pasar el ratón por encima */
 }
