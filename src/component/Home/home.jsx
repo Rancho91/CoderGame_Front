@@ -6,6 +6,7 @@ import Card from "../card/card";
 import styles from "./home.module.css";
 import Carousel from "../Carousel/Carousel";
 import { api } from "../../App";
+import ImageAccGame from "../ImageAccGame/ImageAccGame"
 
 const Home = () => {
   const [arrSlader, setArrSlader] = useState([]);
@@ -27,10 +28,9 @@ const Home = () => {
 
   return (
     <div className={`container ${styles.home}`}>
-      <div>
-        {" "}
-        <Carousel />{" "}
-      </div>
+      <div> <Carousel /> </div>
+        
+      <div> <ImageAccGame /> </div>
 
       <div className={`row d-flex justify-content-center cardInner ${styles.cardInner}`}>
         {arrGamesFooter?.map((game) => (

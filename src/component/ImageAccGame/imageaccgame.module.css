@@ -1,0 +1,23 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .gridItem {
+    flex: 1 0 40%; /* Cada item ocupará al menos el 40% del ancho del contenedor */
+    margin: 3px; /* Reducimos el margen a 1% para que las imágenes estén más juntas */
+  }
+  
+  .gridItem img {
+    width: 100%;
+    height: auto;
+  }
+  
+  @media (max-width: 600px) {
+    .gridItem {
+      flex: 1 0 45%; /* En pantallas pequeñas, cada item ocupará el 45% del ancho del contenedor, permitiendo dos imágenes por fila */
+      margin: 1px; /* Ajusta el margen para mantener el espacio entre las imágenes */
+    }
+  }
+  

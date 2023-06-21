@@ -5,9 +5,9 @@ const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const images = [
-    'https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686060579/lyhyzkvdovptmizpvrtm.png',
-    'https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686060565/zjjo0pw4we6kdnheg6g8.png',
-    'https://res.cloudinary.com/dnkaxvkr9/image/upload/v1686090081/xei361pmgikgj25hnqdr.png',
+    'https://res.cloudinary.com/dnkaxvkr9/image/upload/v1687373220/Carusel/gwkleydaafe2gyj8wzdt.jpg',
+    'https://res.cloudinary.com/dnkaxvkr9/image/upload/v1687373216/Carusel/hh3kmsckq08byfartcbw.jpg',
+    'https://res.cloudinary.com/dnkaxvkr9/image/upload/v1687373213/Carusel/l3f7nedvclfw1csznn0k.jpg',
   ];
 
   const nextSlide = () => {
