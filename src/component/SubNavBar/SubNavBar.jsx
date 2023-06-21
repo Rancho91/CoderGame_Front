@@ -33,28 +33,38 @@ const SubNavBar = () => {
   };
 
   return (
-    <div className="container">
-      <div className={`row ${styles.subnavbar} ${styles.noMarginBottom}`}>
-        <nav className={styles.navbar}>
-          <div className={`col-6 ${styles.navbar__item}`}>
-            <Link to="/videogames" className={styles.allGamesButton}>
-              <a className={styles.allGamesLink}>AllGames</a>
-            </Link>
-          </div>
-
-          <div className={`col-6 d-flex flex-row ${styles.navbar__item}`}>
-            <div className="col-5">
-              <Link to="/favorites">
-                <FontAwesomeIcon icon={faHeart} className={styles.heartIcon} />
+    <div >
+      <div className={styles.subnavbar}>
+        <nav className={styles.navbarOrdering}>
+          <div className="d-flex justify-content-center ">
+            
+            <div className="mx-1">
+              <Link to="/videogames" className={styles.orderSelect}>
+                AllGames
+              </Link>
+            </div>
+            
+            <div className="mx-1">
+              <Link to="/favorites" className={styles.orderSelect}>
+                <span >
+                  <FontAwesomeIcon icon={faHeart} />
+                  <span>  Favorites</span>
+                </span>
               </Link>
             </div>
 
-            <div className={`col-5 ${styles.navbar__item}`}>
-              <FontAwesomeIcon icon={faUser} className={`${styles.userIcon}`} />
-
-              <select name="User" id="" onChange={onChangeUser}>
+            <div className="mx-1" >
+              <FontAwesomeIcon icon={faUser} />
+              <select
+                name="User"
+                onChange={onChangeUser}
+                className={`${styles.orderSelect} ${styles.selectedSelect}`}
+              >
                 <option value="options" disabled selected>
+                  <span>
                   Options
+                  </span>
+                  
                 </option>
                 <option name="Create Game"> Create Game</option>
                 {isAuthenticated ? (

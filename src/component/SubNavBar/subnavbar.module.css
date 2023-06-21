@@ -3,91 +3,66 @@
   margin-top: 3px;
   margin-bottom: 3px;
   align-items: center;
-  padding: 10px;
-  background-color: #B6FE02;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.siguienteElemento {
-  margin-top: 3px;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar__item {
+.navbarOrdering {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 16px;
-}
-
-.navbar__item select {
-  padding: 6px 12px;
-  border-radius: 5px;
-  background-color: transparent;
-  color: rgb(6, 3, 3);
-  border: none;
-  flex-direction: row;
-  align-items: center;
-  max-width: 150px;
-  font-size: 17px;
-}
-
-.navbar__item select option {
-  background-color: black;
-  color: white;
-}
-
-.genres,
-.platforms,
-.options,
-.allGamesLink {
-  margin-right: 1px;
-  padding: 2px 6px;
-  font-size: 14px;
-}
-
-.allGamesButton {
-  text-decoration: none;
   background-color: #B6FE02;
-  padding: 8px 12px;
+  height: 50px;
   border-radius: 5px;
+  margin-bottom: 3px;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.allGamesLink {
-  color: rgb(5, 1, 1);
+.orderSelect {
+  border: none;
+  margin: 20px;
+  font-size: 18px;
   font-weight: bold;
+  border-radius: 15px;
+  background-color: transparent;
+  max-width: calc(80% - 8%);
+  color: rgb(0, 3, 6);
 }
 
-.heartIcon,
-.userIcon {
-  font-size: 15px;
-  margin-right: 5px;
-  color: rgb(10, 3, 3);
+.selectedSelect {
+  border: none;
+  margin: 1% 0;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 1%;
+  border-radius: 15px;
+  background-color: transparent;
+  max-width: calc(80% - 8%);
 }
+
+button {
+  margin: 1px;
+  background-color: #fe7302;
+}
+
 
 @media (max-width: 576px) {
-  .navbar__item {
-    font-size: 12px !important;
+  .navbarOrdering {
+    font-size: 10px;
+    flex-direction: column;
   }
 
-  .navbar__item select,
-  .allGamesLink {
-    padding: 4px 8px !important;
-    max-width: 80px !important;
-    font-size: 12px !important;
+  .orderSelect,
+  select,
+  .selectedSelect {
+    padding: 4px 8px;
+    max-width: 85px;
+    font-size: 10px;
   }
 
-  .heartIcon,
-  .userIcon {
-    font-size: 12px !important;
-    margin-right: 3px !important;
+  .ordering > div {
+    margin: 1% 1%;
+    width: 100%;
   }
-
-  
 }
-
