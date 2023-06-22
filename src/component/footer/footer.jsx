@@ -42,7 +42,7 @@ const Footer = () =>{
                     <a href="https://github.com/walterporta"> <img src="https://res.cloudinary.com/dxatwbzff/image/upload/v1684165478/github_logo_icon_147285_zgpagr.png" alt="" className={`img-fluid ${styles.imgSmaller}`}/></a>
                     </div>
                     <div className="col-2">
-                    <a href=""><img src="https://res.cloudinary.com/dxatwbzff/image/upload/v1681686708/Personal%20Proyects/Linkedin_wvwa2u.png" alt="" className={`img-fluid ${styles.imgSmaller}`}/> </a>
+                    <a href="https://www.linkedin.com/in/walter-porta-589a52254/"><img src="https://res.cloudinary.com/dxatwbzff/image/upload/v1681686708/Personal%20Proyects/Linkedin_wvwa2u.png" alt="" className={`img-fluid ${styles.imgSmaller}`}/> </a>
                     </div>
                     <div className="col-2">
                     <a href="https://api.whatsapp.com/send/?phone=3426106008&text&app_absent=0" target="_blank">   
@@ -61,7 +61,7 @@ const Footer = () =>{
                 <a href="https://github.com/Rancho91"> <img src="https://res.cloudinary.com/dxatwbzff/image/upload/v1684165478/github_logo_icon_147285_zgpagr.png" alt="" className={`img-fluid ${styles.imgSmaller}`}/></a>
                 </div>
                 <div className=" col-2">
-                <a href=""><img src="https://res.cloudinary.com/dxatwbzff/image/upload/v1681686708/Personal%20Proyects/Linkedin_wvwa2u.png" alt="" className={`img-fluid ${styles.imgSmaller}`}/> </a>
+                <a href="https://www.linkedin.com/in/ramiro-sanchez-solano/"><img src="https://res.cloudinary.com/dxatwbzff/image/upload/v1681686708/Personal%20Proyects/Linkedin_wvwa2u.png" alt="" className={`img-fluid ${styles.imgSmaller}`}/> </a>
                 </div>
                 <div className="col-2">
                 <a href="https://api.whatsapp.com/send/?phone=3548504261&text&app_absent=0" target="_blank">
