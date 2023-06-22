@@ -1,7 +1,14 @@
 .card {
 
-  padding: 0 1px;
+  padding: 1px;
 }
 .cardInner {
-    margin: 0 -5px;
+    margin: 0;
+  }
+
+
+  @media screen and (max-width: 800px) {
+    .card:nth-child(3) {
+      display: none;
+    }
   }

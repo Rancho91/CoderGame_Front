@@ -7,7 +7,7 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import {useLocation} from "react-router-dom"
 import { api } from '../../App'
-function Card({ game, refreshHandler, handleAddList, selectedGames }) {
+function Card({ game, refreshHandler, handleAddList, selectedGames, showPriceAndBuy = true }) {
   const { name, image, description, price, released, Favorites, id } = game;
   const { user, loginWithRedirect , isAuthenticated } = useAuth0();
   const [isSelected, setIsSelected] = useState(false);
@@ -84,53 +84,48 @@ function Card({ game, refreshHandler, handleAddList, selectedGames }) {
       } ${styles.container}`}
       onClick={handleCardClick}
     >
-
-      
-        <div
-          className={`row ${styles.image}`}
-          style={{ backgroundImage: `url(${image})` }}
-        >
-                     
-          <button onClick={addDleneteFavorites} className={styles.buttonHeart}>
-            <FontAwesomeIcon
+      <div
+        className={`row ${styles.image}`}
+        style={{ backgroundImage: `url(${image})` }}
+      >
+        <button onClick={addDleneteFavorites} className={styles.buttonHeart}>
+          <FontAwesomeIcon
             icon={faHeart}
             className={
-            Favorites?.length ? styles.heartIconFav : styles.heartIcon
-            }/>
-          </button>
-        </div>
-
-        
-        <div className={`row ${styles.title}`}>
-        
-        <Link to={`/videogames/${id}`} className={styles.link}> <div className="col-12">
-          <h1 className={styles.name}>{name}</h1>
-
-         </div>   
-      </Link>
+              Favorites?.length ? styles.heartIconFav : styles.heartIcon
+            }
+          />
+        </button>
       </div>
-      {Favorites?.length && Favorites[0].buy?(<p>Purched</p>):(
-      <div className="row">
 
-        <div className={`col-6 ${styles.buy}`}>
-          <p className="mt-3 mr-3">{price}</p>
-        </div>
+      <div className={`row ${styles.title}`}>
+        <Link to={`/videogames/${id}`} className={styles.link}>
+          <div className="col-12">
+            <h1 className={styles.name}>{name}</h1>
+          </div>
+        </Link>
+      </div>
 
-        <div className={`col-6 ${styles.buy}`}>
-          {
-            location?.pathname=="/favorites"?(
-
-              
-            <button onClick={handleAdd}>{
-             selectedGames?.includes(game.id)?"-":"+" }</button>
-            )
-            :(
-
-              <button onClick={onBuyClick}>Buy</button>
-            )
-          }
-        </div>
-      </div>)}
+      {showPriceAndBuy && (
+        (Favorites?.length && Favorites[0].buy) ? (
+          <p>Purchased</p>
+        ) : (
+          <div className="row">
+            <div className={`col-6 ${styles.buy}`}>
+              <p className="mt-3 mr-3">{price}</p>
+            </div>
+            <div className={`col-6 ${styles.buy}`}>
+              {location?.pathname=="/favorites" ? (
+                <button onClick={handleAdd}>{
+                  selectedGames?.includes(game.id) ? "-" : "+"
+                }</button>
+              ) : (
+                <button onClick={onBuyClick}>Buy</button>
+              )}
+            </div>
+          </div>
+        )
+      )}
     </div>
   );
 }
